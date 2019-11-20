@@ -1,0 +1,11 @@
+bdd_homepage:
+    path:     /
+    defaults: { _controller: BddBundle:Default:index }
+
+bdd_admin:
+    path:     /back/admin/
+    defaults: { _controller: BddBundle:Default:admin }
+
+bdd_expert:
+    path:     /back/expert/
+    defaults: { _controller: BddBundle:Default:expert }

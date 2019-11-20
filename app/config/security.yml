@@ -1,0 +1,33 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_ADMIN:  ROLE_USER
+        ROLE_EXPERT: ROLE_USER
+        ROLE_PAYSAGISTE: ROLE_USER
+        ROLE_JARDINIER: ROLE_USER
+        ROLE_CLIENT: ROLE_USER
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        main:
+            pattern: ^/
+            user_checker: security.user_checker
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+
+            logout:       true
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/front/, role: ROLE_CLIENT }
+        - { path: ^/back/expert/, role: ROLE_EXPERT }
+        - { path: ^/back/admin/, role: ROLE_ADMIN }
