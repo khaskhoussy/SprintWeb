@@ -31,3 +31,4 @@ security:
         - { path: ^/front/, role: ROLE_CLIENT }
         - { path: ^/back/expert/, role: ROLE_EXPERT }
         - { path: ^/back/admin/, role: ROLE_ADMIN }
+        - { path: ^/back/jardinier/, role: ROLE_JARDINIER }

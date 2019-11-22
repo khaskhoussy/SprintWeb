@@ -122,35 +122,53 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
         }
         not_bdd_homepage:
 
-        // bdd_admin
-        if ('/back/admin' === $trimmedPathinfo) {
-            $ret = array (  '_controller' => 'BddBundle\\Controller\\DefaultController::adminAction',  '_route' => 'bdd_admin',);
-            if ('/' === substr($pathinfo, -1)) {
-                // no-op
-            } elseif ('GET' !== $canonicalMethod) {
-                goto not_bdd_admin;
-            } else {
-                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'bdd_admin'));
+        if (0 === strpos($pathinfo, '/back')) {
+            // bdd_admin
+            if ('/back/admin' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'BddBundle\\Controller\\DefaultController::adminAction',  '_route' => 'bdd_admin',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_bdd_admin;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'bdd_admin'));
+                }
+
+                return $ret;
             }
+            not_bdd_admin:
 
-            return $ret;
-        }
-        not_bdd_admin:
+            // bdd_expert
+            if ('/back/expert' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'BddBundle\\Controller\\DefaultController::expertAction',  '_route' => 'bdd_expert',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_bdd_expert;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'bdd_expert'));
+                }
 
-        // bdd_expert
-        if ('/back/expert' === $trimmedPathinfo) {
-            $ret = array (  '_controller' => 'BddBundle\\Controller\\DefaultController::expertAction',  '_route' => 'bdd_expert',);
-            if ('/' === substr($pathinfo, -1)) {
-                // no-op
-            } elseif ('GET' !== $canonicalMethod) {
-                goto not_bdd_expert;
-            } else {
-                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'bdd_expert'));
+                return $ret;
             }
+            not_bdd_expert:
 
-            return $ret;
+            // bdd_jardinier
+            if ('/back/jardinier' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'BddBundle\\Controller\\DefaultController::jardinierAction',  '_route' => 'bdd_jardinier',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_bdd_jardinier;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'bdd_jardinier'));
+                }
+
+                return $ret;
+            }
+            not_bdd_jardinier:
+
         }
-        not_bdd_expert:
 
         // homepage
         if ('' === $trimmedPathinfo) {

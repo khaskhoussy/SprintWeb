@@ -15,6 +15,7 @@ class DefaultController extends Controller
         switch ($u->getRoles()[0]){
             case "ROLE_ADMIN":return $this->redirect('back/admin');break;
             case "ROLE_EXPERT":return $this->redirect('back/expert');break;
+            case "ROLE_JARDINIER":return $this->redirect('back/jardinier');break;
         }
 
         return $this->render('BddBundle:Default:index.html.twig');
@@ -22,11 +23,15 @@ class DefaultController extends Controller
 
     public function adminAction()
     {
-        return $this->render('BddBundle:Default:index1.html.twig');
+        return $this->render('BddBundle:Default:admininterface.html.twig');
     }
 
     public function expertAction()
     {
-        return $this->render('BddBundle:Default:index2.html.twig');
+        return $this->render('@Bdd/Default/expertinterface.html.twig');
+    }
+    public function jardinierAction()
+    {
+        return $this->render('BddBundle:Default:jardnierinterface.html.twig');
     }
 }
