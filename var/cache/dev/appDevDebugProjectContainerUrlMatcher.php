@@ -107,6 +107,29 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        // users_homepage
+        if ('/Users/index' === $pathinfo) {
+            return array (  '_controller' => 'UsersBundle\\Controller\\DefaultController::indexAction',  '_route' => 'users_homepage',);
+        }
+
+        if (0 === strpos($pathinfo, '/Users/a')) {
+            // users_Formulaire
+            if ('/Users/ajout' === $pathinfo) {
+                return array (  '_controller' => 'UsersBundle\\Controller\\UsersController::ajoutAction',  '_route' => 'users_Formulaire',);
+            }
+
+            // users_add
+            if ('/Users/add' === $pathinfo) {
+                return array (  '_controller' => 'UsersBundle\\Controller\\UsersController::addAction',  '_route' => 'users_add',);
+            }
+
+            // users_afficherEmployees
+            if ('/Users/afficheremp' === $pathinfo) {
+                return array (  '_controller' => 'UsersBundle\\Controller\\UsersController::AficherstaffAction',  '_route' => 'users_afficherEmployees',);
+            }
+
+        }
+
         // bdd_homepage
         if ('' === $trimmedPathinfo) {
             $ret = array (  '_controller' => 'BddBundle\\Controller\\DefaultController::indexAction',  '_route' => 'bdd_homepage',);

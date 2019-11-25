@@ -1,0 +1,12 @@
+users_homepage:
+    path:     /index
+    defaults: { _controller: UsersBundle:Default:index }
+users_Formulaire:
+    path:     /ajout
+    defaults: { _controller: UsersBundle:Users:ajout }
+users_add:
+    path:     /add
+    defaults: { _controller: UsersBundle:Users:add }
+users_afficherEmployees:
+    path:     /afficheremp
+    defaults: { _controller: UsersBundle:Users:Aficherstaff }
