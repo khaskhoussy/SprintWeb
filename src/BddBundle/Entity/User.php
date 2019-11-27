@@ -165,32 +165,32 @@ class User extends BaseUser
     }
 
     /**
-     * @ORM\@OneToMany(targetEntity="Commande", mappedBy="iduser")
+     * @ORM\OneToMany(targetEntity="Commande", mappedBy="iduser")
      */
     private $commandes;
 
     /**
-     * @ORM\@OneToMany(targetEntity="Commentaire", mappedBy="idclient")
+     * @ORM\OneToMany(targetEntity="Commentaire", mappedBy="idclient")
      */
     private $commantaires;
 
     /**
-     * @ORM\@OneToMany(targetEntity="Participation", mappedBy="iduser")
+     * @ORM\OneToMany(targetEntity="Participation", mappedBy="iduser")
      */
     private $participations;
 
     /**
-     * @ORM\@OneToMany(targetEntity="Reclamation", mappedBy="iduser")
+     * @ORM\OneToMany(targetEntity="Reclamation", mappedBy="iduser")
      */
     private $reclamations;
 
     /**
-     * @ORM\@OneToMany(targetEntity="Sujet", mappedBy="iduser")
+     * @ORM\OneToMany(targetEntity="Sujet", mappedBy="iduser")
      */
     private $sujets;
 
     /**
-     * @ORM\@OneToMany(targetEntity="EventComments", mappedBy="iduser")
+     * @ORM\OneToMany(targetEntity="EventComments", mappedBy="iduser")
      */
     private $commentairesEvents;
 

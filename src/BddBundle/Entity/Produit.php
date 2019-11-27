@@ -84,7 +84,7 @@ class Produit
     private $idoffre;
 
     /**
-     * @ORM\@OneToMany(targetEntity="LignePack", mappedBy="idproduit")
+     * @ORM\OneToMany(targetEntity="LignePack", mappedBy="idproduit")
      */
     private $lignePacks;
 

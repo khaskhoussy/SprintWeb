@@ -95,7 +95,7 @@ class Evenement
     private $idoffre;
 
     /**
-     * @ORM\@OneToMany(targetEntity="EventComments", mappedBy="idevenement")
+     * @ORM\OneToMany(targetEntity="EventComments", mappedBy="idevenement")
      */
     private $commentairesEvents;
 

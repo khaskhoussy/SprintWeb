@@ -2,6 +2,7 @@
 
 namespace BddBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -29,7 +30,7 @@ class EventComments
     private $contenu;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="date", type="date")
      */
@@ -73,7 +74,7 @@ class EventComments
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param DateTime $date
      *
      * @return EventComments
      */
@@ -87,7 +88,7 @@ class EventComments
     /**
      * Get date
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getDate()
     {
