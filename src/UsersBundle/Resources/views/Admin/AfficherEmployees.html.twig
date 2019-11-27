@@ -93,7 +93,9 @@
                         </div>
                     </div>
                     <div class="kt-widget__footer">
-                        <button type="button" class="btn btn-label-warning btn-lg btn-upper">detail</button>
+                        <a href="{{ path('users_Formulaire')}}"><button type="button" class="btn btn-label-warning btn-lg btn-upper">detail</button>  </a>
+
+                        <a href="{{ path('users_supprimer',{id:utulisateur.id})}}"><button type="button" class="btn btn-label-warning btn-lg btn-upper">Supprimer</button></a>
                     </div>
                 </div>
 

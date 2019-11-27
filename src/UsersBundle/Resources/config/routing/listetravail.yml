@@ -1,0 +1,24 @@
+listetravail_index:
+    path:     /
+    defaults: { _controller: "UsersBundle:ListeTravail:index" }
+    methods:  GET
+
+listetravail_show:
+    path:     /{id}/show
+    defaults: { _controller: "UsersBundle:ListeTravail:show" }
+    methods:  GET
+
+listetravail_new:
+    path:     /new
+    defaults: { _controller: "UsersBundle:ListeTravail:new" }
+    methods:  [GET, POST]
+
+listetravail_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "UsersBundle:ListeTravail:edit" }
+    methods:  [GET, POST]
+
+listetravail_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "UsersBundle:ListeTravail:delete" }
+    methods:  DELETE

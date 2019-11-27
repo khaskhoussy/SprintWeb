@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Listetravail</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ listeTravail.id }}</td>
+            </tr>
+            <tr>
+                <th>Descriptiontravail</th>
+                <td>{{ listeTravail.descriptionTravail }}</td>
+            </tr>
+            <tr>
+                <th>Datetravail</th>
+                <td>{{ listeTravail.dateTravail }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ listeTravail.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('listetravail_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('listetravail_edit', { 'id': listeTravail.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

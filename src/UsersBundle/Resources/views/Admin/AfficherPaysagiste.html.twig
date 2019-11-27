@@ -1,0 +1,113 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    {##}
+    {% for utulisateur in users %}
+        {% set nav = utulisateur.roles[0] %}
+        {% if nav == "ROLE_PAYSAGISTE" %}
+            <div class="row">
+            <div class="col-xl-3">
+
+                <!--Begin::Portlet-->
+                <div class="kt-portlet kt-portlet--height-fluid">
+                    <div class="kt-portlet__head kt-portlet__head--noborder">
+                        <div class="kt-portlet__head-label">
+                            <h3 class="kt-portlet__head-title">
+                            </h3>
+                        </div>
+                        <div class="kt-portlet__head-toolbar">
+                            <a href="#" class="btn btn-icon" data-toggle="dropdown">
+                                <i class="flaticon-more-1 kt-font-brand"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <ul class="kt-nav">
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-line-chart"></i>
+                                            <span class="kt-nav__link-text">Reports</span>
+                                        </a>
+                                    </li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-send"></i>
+                                            <span class="kt-nav__link-text">Messages</span>
+                                        </a>
+                                    </li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-pie-chart-1"></i>
+                                            <span class="kt-nav__link-text">Charts</span>
+                                        </a>
+                                    </li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-avatar"></i>
+                                            <span class="kt-nav__link-text">Members</span>
+                                        </a>
+                                    </li>
+                                    <li class="kt-nav__item">
+                                        <a href="#" class="kt-nav__link">
+                                            <i class="kt-nav__link-icon flaticon2-settings"></i>
+                                            <span class="kt-nav__link-text">Settings</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kt-portlet__body">
+
+                        <!--begin::Widget -->
+                        <div class="kt-widget kt-widget--user-profile-2">
+                            <div class="kt-widget__head">
+                                <div class="kt-widget__media">
+                                    <img class="kt-widget__img kt-hidden-" src="{{ asset('uploads/Users/'~utulisateur.image) }}" alt="image">
+                                    <div class="kt-widget__pic kt-widget__pic--success kt-font-success kt-font-boldest kt-hidden">
+                                        ChS
+                                    </div>
+                                </div>
+                                <div class="kt-widget__info">
+                                    <a href="#" class="kt-widget__username">
+                                        {{utulisateur.username}}
+                                    </a>
+                                    <span class="kt-widget__desc">
+															Paysagiste
+														</span>
+                                </div>
+                            </div>
+                            <div class="kt-widget__body">
+
+                                <div class="kt-widget__item">
+                                    <div class="kt-widget__contact">
+                                        <span class="kt-widget__label">Nom:</span>
+                                        <a href="#" class="kt-widget__data">{{utulisateur.Nom}}</a>
+                                    </div>
+                                    <div class="kt-widget__contact">
+                                        <span class="kt-widget__label">prenom:</span>
+                                        <a href="#" class="kt-widget__data">{{utulisateur.prenom}}</a>
+                                    </div>
+                                    <div class="kt-widget__contact">
+                                        <span class="kt-widget__label">telephone:</span>
+                                        <span class="kt-widget__data">{{utulisateur.telephone}}</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="kt-widget__footer">
+                                <a href="{{ path('users_Formulaire')}}"><button type="button" class="btn btn-label-warning btn-lg btn-upper">detail</button>  </a>
+
+                                <a href="{{ path('users_supprimer',{id:utulisateur.id})}}"><button type="button" class="btn btn-label-warning btn-lg btn-upper">Supprimer</button></a>
+                            </div>
+                        </div>
+
+                        <!--end::Widget -->
+                    </div>
+                </div>
+
+                <!--End::Portlet-->
+            </div>
+        {% endif %}
+    {% endfor %}
+
+
+
+{% endblock %}

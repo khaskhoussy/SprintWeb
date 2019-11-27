@@ -328,16 +328,34 @@ License: You must have a valid license purchased only from themeforest(the above
 \t\t\t\t\t\t\t\t\t\t\t</svg></span><span class=\"kt-menu__link-text\">Applications</span><i class=\"kt-menu__ver-arrow la la-angle-right\"></i></a>
                             <div class=\"kt-menu__submenu \"><span class=\"kt-menu__arrow\"></span>
                                 <ul class=\"kt-menu__subnav\">
-                                    <li class=\"kt-menu__item  kt-menu__item--parent\" aria-haspopup=\"true\"><span class=\"kt-menu__link\"><span class=\"kt-menu__link-text\">Applications</span></span></li>
+                                    <li class=\"kt-menu__item  kt-menu__item--parent\" aria-haspopup=\"true\"><span class=\"kt-menu__link\"><span class=\"kt-menu__link-text\">aaa</span></span></li>
                                     <li class=\"kt-menu__item  kt-menu__item--submenu\" aria-haspopup=\"true\" data-ktmenu-submenu-toggle=\"hover\"><a href=\"javascript:;\" class=\"kt-menu__link kt-menu__toggle\"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--line\"><span></span></i><span class=\"kt-menu__link-text\">Users</span><i class=\"kt-menu__ver-arrow la la-angle-right\"></i></a>
                                         <div class=\"kt-menu__submenu \"><span class=\"kt-menu__arrow\"></span>
                                             <ul class=\"kt-menu__subnav\">
-                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"demo1/custom/apps/user/list-default.html\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Default</span></a></li>
-                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"demo1/custom/apps/user/list-datatable.html\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Datatable</span></a></li>
-                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"demo1/custom/apps/user/list-columns-1.html\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Columns - 1</span></a></li>
-                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"demo1/custom/apps/user/list-columns-2.html\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Columns - 2</span></a></li>
-                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"demo1/custom/apps/user/add-user.html\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">Add User</span></a></li>
-                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"demo1/custom/apps/user/edit-user.html\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">Edit User</span></a></li>
+                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"";
+        // line 190
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("users_Formulaire");
+        echo "\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">Ajouter - Employees</span></a></li>
+                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"";
+        // line 191
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("users_afficherAdmin");
+        echo "\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Admin</span></a></li>
+                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"";
+        // line 192
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("users_afficherJardinier");
+        echo "\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Jardinier</span></a></li>
+                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"";
+        // line 193
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("users_afficherPaysagiste");
+        echo "\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Paysagiste</span></a></li>
+                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"";
+        // line 194
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("users_afficherExpert");
+        echo "\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Experts </span></a></li>
+                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"";
+        // line 195
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("users_afficherClients");
+        echo "\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Clients</span></a></li>
                                                 <li class=\"kt-menu__item  kt-menu__item--submenu\" aria-haspopup=\"true\" data-ktmenu-submenu-toggle=\"hover\"><a href=\"javascript:;\" class=\"kt-menu__link kt-menu__toggle\"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">Profile 1</span><i class=\"kt-menu__ver-arrow la la-angle-right\"></i></a>
                                                     <div class=\"kt-menu__submenu \"><span class=\"kt-menu__arrow\"></span>
                                                         <ul class=\"kt-menu__subnav\">
@@ -1923,7 +1941,10 @@ License: You must have a valid license purchased only from themeforest(the above
 
                             <!--begin: Navigation -->
                             <div class=\"kt-notification\">
-                                <a href=\"#\" class=\"kt-notification__item\">
+                                <a href=\"";
+        // line 1739
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("users_ProfileAdmin");
+        echo "\" class=\"kt-notification__item\">
                                     <div class=\"kt-notification__item-icon\">
                                         <i class=\"flaticon2-calendar-3 kt-font-success\"></i>
                                     </div>
@@ -3281,7 +3302,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
     public function getDebugInfo()
     {
-        return array (  3256 => 2754,  3246 => 1822,  3237 => 1821,  3227 => 45,  3218 => 44,  3205 => 2756,  3203 => 2754,  3197 => 2751,  3189 => 2746,  3185 => 2745,  3181 => 2744,  3173 => 2739,  3165 => 2734,  3161 => 2733,  3157 => 2732,  3153 => 2731,  3149 => 2730,  3145 => 2729,  3141 => 2728,  3137 => 2727,  3133 => 2726,  3129 => 2725,  3125 => 2724,  3121 => 2723,  3117 => 2722,  3113 => 2721,  3109 => 2720,  3105 => 2719,  3101 => 2718,  3097 => 2717,  3093 => 2716,  3089 => 2715,  3085 => 2714,  3081 => 2713,  3077 => 2712,  3073 => 2711,  3069 => 2710,  3065 => 2709,  3061 => 2708,  3057 => 2707,  3053 => 2706,  3049 => 2705,  3045 => 2704,  3041 => 2703,  3037 => 2702,  3033 => 2701,  3029 => 2700,  3025 => 2699,  3021 => 2698,  3017 => 2697,  3013 => 2696,  3009 => 2695,  3005 => 2694,  3001 => 2693,  2997 => 2692,  2993 => 2691,  2989 => 2690,  2985 => 2689,  2981 => 2688,  2977 => 2687,  2973 => 2686,  2969 => 2685,  2961 => 2680,  2957 => 2679,  2953 => 2678,  2949 => 2677,  2945 => 2676,  2941 => 2675,  2937 => 2674,  2933 => 2673,  2929 => 2672,  2866 => 2612,  2849 => 2598,  2836 => 2588,  2819 => 2574,  2806 => 2564,  2789 => 2550,  2776 => 2540,  2759 => 2526,  2657 => 2427,  2643 => 2416,  2629 => 2405,  2615 => 2394,  2601 => 2383,  2587 => 2372,  2573 => 2361,  2559 => 2350,  2545 => 2339,  2531 => 2328,  2517 => 2317,  2503 => 2306,  2489 => 2295,  2475 => 2284,  2012 => 1823,  2010 => 1821,  1908 => 1722,  1903 => 1720,  1891 => 1711,  1872 => 1695,  1863 => 1689,  1854 => 1683,  1844 => 1676,  1792 => 1627,  1767 => 1605,  1742 => 1583,  1717 => 1561,  1686 => 1533,  1593 => 1443,  1188 => 1041,  277 => 133,  252 => 111,  235 => 97,  229 => 94,  225 => 93,  221 => 92,  217 => 91,  209 => 86,  201 => 81,  197 => 80,  193 => 79,  189 => 78,  185 => 77,  181 => 76,  177 => 75,  173 => 74,  169 => 73,  165 => 72,  161 => 71,  157 => 70,  153 => 69,  149 => 68,  145 => 67,  141 => 66,  137 => 65,  133 => 64,  129 => 63,  125 => 62,  121 => 61,  117 => 60,  113 => 59,  109 => 58,  105 => 57,  97 => 52,  89 => 47,  86 => 46,  84 => 44,  39 => 1,);
+        return array (  3277 => 2754,  3267 => 1822,  3258 => 1821,  3248 => 45,  3239 => 44,  3226 => 2756,  3224 => 2754,  3218 => 2751,  3210 => 2746,  3206 => 2745,  3202 => 2744,  3194 => 2739,  3186 => 2734,  3182 => 2733,  3178 => 2732,  3174 => 2731,  3170 => 2730,  3166 => 2729,  3162 => 2728,  3158 => 2727,  3154 => 2726,  3150 => 2725,  3146 => 2724,  3142 => 2723,  3138 => 2722,  3134 => 2721,  3130 => 2720,  3126 => 2719,  3122 => 2718,  3118 => 2717,  3114 => 2716,  3110 => 2715,  3106 => 2714,  3102 => 2713,  3098 => 2712,  3094 => 2711,  3090 => 2710,  3086 => 2709,  3082 => 2708,  3078 => 2707,  3074 => 2706,  3070 => 2705,  3066 => 2704,  3062 => 2703,  3058 => 2702,  3054 => 2701,  3050 => 2700,  3046 => 2699,  3042 => 2698,  3038 => 2697,  3034 => 2696,  3030 => 2695,  3026 => 2694,  3022 => 2693,  3018 => 2692,  3014 => 2691,  3010 => 2690,  3006 => 2689,  3002 => 2688,  2998 => 2687,  2994 => 2686,  2990 => 2685,  2982 => 2680,  2978 => 2679,  2974 => 2678,  2970 => 2677,  2966 => 2676,  2962 => 2675,  2958 => 2674,  2954 => 2673,  2950 => 2672,  2887 => 2612,  2870 => 2598,  2857 => 2588,  2840 => 2574,  2827 => 2564,  2810 => 2550,  2797 => 2540,  2780 => 2526,  2678 => 2427,  2664 => 2416,  2650 => 2405,  2636 => 2394,  2622 => 2383,  2608 => 2372,  2594 => 2361,  2580 => 2350,  2566 => 2339,  2552 => 2328,  2538 => 2317,  2524 => 2306,  2510 => 2295,  2496 => 2284,  2033 => 1823,  2031 => 1821,  1946 => 1739,  1926 => 1722,  1921 => 1720,  1909 => 1711,  1890 => 1695,  1881 => 1689,  1872 => 1683,  1862 => 1676,  1810 => 1627,  1785 => 1605,  1760 => 1583,  1735 => 1561,  1704 => 1533,  1611 => 1443,  1206 => 1041,  357 => 195,  353 => 194,  349 => 193,  345 => 192,  341 => 191,  337 => 190,  277 => 133,  252 => 111,  235 => 97,  229 => 94,  225 => 93,  221 => 92,  217 => 91,  209 => 86,  201 => 81,  197 => 80,  193 => 79,  189 => 78,  185 => 77,  181 => 76,  177 => 75,  173 => 74,  169 => 73,  165 => 72,  161 => 71,  157 => 70,  153 => 69,  149 => 68,  145 => 67,  141 => 66,  137 => 65,  133 => 64,  129 => 63,  125 => 62,  121 => 61,  117 => 60,  113 => 59,  109 => 58,  105 => 57,  97 => 52,  89 => 47,  86 => 46,  84 => 44,  39 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -3479,16 +3500,16 @@ License: You must have a valid license purchased only from themeforest(the above
 \t\t\t\t\t\t\t\t\t\t\t</svg></span><span class=\"kt-menu__link-text\">Applications</span><i class=\"kt-menu__ver-arrow la la-angle-right\"></i></a>
                             <div class=\"kt-menu__submenu \"><span class=\"kt-menu__arrow\"></span>
                                 <ul class=\"kt-menu__subnav\">
-                                    <li class=\"kt-menu__item  kt-menu__item--parent\" aria-haspopup=\"true\"><span class=\"kt-menu__link\"><span class=\"kt-menu__link-text\">Applications</span></span></li>
+                                    <li class=\"kt-menu__item  kt-menu__item--parent\" aria-haspopup=\"true\"><span class=\"kt-menu__link\"><span class=\"kt-menu__link-text\">aaa</span></span></li>
                                     <li class=\"kt-menu__item  kt-menu__item--submenu\" aria-haspopup=\"true\" data-ktmenu-submenu-toggle=\"hover\"><a href=\"javascript:;\" class=\"kt-menu__link kt-menu__toggle\"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--line\"><span></span></i><span class=\"kt-menu__link-text\">Users</span><i class=\"kt-menu__ver-arrow la la-angle-right\"></i></a>
                                         <div class=\"kt-menu__submenu \"><span class=\"kt-menu__arrow\"></span>
                                             <ul class=\"kt-menu__subnav\">
-                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"demo1/custom/apps/user/list-default.html\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Default</span></a></li>
-                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"demo1/custom/apps/user/list-datatable.html\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Datatable</span></a></li>
-                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"demo1/custom/apps/user/list-columns-1.html\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Columns - 1</span></a></li>
-                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"demo1/custom/apps/user/list-columns-2.html\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Columns - 2</span></a></li>
-                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"demo1/custom/apps/user/add-user.html\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">Add User</span></a></li>
-                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"demo1/custom/apps/user/edit-user.html\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">Edit User</span></a></li>
+                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"{{ path('users_Formulaire')}}\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">Ajouter - Employees</span></a></li>
+                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"{{ path('users_afficherAdmin')}}\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Admin</span></a></li>
+                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"{{ path('users_afficherJardinier')}}\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Jardinier</span></a></li>
+                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"{{ path('users_afficherPaysagiste')}}\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Paysagiste</span></a></li>
+                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"{{ path('users_afficherExpert')}}\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Experts </span></a></li>
+                                                <li class=\"kt-menu__item \" aria-haspopup=\"true\"><a href=\"{{ path('users_afficherClients')}}\" class=\"kt-menu__link \"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">List - Clients</span></a></li>
                                                 <li class=\"kt-menu__item  kt-menu__item--submenu\" aria-haspopup=\"true\" data-ktmenu-submenu-toggle=\"hover\"><a href=\"javascript:;\" class=\"kt-menu__link kt-menu__toggle\"><i class=\"kt-menu__link-bullet kt-menu__link-bullet--dot\"><span></span></i><span class=\"kt-menu__link-text\">Profile 1</span><i class=\"kt-menu__ver-arrow la la-angle-right\"></i></a>
                                                     <div class=\"kt-menu__submenu \"><span class=\"kt-menu__arrow\"></span>
                                                         <ul class=\"kt-menu__subnav\">
@@ -5032,7 +5053,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
                             <!--begin: Navigation -->
                             <div class=\"kt-notification\">
-                                <a href=\"#\" class=\"kt-notification__item\">
+                                <a href=\"{{ path('users_ProfileAdmin')}}\" class=\"kt-notification__item\">
                                     <div class=\"kt-notification__item-icon\">
                                         <i class=\"flaticon2-calendar-3 kt-font-success\"></i>
                                     </div>

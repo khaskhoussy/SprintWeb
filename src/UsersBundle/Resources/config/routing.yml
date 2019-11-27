@@ -1,12 +1,37 @@
+users_listetravail:
+    resource: "@UsersBundle/Resources/config/routing/listetravail.yml"
+    prefix:   /listetravail
+
 users_homepage:
     path:     /index
     defaults: { _controller: UsersBundle:Default:index }
 users_Formulaire:
     path:     /ajout
-    defaults: { _controller: UsersBundle:Users:ajout }
+    defaults: { _controller: UsersBundle:Users:add }
+users_supprimer:
+    path:     /delete/{id}
+    defaults: { _controller: UsersBundle:Users:delete }
 users_add:
     path:     /add
     defaults: { _controller: UsersBundle:Users:add }
-users_afficherEmployees:
+users_afficherJardinier:
     path:     /afficheremp
     defaults: { _controller: UsersBundle:Users:Aficherstaff }
+users_afficherAdmin:
+    path:     /afficherAdmin
+    defaults: { _controller: UsersBundle:Users:AficherAdmin }
+users_afficherPaysagiste:
+    path:     /afficherPaysagiste
+    defaults: { _controller: UsersBundle:Users:AficherPaysagiste }
+users_afficherExpert:
+    path:     /afficherExpert
+    defaults: { _controller: UsersBundle:Users:AficherExpert }
+users_afficherClients:
+    path:     /afficherClient
+    defaults: { _controller: UsersBundle:Users:AficherClient }
+users_ProfileAdmin:
+    path:     /ProfileAdmin
+    defaults: { _controller: UsersBundle:Users:Profile }
+users_ModifierAdmin:
+    path:     /ModifierAdmin
+    defaults: { _controller: UsersBundle:Users:Profile }

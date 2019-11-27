@@ -52,6 +52,86 @@ class ListeTravail
      */
     private $iduser;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescriptionTravail()
+    {
+        return $this->descriptionTravail;
+    }
+
+    /**
+     * @param string $descriptionTravail
+     */
+    public function setDescriptionTravail($descriptionTravail)
+    {
+        $this->descriptionTravail = $descriptionTravail;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateTravail()
+    {
+        return $this->dateTravail;
+    }
+
+    /**
+     * @param string $dateTravail
+     */
+    public function setDateTravail($dateTravail)
+    {
+        $this->dateTravail = $dateTravail;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return \User
+     */
+    public function getIduser()
+    {
+        return $this->iduser;
+    }
+
+    /**
+     * @param \User $iduser
+     */
+    public function setIduser($iduser)
+    {
+        $this->iduser = $iduser;
+    }
+
 
 }
 

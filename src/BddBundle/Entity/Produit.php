@@ -83,6 +83,11 @@ class Produit
      */
     private $idoffre;
 
+    /**
+     * @OneToMany(targetEntity="LignePack", mappedBy="idproduit")
+     */
+    private $lignePacks;
+
 
 }
 

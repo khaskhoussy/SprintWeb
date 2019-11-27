@@ -107,25 +107,137 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // users_homepage
-        if ('/Users/index' === $pathinfo) {
-            return array (  '_controller' => 'UsersBundle\\Controller\\DefaultController::indexAction',  '_route' => 'users_homepage',);
-        }
+        elseif (0 === strpos($pathinfo, '/Users')) {
+            if (0 === strpos($pathinfo, '/Users/listetravail')) {
+                // listetravail_index
+                if ('/Users/listetravail' === $trimmedPathinfo) {
+                    $ret = array (  '_controller' => 'UsersBundle\\Controller\\ListeTravailController::indexAction',  '_route' => 'listetravail_index',);
+                    if ('/' === substr($pathinfo, -1)) {
+                        // no-op
+                    } elseif ('GET' !== $canonicalMethod) {
+                        goto not_listetravail_index;
+                    } else {
+                        return array_replace($ret, $this->redirect($rawPathinfo.'/', 'listetravail_index'));
+                    }
 
-        if (0 === strpos($pathinfo, '/Users/a')) {
-            // users_Formulaire
-            if ('/Users/ajout' === $pathinfo) {
-                return array (  '_controller' => 'UsersBundle\\Controller\\UsersController::ajoutAction',  '_route' => 'users_Formulaire',);
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_listetravail_index;
+                    }
+
+                    return $ret;
+                }
+                not_listetravail_index:
+
+                // listetravail_show
+                if (preg_match('#^/Users/listetravail/(?P<id>[^/]++)/show$#sD', $pathinfo, $matches)) {
+                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'listetravail_show']), array (  '_controller' => 'UsersBundle\\Controller\\ListeTravailController::showAction',));
+                    if (!in_array($canonicalMethod, ['GET'])) {
+                        $allow = array_merge($allow, ['GET']);
+                        goto not_listetravail_show;
+                    }
+
+                    return $ret;
+                }
+                not_listetravail_show:
+
+                // listetravail_new
+                if ('/Users/listetravail/new' === $pathinfo) {
+                    $ret = array (  '_controller' => 'UsersBundle\\Controller\\ListeTravailController::newAction',  '_route' => 'listetravail_new',);
+                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                        $allow = array_merge($allow, ['GET', 'POST']);
+                        goto not_listetravail_new;
+                    }
+
+                    return $ret;
+                }
+                not_listetravail_new:
+
+                // listetravail_edit
+                if (preg_match('#^/Users/listetravail/(?P<id>[^/]++)/edit$#sD', $pathinfo, $matches)) {
+                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'listetravail_edit']), array (  '_controller' => 'UsersBundle\\Controller\\ListeTravailController::editAction',));
+                    if (!in_array($canonicalMethod, ['GET', 'POST'])) {
+                        $allow = array_merge($allow, ['GET', 'POST']);
+                        goto not_listetravail_edit;
+                    }
+
+                    return $ret;
+                }
+                not_listetravail_edit:
+
+                // listetravail_delete
+                if (preg_match('#^/Users/listetravail/(?P<id>[^/]++)/delete$#sD', $pathinfo, $matches)) {
+                    $ret = $this->mergeDefaults(array_replace($matches, ['_route' => 'listetravail_delete']), array (  '_controller' => 'UsersBundle\\Controller\\ListeTravailController::deleteAction',));
+                    if (!in_array($requestMethod, ['DELETE'])) {
+                        $allow = array_merge($allow, ['DELETE']);
+                        goto not_listetravail_delete;
+                    }
+
+                    return $ret;
+                }
+                not_listetravail_delete:
+
             }
 
-            // users_add
-            if ('/Users/add' === $pathinfo) {
-                return array (  '_controller' => 'UsersBundle\\Controller\\UsersController::addAction',  '_route' => 'users_add',);
+            // users_homepage
+            if ('/Users/index' === $pathinfo) {
+                return array (  '_controller' => 'UsersBundle\\Controller\\DefaultController::indexAction',  '_route' => 'users_homepage',);
             }
 
-            // users_afficherEmployees
-            if ('/Users/afficheremp' === $pathinfo) {
-                return array (  '_controller' => 'UsersBundle\\Controller\\UsersController::AficherstaffAction',  '_route' => 'users_afficherEmployees',);
+            if (0 === strpos($pathinfo, '/Users/a')) {
+                // users_Formulaire
+                if ('/Users/ajout' === $pathinfo) {
+                    return array (  '_controller' => 'UsersBundle\\Controller\\UsersController::addAction',  '_route' => 'users_Formulaire',);
+                }
+
+                // users_add
+                if ('/Users/add' === $pathinfo) {
+                    return array (  '_controller' => 'UsersBundle\\Controller\\UsersController::addAction',  '_route' => 'users_add',);
+                }
+
+                if (0 === strpos($pathinfo, '/Users/afficher')) {
+                    // users_afficherJardinier
+                    if ('/Users/afficheremp' === $pathinfo) {
+                        return array (  '_controller' => 'UsersBundle\\Controller\\UsersController::AficherstaffAction',  '_route' => 'users_afficherJardinier',);
+                    }
+
+                    // users_afficherAdmin
+                    if ('/Users/afficherAdmin' === $pathinfo) {
+                        return array (  '_controller' => 'UsersBundle\\Controller\\UsersController::AficherAdminAction',  '_route' => 'users_afficherAdmin',);
+                    }
+
+                    // users_afficherPaysagiste
+                    if ('/Users/afficherPaysagiste' === $pathinfo) {
+                        return array (  '_controller' => 'UsersBundle\\Controller\\UsersController::AficherPaysagisteAction',  '_route' => 'users_afficherPaysagiste',);
+                    }
+
+                    // users_afficherExpert
+                    if ('/Users/afficherExpert' === $pathinfo) {
+                        return array (  '_controller' => 'UsersBundle\\Controller\\UsersController::AficherExpertAction',  '_route' => 'users_afficherExpert',);
+                    }
+
+                    // users_afficherClients
+                    if ('/Users/afficherClient' === $pathinfo) {
+                        return array (  '_controller' => 'UsersBundle\\Controller\\UsersController::AficherClientAction',  '_route' => 'users_afficherClients',);
+                    }
+
+                }
+
+            }
+
+            // users_supprimer
+            if (0 === strpos($pathinfo, '/Users/delete') && preg_match('#^/Users/delete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'users_supprimer']), array (  '_controller' => 'UsersBundle\\Controller\\UsersController::deleteAction',));
+            }
+
+            // users_ProfileAdmin
+            if ('/Users/ProfileAdmin' === $pathinfo) {
+                return array (  '_controller' => 'UsersBundle\\Controller\\UsersController::ProfileAction',  '_route' => 'users_ProfileAdmin',);
+            }
+
+            // users_ModifierAdmin
+            if ('/Users/ModifierAdmin' === $pathinfo) {
+                return array (  '_controller' => 'UsersBundle\\Controller\\UsersController::ProfileAction',  '_route' => 'users_ModifierAdmin',);
             }
 
         }

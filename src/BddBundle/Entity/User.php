@@ -123,6 +123,7 @@ class User extends BaseUser
         return $this->image;
     }
 
+
     /**
      * @param string $image
      */
@@ -146,6 +147,51 @@ class User extends BaseUser
     {
         $this->prenom = $prenom;
     }
+
+    /**
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->roles[0];
+    }
+
+    /**
+     * @param string $role
+     */
+    public function setRole($role)
+    {
+        $this->addRole($role);
+    }
+
+    /**
+     * @OneToMany(targetEntity="Commande", mappedBy="iduser")
+     */
+    private $commandes;
+
+    /**
+     * @OneToMany(targetEntity="Commentaire", mappedBy="idclient")
+     */
+    private $commantaires;
+
+    /**
+     * @OneToMany(targetEntity="Participation", mappedBy="iduser")
+     */
+    private $participations;
+
+    /**
+     * @OneToMany(targetEntity="Reclamation", mappedBy="iduser")
+     */
+    private $reclamations;
+
+    /**
+     * @OneToMany(targetEntity="Sujet", mappedBy="iduser")
+     */
+    private $sujets;
+
+
+
+
 
 
 }

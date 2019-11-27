@@ -58,7 +58,7 @@ class RegistrationController extends Controller
     {
         $user = $this->userManager->createUser();
         $user->setEnabled(true);
-
+        $user->addRole("ROLE_CLIENT");
         $event = new GetResponseUserEvent($user, $request);
         $this->eventDispatcher->dispatch(FOSUserEvents::REGISTRATION_INITIALIZE, $event);
 

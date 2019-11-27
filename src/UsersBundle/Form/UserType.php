@@ -23,7 +23,7 @@ class UserType extends AbstractType
                 ->add('nom')
                 ->add('prenom')
                 ->add('telephone')
-                ->add('roles',ChoiceType::class,array(
+                ->add('role',ChoiceType::class,array(
                    'choices'=>array(
                        'Expert'=>'ROLE_EXPERT',
                        'Jardinier'=>'ROLE_JARDINIER',
@@ -31,12 +31,12 @@ class UserType extends AbstractType
                        'Admin'=>'ROLE_ADMIN'
                    )
                 ))
-            ->add('image',FileType::class,array('label'=>'Selectionner photo'))
-            ->add('Ajouter',SubmitType::class)
-                ;
-               // ->add('usernameCanonical')
+                ->add('image',FileType::class,array('data_class'=>null,'label'=>'Selectionner photo'))
+                ->add('Ajouter',SubmitType::class);
 
-               // ->add('emailCanonical')
+               //->add('usernameCanonical')
+
+               //->add('emailCanonical');
                // ->add('enabled')
                // ->add('salt')
 
@@ -54,7 +54,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'UsersBundle\Entity\User'
+            'data_class' => 'BddBundle\Entity\User'
         ));
     }
 
@@ -63,7 +63,7 @@ class UserType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'usersbundle_user';
+        return 'bddbundle_user';
     }
 
 
