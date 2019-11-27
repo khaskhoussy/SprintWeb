@@ -55,6 +55,87 @@ class QuantiteDeco
      */
     private $idpack;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuantiteDec()
+    {
+        return $this->quantiteDec;
+    }
+
+    /**
+     * @param int $quantiteDec
+     */
+    public function setQuantiteDec($quantiteDec)
+    {
+        $this->quantiteDec = $quantiteDec;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescriptionDeco()
+    {
+        return $this->descriptionDeco;
+    }
+
+    /**
+     * @param string $descriptionDeco
+     */
+    public function setDescriptionDeco($descriptionDeco)
+    {
+        $this->descriptionDeco = $descriptionDeco;
+    }
+
+    /**
+     * @return \Produit
+     */
+    public function getIdproduit()
+    {
+        return $this->idproduit;
+    }
+
+    /**
+     * @param \Produit $idproduit
+     */
+    public function setIdproduit($idproduit)
+    {
+        $this->idproduit = $idproduit;
+    }
+
+    /**
+     * @return \PackDecoration
+     */
+    public function getIdpack()
+    {
+        return $this->idpack;
+    }
+
+    /**
+     * @param \PackDecoration $idpack
+     */
+    public function setIdpack($idpack)
+    {
+        $this->idpack = $idpack;
+    }
+
+
 
 }
 

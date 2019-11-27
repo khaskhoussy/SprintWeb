@@ -69,6 +69,118 @@ class Reclamation
      */
     private $iduser;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getObjet()
+    {
+        return $this->objet;
+    }
+
+    /**
+     * @param string $objet
+     */
+    public function setObjet($objet)
+    {
+        $this->objet = $objet;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContenue()
+    {
+        return $this->contenue;
+    }
+
+    /**
+     * @param string $contenue
+     */
+    public function setContenue($contenue)
+    {
+        $this->contenue = $contenue;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateRecla()
+    {
+        return $this->dateRecla;
+    }
+
+    /**
+     * @param \DateTime $dateRecla
+     */
+    public function setDateRecla($dateRecla)
+    {
+        $this->dateRecla = $dateRecla;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEtatRecla()
+    {
+        return $this->etatRecla;
+    }
+
+    /**
+     * @param string $etatRecla
+     */
+    public function setEtatRecla($etatRecla)
+    {
+        $this->etatRecla = $etatRecla;
+    }
+
+    /**
+     * @return \Commande
+     */
+    public function getIdcommande()
+    {
+        return $this->idcommande;
+    }
+
+    /**
+     * @param \Commande $idcommande
+     */
+    public function setIdcommande($idcommande)
+    {
+        $this->idcommande = $idcommande;
+    }
+
+    /**
+     * @return \User
+     */
+    public function getIduser()
+    {
+        return $this->iduser;
+    }
+
+    /**
+     * @param \User $iduser
+     */
+    public function setIduser($iduser)
+    {
+        $this->iduser = $iduser;
+    }
+
 
 }
 

@@ -49,6 +49,88 @@ class GesteDuMois
      */
     private $imageGeste;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomGeste()
+    {
+        return $this->nomGeste;
+    }
+
+    /**
+     * @param string $nomGeste
+     */
+    public function setNomGeste($nomGeste)
+    {
+        $this->nomGeste = $nomGeste;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMoisGeste()
+    {
+        return $this->moisGeste;
+    }
+
+    /**
+     * @param string $moisGeste
+     */
+    public function setMoisGeste($moisGeste)
+    {
+        $this->moisGeste = $moisGeste;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescGeste()
+    {
+        return $this->descGeste;
+    }
+
+    /**
+     * @param string $descGeste
+     */
+    public function setDescGeste($descGeste)
+    {
+        $this->descGeste = $descGeste;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImageGeste()
+    {
+        return $this->imageGeste;
+    }
+
+    /**
+     * @param string $imageGeste
+     */
+    public function setImageGeste($imageGeste)
+    {
+        $this->imageGeste = $imageGeste;
+    }
+
+
+
 
 }
 

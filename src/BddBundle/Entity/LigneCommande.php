@@ -48,6 +48,71 @@ class LigneCommande
      */
     private $idproduit;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQte()
+    {
+        return $this->qte;
+    }
+
+    /**
+     * @param int $qte
+     */
+    public function setQte($qte)
+    {
+        $this->qte = $qte;
+    }
+
+    /**
+     * @return \Commande
+     */
+    public function getIdcommande()
+    {
+        return $this->idcommande;
+    }
+
+    /**
+     * @param \Commande $idcommande
+     */
+    public function setIdcommande($idcommande)
+    {
+        $this->idcommande = $idcommande;
+    }
+
+    /**
+     * @return \Produit
+     */
+    public function getIdproduit()
+    {
+        return $this->idproduit;
+    }
+
+    /**
+     * @param \Produit $idproduit
+     */
+    public function setIdproduit($idproduit)
+    {
+        $this->idproduit = $idproduit;
+    }
+
+
 
 }
 

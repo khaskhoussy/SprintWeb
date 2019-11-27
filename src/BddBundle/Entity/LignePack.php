@@ -55,6 +55,88 @@ class LignePack
      */
     private $idpack;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuantitePack()
+    {
+        return $this->quantitePack;
+    }
+
+    /**
+     * @param int $quantitePack
+     */
+    public function setQuantitePack($quantitePack)
+    {
+        $this->quantitePack = $quantitePack;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescriptionPack()
+    {
+        return $this->descriptionPack;
+    }
+
+    /**
+     * @param string $descriptionPack
+     */
+    public function setDescriptionPack($descriptionPack)
+    {
+        $this->descriptionPack = $descriptionPack;
+    }
+
+    /**
+     * @return \Produit
+     */
+    public function getIdproduit()
+    {
+        return $this->idproduit;
+    }
+
+    /**
+     * @param \Produit $idproduit
+     */
+    public function setIdproduit($idproduit)
+    {
+        $this->idproduit = $idproduit;
+    }
+
+    /**
+     * @return \PackDecoration
+     */
+    public function getIdpack()
+    {
+        return $this->idpack;
+    }
+
+    /**
+     * @param \PackDecoration $idpack
+     */
+    public function setIdpack($idpack)
+    {
+        $this->idpack = $idpack;
+    }
+
+
+
 
 }
 

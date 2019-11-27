@@ -165,29 +165,132 @@ class User extends BaseUser
     }
 
     /**
-     * @OneToMany(targetEntity="Commande", mappedBy="iduser")
+     * @ORM\@OneToMany(targetEntity="Commande", mappedBy="iduser")
      */
     private $commandes;
 
     /**
-     * @OneToMany(targetEntity="Commentaire", mappedBy="idclient")
+     * @ORM\@OneToMany(targetEntity="Commentaire", mappedBy="idclient")
      */
     private $commantaires;
 
     /**
-     * @OneToMany(targetEntity="Participation", mappedBy="iduser")
+     * @ORM\@OneToMany(targetEntity="Participation", mappedBy="iduser")
      */
     private $participations;
 
     /**
-     * @OneToMany(targetEntity="Reclamation", mappedBy="iduser")
+     * @ORM\@OneToMany(targetEntity="Reclamation", mappedBy="iduser")
      */
     private $reclamations;
 
     /**
-     * @OneToMany(targetEntity="Sujet", mappedBy="iduser")
+     * @ORM\@OneToMany(targetEntity="Sujet", mappedBy="iduser")
      */
     private $sujets;
+
+    /**
+     * @ORM\@OneToMany(targetEntity="EventComments", mappedBy="iduser")
+     */
+    private $commentairesEvents;
+
+    /**
+     * @return mixed
+     */
+    public function getCommandes()
+    {
+        return $this->commandes;
+    }
+
+    /**
+     * @param mixed $commandes
+     */
+    public function setCommandes($commandes)
+    {
+        $this->commandes = $commandes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommantaires()
+    {
+        return $this->commantaires;
+    }
+
+    /**
+     * @param mixed $commantaires
+     */
+    public function setCommantaires($commantaires)
+    {
+        $this->commantaires = $commantaires;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCommentairesEvents()
+    {
+        return $this->commentairesEvents;
+    }
+
+    /**
+     * @param mixed $commentairesEvents
+     */
+    public function setCommentairesEvents($commentairesEvents)
+    {
+        $this->commentairesEvents = $commentairesEvents;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getParticipations()
+    {
+        return $this->participations;
+    }
+
+    /**
+     * @param mixed $participations
+     */
+    public function setParticipations($participations)
+    {
+        $this->participations = $participations;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReclamations()
+    {
+        return $this->reclamations;
+    }
+
+    /**
+     * @param mixed $reclamations
+     */
+    public function setReclamations($reclamations)
+    {
+        $this->reclamations = $reclamations;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSujets()
+    {
+        return $this->sujets;
+    }
+
+    /**
+     * @param mixed $sujets
+     */
+    public function setSujets($sujets)
+    {
+        $this->sujets = $sujets;
+    }
+
+
 
 
 

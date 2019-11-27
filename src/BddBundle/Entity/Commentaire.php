@@ -55,6 +55,86 @@ class Commentaire
      */
     private $idsujet;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescriptionCommentaire()
+    {
+        return $this->descriptionCommentaire;
+    }
+
+    /**
+     * @param string $descriptionCommentaire
+     */
+    public function setDescriptionCommentaire($descriptionCommentaire)
+    {
+        $this->descriptionCommentaire = $descriptionCommentaire;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDatepub()
+    {
+        return $this->datepub;
+    }
+
+    /**
+     * @param string $datepub
+     */
+    public function setDatepub($datepub)
+    {
+        $this->datepub = $datepub;
+    }
+
+    /**
+     * @return \User
+     */
+    public function getIdclient()
+    {
+        return $this->idclient;
+    }
+
+    /**
+     * @param \User $idclient
+     */
+    public function setIdclient($idclient)
+    {
+        $this->idclient = $idclient;
+    }
+
+    /**
+     * @return \Sujet
+     */
+    public function getIdsujet()
+    {
+        return $this->idsujet;
+    }
+
+    /**
+     * @param \Sujet $idsujet
+     */
+    public function setIdsujet($idsujet)
+    {
+        $this->idsujet = $idsujet;
+    }
+
 
 }
 

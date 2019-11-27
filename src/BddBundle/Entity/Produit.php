@@ -84,9 +84,171 @@ class Produit
     private $idoffre;
 
     /**
-     * @OneToMany(targetEntity="LignePack", mappedBy="idproduit")
+     * @ORM\@OneToMany(targetEntity="LignePack", mappedBy="idproduit")
      */
     private $lignePacks;
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomProd()
+    {
+        return $this->nomProd;
+    }
+
+    /**
+     * @param string $nomProd
+     */
+    public function setNomProd($nomProd)
+    {
+        $this->nomProd = $nomProd;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrixProd()
+    {
+        return $this->prixProd;
+    }
+
+    /**
+     * @param float $prixProd
+     */
+    public function setPrixProd($prixProd)
+    {
+        $this->prixProd = $prixProd;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProdDescription()
+    {
+        return $this->prodDescription;
+    }
+
+    /**
+     * @param string $prodDescription
+     */
+    public function setProdDescription($prodDescription)
+    {
+        $this->prodDescription = $prodDescription;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuantite()
+    {
+        return $this->quantite;
+    }
+
+    /**
+     * @param int $quantite
+     */
+    public function setQuantite($quantite)
+    {
+        $this->quantite = $quantite;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrixOffre()
+    {
+        return $this->prixOffre;
+    }
+
+    /**
+     * @param float $prixOffre
+     */
+    public function setPrixOffre($prixOffre)
+    {
+        $this->prixOffre = $prixOffre;
+    }
+
+    /**
+     * @return \Categorie
+     */
+    public function getIdcategorie()
+    {
+        return $this->idcategorie;
+    }
+
+    /**
+     * @param \Categorie $idcategorie
+     */
+    public function setIdcategorie($idcategorie)
+    {
+        $this->idcategorie = $idcategorie;
+    }
+
+    /**
+     * @return \OffrePromotion
+     */
+    public function getIdoffre()
+    {
+        return $this->idoffre;
+    }
+
+    /**
+     * @param \OffrePromotion $idoffre
+     */
+    public function setIdoffre($idoffre)
+    {
+        $this->idoffre = $idoffre;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLignePacks()
+    {
+        return $this->lignePacks;
+    }
+
+    /**
+     * @param mixed $lignePacks
+     */
+    public function setLignePacks($lignePacks)
+    {
+        $this->lignePacks = $lignePacks;
+    }
+
+
 
 
 }

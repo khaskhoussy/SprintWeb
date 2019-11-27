@@ -57,7 +57,7 @@ class PackDecoration
     private $imagePack;
 
     /**
-     * @OneToMany(targetEntity="LignePack", mappedBy="idpack")
+     * @ORM\@OneToMany(targetEntity="LignePack", mappedBy="idpack")
      */
     private $lignePacks;
 

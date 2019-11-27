@@ -45,6 +45,72 @@ class AlbumPhoto
      */
     private $idtravail;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescriptionAlbum()
+    {
+        return $this->descriptionAlbum;
+    }
+
+    /**
+     * @param string $descriptionAlbum
+     */
+    public function setDescriptionAlbum($descriptionAlbum)
+    {
+        $this->descriptionAlbum = $descriptionAlbum;
+    }
+
+    /**
+     * @return \ListeTravail
+     */
+    public function getIdtravail()
+    {
+        return $this->idtravail;
+    }
+
+    /**
+     * @param \ListeTravail $idtravail
+     */
+    public function setIdtravail($idtravail)
+    {
+        $this->idtravail = $idtravail;
+    }
+
+
+
 
 }
 

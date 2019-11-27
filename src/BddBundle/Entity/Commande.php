@@ -55,6 +55,88 @@ class Commande
      */
     private $iduser;
 
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDateValidation()
+    {
+        return $this->dateValidation;
+    }
+
+    /**
+     * @param string $dateValidation
+     */
+    public function setDateValidation($dateValidation)
+    {
+        $this->dateValidation = $dateValidation;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrixTotal()
+    {
+        return $this->prixTotal;
+    }
+
+    /**
+     * @param int $prixTotal
+     */
+    public function setPrixTotal($prixTotal)
+    {
+        $this->prixTotal = $prixTotal;
+    }
+
+    /**
+     * @return \Livraison
+     */
+    public function getIdlivraison()
+    {
+        return $this->idlivraison;
+    }
+
+    /**
+     * @param \Livraison $idlivraison
+     */
+    public function setIdlivraison($idlivraison)
+    {
+        $this->idlivraison = $idlivraison;
+    }
+
+    /**
+     * @return \User
+     */
+    public function getIduser()
+    {
+        return $this->iduser;
+    }
+
+    /**
+     * @param \User $iduser
+     */
+    public function setIduser($iduser)
+    {
+        $this->iduser = $iduser;
+    }
+
+
+
 
 }
 
