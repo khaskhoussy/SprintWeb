@@ -1,0 +1,3 @@
+reclamation_front_client:
+    resource: "@ReclamationBundle/Resources/config/routing/reclamation.yml"
+    prefix:   /

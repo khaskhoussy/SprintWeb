@@ -1,0 +1,24 @@
+back_jardinier_geste_index:
+    path:     /
+    defaults: { _controller: "GesteBundle:GesteDuMois:index" }
+    methods:  GET
+
+back_jardinier_geste_show:
+    path:     /{id}/show
+    defaults: { _controller: "GesteBundle:GesteDuMois:show" }
+    methods:  GET
+
+back_jardinier_geste_new:
+    path:     /new
+    defaults: { _controller: "GesteBundle:GesteDuMois:new" }
+    methods:  [GET, POST]
+
+back_jardinier_geste_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GesteBundle:GesteDuMois:edit" }
+    methods:  [GET, POST]
+
+back_jardinier_geste_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GesteBundle:GesteDuMois:delete" }
+    methods:  DELETE

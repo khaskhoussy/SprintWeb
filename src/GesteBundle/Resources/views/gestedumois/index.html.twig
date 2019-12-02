@@ -1,0 +1,42 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <h1 align="center">Geste du mois list</h1>
+
+    <table border="1" class="table table-light">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Nom du geste</th>
+                <th>Mois du geste</th>
+                <th>Description geste</th>
+                <th>Image geste</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gesteDuMois in gesteDuMois %}
+            <tr>
+                <td><a href="{{ path('back_jardinier_geste_show', { 'id': gesteDuMois.id }) }}">{{ gesteDuMois.id }}</a></td>
+                <td>{{ gesteDuMois.nomGeste }}</td>
+                <td>{{ gesteDuMois.moisGeste }}</td>
+                <td>{{ gesteDuMois.descGeste }}</td>
+                <td><img src="{{ asset('uploads/gestes/') }}{{ gesteDuMois.imageGeste }}" width="100px"></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('back_jardinier_geste_show', { 'id': gesteDuMois.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('back_jardinier_geste_edit', { 'id': gesteDuMois.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+            <a href="{{ path('back_jardinier_geste_new') }}" class="btn btn-success btn-wide">Create a new gesteDuMois</a>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'back.html.twig' %}
+
+{% block content%}
+    <h1>Packdecoration</h1>
+
+    <table border="1" class="table table-light">
+        <tbody>
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <td>{{ packDecoration.id }}</td>
+            </tr>
+            <tr>
+                <th>Nompack</th>
+                <td>{{ packDecoration.nomPack }}</td>
+            </tr>
+            <tr>
+                <th>Typep</th>
+                <td>{{ packDecoration.typep }}</td>
+            </tr>
+            <tr>
+                <th>Descriptionpack</th>
+                <td>{{ packDecoration.descriptionPack }}</td>
+            </tr>
+            <tr>
+                <th>Prixp</th>
+                <td>{{ packDecoration.prixp }}</td>
+            </tr>
+            <tr>
+                <th>Imagepack</th>
+                <td><img src="{{ asset('uploads/packs/') }}{{ packDecoration.imagePack }}" width="100px"></td>
+            </tr>
+        </thead>
+        </tbody>
+    </table>
+
+
+
+
+
+
+    <table border="1" class="table table-light">
+        <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Nom produit</th>
+            <th>Description produit</th>
+            <th>Prix</th>
+            <th>Image produit</th>
+            <th>Qte en pack</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pack in packDecoration.lignePacks %}
+            <tr>
+                <td><a href="{{ path('back_paysagiste_show', { 'id': pack.idproduit.id }) }}">{{ pack.idproduit.id }}</a></td>
+                <td>{{ pack.idproduit.nomProd }}</td>
+                <td>{{ pack.idproduit.prodDescription }}</td>
+                <td>{{ pack.idproduit.prixProd }}</td>
+                <td><img src="{{ asset('uploads/packs/') }}{{ pack.idproduit.image }}" width="100px"></td>
+                <td>{{ pack.quantitePack }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <a href="{{ path('back_paysagiste_index') }}" class="btn btn-primary btn-sm">Back to the list</a>
+
+
+        <a href="{{ path('back_paysagiste_edit', { 'id': packDecoration.id }) }}" class="btn btn-primary btn-sm">Edit</a>
+
+
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+        {{ form_end(delete_form) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,24 @@
+back_admin_index:
+    path:     /
+    defaults: { _controller: "EventBundle:Evenement:index" }
+    methods:  GET
+
+back_admin_show:
+    path:     /{id}/show
+    defaults: { _controller: "EventBundle:Evenement:show" }
+    methods:  GET
+
+back_admin_new:
+    path:     /new
+    defaults: { _controller: "EventBundle:Evenement:new" }
+    methods:  [GET, POST]
+
+back_admin_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "EventBundle:Evenement:edit" }
+    methods:  [GET, POST]
+
+back_admin_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "EventBundle:Evenement:delete" }
+    methods:  DELETE

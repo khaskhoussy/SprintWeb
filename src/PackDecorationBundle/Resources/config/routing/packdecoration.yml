@@ -1,0 +1,24 @@
+back_paysagiste_index:
+    path:     /
+    defaults: { _controller: "PackDecorationBundle:PackDecoration:index" }
+    methods:  GET
+
+back_paysagiste_show:
+    path:     /{id}/show
+    defaults: { _controller: "PackDecorationBundle:PackDecoration:show" }
+    methods:  GET
+
+back_paysagiste_new:
+    path:     /new
+    defaults: { _controller: "PackDecorationBundle:PackDecoration:new" }
+    methods:  [GET, POST]
+
+back_paysagiste_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PackDecorationBundle:PackDecoration:edit" }
+    methods:  [GET, POST]
+
+back_paysagiste_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PackDecorationBundle:PackDecoration:delete" }
+    methods:  DELETE

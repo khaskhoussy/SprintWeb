@@ -1,0 +1,3 @@
+event_crud:
+    resource: "@EventBundle/Resources/config/routing/evenement.yml"
+    prefix:   /
