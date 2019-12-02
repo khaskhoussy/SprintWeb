@@ -20,6 +20,12 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new BddBundle\BddBundle(),
             new UsersBundle\UsersBundle(),
+            new RecetteBundle\RecetteBundle(),
+            new ReclamationBundle\ReclamationBundle(),
+            new PackDecorationBundle\PackDecorationBundle(),
+            new PackFrontBundle\PackFrontBundle(),
+            new GesteBundle\GesteBundle(),
+            new GesteFrontBundle\GesteFrontBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
