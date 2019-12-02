@@ -1,6 +1,6 @@
 users_listetravail:
     resource: "@UsersBundle/Resources/config/routing/listetravail.yml"
-    prefix:     /back/listetravail
+    prefix:     /
 
 users_homepage:
     path:     /index

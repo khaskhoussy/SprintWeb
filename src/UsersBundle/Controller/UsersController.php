@@ -219,6 +219,15 @@ class UsersController extends Controller
          if($user->getRoles()[0] == 'ROLE_CLIENT')
             return  $this->render('@Users/Admin/profileClient.html.twig',array('username'=>$user->getUsername(),'im'=>$im,'users'=>$user,'form'=>$form->createView()
             ,'notif'=>$notif));
+        if($user->getRoles()[0] == 'ROLE_JARDINIER')
+            return  $this->render('@Users/Admin/profileJardinier.html.twig',array('username'=>$user->getUsername(),'im'=>$im,'users'=>$user,'form'=>$form->createView()
+            ,'notif'=>$notif));
+        if($user->getRoles()[0] == 'ROLE_PAYSAGISTE')
+            return  $this->render('@Users/Admin/profilePaysagiste.html.twig',array('username'=>$user->getUsername(),'im'=>$im,'users'=>$user,'form'=>$form->createView()
+            ,'notif'=>$notif));
+        if($user->getRoles()[0] == 'ROLE_EXPERT')
+            return  $this->render('@Users/Admin/profileExpert.html.twig',array('username'=>$user->getUsername(),'im'=>$im,'users'=>$user,'form'=>$form->createView()
+            ,'notif'=>$notif));
 
             return $this->render('@Users/Admin/profile.html.twig',array('role'=>$user->getRole(),'username'=>$user->getUsername(),'im'=>$im,'users'=>$user,'form'=>$form->createView()
         ,'notif'=>$notif));

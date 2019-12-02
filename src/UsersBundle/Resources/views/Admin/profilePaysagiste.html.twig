@@ -1,4 +1,4 @@
-{% extends 'front.html.twig' %}
+{% extends 'back.html.twig' %}
 {% block content %}
 
 
@@ -198,7 +198,8 @@
                         {{ form_end(form) }}
                     </div>
                     <div class="tab-pane" id="kt_apps_user_edit_tab_3" role="tabpanel">
-                        <form id="formPasswd" class="kt-form kt-form--label-right" method="post" action="{{ path('users_ProfileClient') }}">
+
+                        <form id="formPasswd" class="kt-form kt-form--label-right" method="post" action="{{ path('users_ProfilePaysagiste') }}">
                             <div class="kt-form__body">
                                 <div class="kt-section kt-section--first">
                                     <div class="kt-section__body">
@@ -272,7 +273,7 @@
             let data = new FormData();
             data.append('profile_avatar',$('#avatar')[0].files[0]);//
             $.ajax({
-                url: "{{ path('users_ProfileClient') }}",//pour envoyer les donner a controlle
+                url: "{{ path('users_ProfilePaysagiste') }}",//pour envoyer les donner a controlle
                 data: data,
                 cache: false,
                 contentType: false,
