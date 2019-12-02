@@ -26,6 +26,8 @@ class AppKernel extends Kernel
             new PackFrontBundle\PackFrontBundle(),
             new GesteBundle\GesteBundle(),
             new GesteFrontBundle\GesteFrontBundle(),
+            new EventBundle\EventBundle(),
+            new UsercomBundle\UsercomBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

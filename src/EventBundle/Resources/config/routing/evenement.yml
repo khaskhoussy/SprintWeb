@@ -22,3 +22,7 @@ back_admin_delete:
     path:     /{id}/delete
     defaults: { _controller: "EventBundle:Evenement:delete" }
     methods:  DELETE
+front_user_voir:
+    path:     /
+    defaults: { _controller: "EventBundle:Usercom:voir" }
+    methods:  GET

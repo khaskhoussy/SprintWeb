@@ -42,13 +42,16 @@ class EvenementController extends Controller
         $evenement = new Evenement();
         $form = $this->createForm('EventBundle\Form\EvenementType', $evenement);
         $form->handleRequest($request);
-
+        $file=$form['image']->getData();
         if ($form->isSubmitted() && $form->isValid()) {
+            $newImageName=md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('evenment_images'),$newImageName);
+            $evenement->setImage($newImageName);
             $em = $this->getDoctrine()->getManager();
             $em->persist($evenement);
             $em->flush();
 
-            return $this->redirectToRoute('back_admin_show', array('id' => $evenement->getId()));
+            return $this->redirectToRoute('back_admin_index');
         }
 
         return $this->render('@Event/evenement/new.html.twig', array(
@@ -86,6 +89,10 @@ class EvenementController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $file=$editForm['image']->getData();
+            $newImageName=md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('evenment_images'),$newImageName);
+            $evenement->setImage($newImageName);
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('back_admin_edit', array('id' => $evenement->getId()));
@@ -133,4 +140,13 @@ class EvenementController extends Controller
             ->getForm()
         ;
     }
+
+
+
+
+
+
+
+
+
 }
