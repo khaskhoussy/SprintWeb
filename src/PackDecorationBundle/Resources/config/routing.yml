@@ -1,0 +1,4 @@
+pack_decoration_back_paysagiste:
+    resource: "@PackDecorationBundle/Resources/config/routing/packdecoration.yml"
+    prefix:   /
+

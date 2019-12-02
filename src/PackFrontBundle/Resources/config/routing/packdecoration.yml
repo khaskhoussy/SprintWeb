@@ -1,0 +1,24 @@
+_index:
+    path:     /
+    defaults: { _controller: "PackFrontBundle:PackDecoration:index" }
+    methods:  GET
+
+_show:
+    path:     /{id}/show
+    defaults: { _controller: "PackFrontBundle:PackDecoration:show" }
+    methods:  GET
+
+_new:
+    path:     /new
+    defaults: { _controller: "PackFrontBundle:PackDecoration:new" }
+    methods:  [GET, POST]
+
+_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PackFrontBundle:PackDecoration:edit" }
+    methods:  [GET, POST]
+
+_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PackFrontBundle:PackDecoration:delete" }
+    methods:  DELETE

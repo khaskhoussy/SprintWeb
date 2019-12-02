@@ -1,0 +1,24 @@
+front_index:
+    path:     /
+    defaults: { _controller: "GesteFrontBundle:GesteDuMois:index" }
+    methods:  GET
+
+front_show:
+    path:     /{id}/show
+    defaults: { _controller: "GesteFrontBundle:GesteDuMois:show" }
+    methods:  GET
+
+front_new:
+    path:     /new
+    defaults: { _controller: "GesteFrontBundle:GesteDuMois:new" }
+    methods:  [GET, POST]
+
+front_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GesteFrontBundle:GesteDuMois:edit" }
+    methods:  [GET, POST]
+
+front_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GesteFrontBundle:GesteDuMois:delete" }
+    methods:  DELETE
