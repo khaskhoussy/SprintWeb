@@ -1,6 +1,6 @@
 users:
     resource: "@UsersBundle/Resources/config/routing.yml"
-    prefix:   /Users
+    prefix:   /
 
 bdd:
     resource: "@BddBundle/Resources/config/routing.yml"

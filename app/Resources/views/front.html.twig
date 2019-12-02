@@ -60,7 +60,7 @@
                                 <span class="st2-currencies">
                       <select class="st2-select">
                         <option value="english">USD</option>
-                        <option value="vietnames">VNĐ</option>
+                        <option value="vietnames">VNÐ</option>
                       </select>
                     </span>
                             </li>
@@ -70,7 +70,7 @@
                 <div class="col-md-6">
                     <div class="st2-info-myacount">
                         <ul class="st2-myacount-list">
-                            <li class="st2-myacount-li st2-myacount"><a class="st2-myacount-link" href="">My Account</a></li>
+                            <li class="st2-myacount-li st2-myacount"><a class="st2-myacount-link" href="{{ path('users_ProfileClient') }}">My Account</a></li>
                             <li class="st2-myacount-li st2-wishlist"><a class="st2-myacount-link" href="">Wish List(2)</a></li>
                             <li class="st2-myacount-li st2-shopping-cart"><a class="st2-myacount-link" href="">Shopping Cart</a></li>
                             <li class="st2-myacount-li st2-checkout"><a class="st2-myacount-link" href="">Checkout</a></li>
@@ -89,7 +89,7 @@
                     <div class="row js-compare">
                         <div class="col-lg-3 st2-col-lapt-3 col-md-3 col-3">
                             <div class="st2-header-logo">
-                                <img src="images/homepage2/logo-footer.jpg" alt="Logo">
+                                <img src="{{ asset('images/homepage2/logo-footer.jpg') }}" alt="Logo">
                             </div>
                         </div>
                         <div class="col-lg-6 hide-reponsive js-dad">
@@ -117,7 +117,7 @@
                                                         <div class="st2-hamadryad-submenu-wrapper">
                                                             <div class="row">
                                                                 <div class="st2-submenu-banner">
-                                                                    <img src="images/background/bg-menuv1.jpg" alt="Banner">
+                                                                    <img src="{{ asset('images/background/bg-menuv1.jpg') }}" alt="Banner">
                                                                 </div>
                                                             </div>
                                                             <div class="row">
@@ -213,6 +213,16 @@
                                             </div>
                                         </li>
                                         <li class="st2-li-primary"><a class="st2-item-link" href="AboutUs.html">About Us</a></li>
+                                        <li class="st2-li-primary">
+                                            <a class="st2-item-link" href="Blog&New_v1.html">Notre Service</a>
+                                            <!-- Drop menu -->
+                                            <div class="dropmenu-v2 dropmenu-bg-active1">
+                                                <ul class="dropdown-menu-list">
+                                                    <li class="level2"><a href="{{ path('Jardinier_show') }}" class="level2-link" title="Blog & New 1">Jardinier</a></li>
+                                                    <li class="level2"><a href="{{ path('Paysagiste_show')}}" class="level2-link" title="Blog & New 1">Paysagiste</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
                                     </ul>
                                 </nav>
                             </div>
@@ -287,7 +297,7 @@
                 <div class="list-item">
                     <ol class="hamadryad-minicart-items">
                         <li class="product-cart">
-                            <a href="" class="product-cart-thumb"><img src="images/products/product-1.jpg" alt=""></a>
+                            <a href="" class="product-cart-thumb"><img src="{{ asset('images/products/product-1.jpg') }}" alt=""></a>
                             <div class="product-detail">
                                 <div class="product-name"><a href="">Candle Bowl </a></div>
                                 <div class="product-detail-info">
@@ -300,7 +310,7 @@
                             </div>
                         </li>
                         <li class="product-cart">
-                            <a href="" class="product-cart-thumb"><img src="images/products/product-2.jpg" alt=""></a>
+                            <a href="" class="product-cart-thumb"><img src="{{ asset('images/products/product-2.jpg') }}" alt=""></a>
                             <div class="product-detail">
                                 <div class="product-name"><a href="">Candle Bowl </a></div>
                                 <div class="product-detail-info">
@@ -438,7 +448,7 @@
                     <div class="row">
                         <div class="col-12 col-md-12 col-lg-3 custom-col-pt col-xl-3">
                             <div class="f-content-st2-logo">
-                                <img src="images/homepage2/logo-footer.jpg" alt="Logo">
+                                <img src="{{ asset('images/homepage2/logo-footer.jpg') }}" alt="Logo">
                             </div>
                         </div>
                         <div class="col-12 col-md-12 col-lg-3 custom-col-pt col-xl-3 align-self-center">
@@ -497,7 +507,7 @@
                         <div class="col-md-4 cl-md-ipad-12 col-lg-3 col-xl-4 order-mobile-pm">
                             <div class="info-payment tx-center">
                                 <span class="payment-text">Payment Options:</span>
-                                <img src="images/homepage2/payment.jpg" alt="Payment">
+                                <img src="{{ asset('images/homepage2/payment.jpg') }}" alt="Payment">
                             </div>
                         </div>
                         <div class="col-md-4 cl-md-ipad-12 col-lg-3 col-xl-4 order-mobile-sc">

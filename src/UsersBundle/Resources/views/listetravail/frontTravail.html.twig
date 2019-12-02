@@ -1,0 +1,75 @@
+{% extends 'front.html.twig' %}
+{% block content %}
+
+        <section class="blog-new-wrapper-v1 padding-section">
+            <div class="container">
+                <div class="row">
+                        {% for travail in liste %}
+                    <div class="col-lg-3 col-md-3 col-custom-12 fix-sidebar js-fix-sidebar">
+
+                    </div>
+                    <div class="col-lg-9 col-md-9 col-custom-12">
+                        <div class="blog-new-inner-right">
+                            <ul class="blog-new-v1-list row">
+                                <li class="blog-new-v1-item col-blogn-custom">
+                                    <div class="blog-new-v1">
+                                        <div class="blog-new-v1-box">
+                                            <div class="row">
+                                                <div class="col-md-12 col-lg-7 cl-md-w2-12">
+                                                    <div class="blog-new-v1-thumb">
+                                                       <a href=""> <img src="{{ asset('uploads/travail/'~travail.image) }}" width="550px" alt=""></a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 col-lg-5 cl-md-w2-12">
+                                                    <div class="blog-new-v1-info">
+                                                        <div class="info-author d-flex">
+                                                            <div class="author-avatar">
+                                                                <a href=""><img src="{{ asset('uploads/Users/'~imageU) }}" alt="Author"></a>
+                                                            </div>
+                                                            <h2 class="author-name d-flex align-items-center">By {{nom}}</h2>
+                                                        </div>
+                                                        <div class="blog-meta">
+                                                            <span class="blog-datetime"><i class="blog-icon lnr lnr-calendar-full"></i>{{travail.DateTravail}}</span>
+
+                                                        </div>
+                                                        <h2 class="blog-title">
+{#                                                            <a href="" class="blog-title-link">The Basics Of Fiddle Leaf Fig Care.</a>#}
+                                                        </h2>
+                                                        <div class="blog-content">
+                                                         {{travail.DescriptionTravail}}
+                                                        </div>
+                                                        <div class="blog-readmore">
+                                                            <a href="" class="blog-readmore-link">
+                                                                <span>Read More <i class="blog-readmore-icon lnr lnr-arrow-right"></i></span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            </ul>
+                            <!-- Pagination -->
+                            <div class="blog-new-pagination">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="blog-new-pagination-wrapper">
+                                            <nav aria-label="Page navigation example">
+
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        {% endfor %}
+                </div>
+            </div>
+        </section>
+
+
+
+{% endblock %}

@@ -4,6 +4,8 @@ namespace BddBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * User
@@ -39,14 +41,22 @@ class User extends BaseUser
 
     /**
      * @var string
-     *
+     *@Assert\Length(
+     *     min=8,
+     *     max=8,
+     *     minMessage=" votre numero de telephone comprte au minimum 8 numero",
+     *     maxMessage="votre numero de telephone comptre au maximum 8 numero"
+     * )
+     * @Assert\Type(
+     * type="integer",
+     *     message="on n'accepte que des nombre!"
+     *      )
      * @ORM\Column(name="telephone", type="string", length=255, nullable=false)
      */
     private $telephone;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="image", type="string", length=255, nullable=false)
      */
     private $image = '/Images/Default.jpg';
@@ -195,6 +205,11 @@ class User extends BaseUser
     private $commentairesEvents;
 
     /**
+     * @ORM\OneToMany(targetEntity="BddBundle\Entity\LigneService", mappedBy="iduser")
+     */
+    private $services;
+
+    /**
      * @return mixed
      */
     public function getCommandes()
@@ -289,6 +304,25 @@ class User extends BaseUser
     {
         $this->sujets = $sujets;
     }
+
+
+    /**
+     * @return mixed
+     */
+    public function getServices()
+    {
+        return $this->services;
+    }
+
+    /**
+     * @param mixed $services
+     */
+    public function setServices($services)
+    {
+        $this->services = $services;
+    }
+
+
 
 
 

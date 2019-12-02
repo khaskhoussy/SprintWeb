@@ -2,8 +2,7 @@
 {% block content %}
     {##}
     {% for utulisateur in users %}
-        {% set nav = utulisateur.roles[0] %}
-        {% if nav == "ROLE_CLIENT" %}
+        {% if utulisateur.role == "ROLE_CLIENT" %}
             <div class="row">
             <div class="col-xl-3">
 

@@ -20,15 +20,15 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
-
-            logout:       true
+            logout:
+                invalidate_session: false
             anonymous:    true
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/front/, role: ROLE_CLIENT }
+        - { path: ^/front/home/, role: ROLE_CLIENT }
         - { path: ^/back/expert/, role: ROLE_EXPERT }
         - { path: ^/back/admin/, role: ROLE_ADMIN }
         - { path: ^/back/jardinier, role: ROLE_JARDINIER }

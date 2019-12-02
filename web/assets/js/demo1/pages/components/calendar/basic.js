@@ -1,4 +1,4 @@
-"use strict";
+
 
 var KTCalendarBasic = function() {
 
@@ -12,6 +12,7 @@ var KTCalendarBasic = function() {
             var TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD');
 
             $('#kt_calendar').fullCalendar({
+				timeFormat: 'hh:mm a',
                 isRTL: KTUtil.isRTL(),
                 header: {
                     left: 'prev,next today',
@@ -30,7 +31,7 @@ var KTCalendarBasic = function() {
                     },
                     {
                         title: 'Reporting',
-                        start: YM + '-14T13:30:00',
+                        start: YM + '-14T01:30:00',
                         description: 'Lorem ipsum dolor incid idunt ut labore',
                         end: YM + '-14',
                         className: "fc-event-accent"

@@ -4,9 +4,20 @@ listetravail_index:
     methods:  GET
 
 listetravail_show:
-    path:     /{id}/show
+    path:     /show
     defaults: { _controller: "UsersBundle:ListeTravail:show" }
-    methods:  GET
+
+Jardinier_show:
+    path:     /showJardinier
+    defaults: { _controller: "UsersBundle:ListeTravail:AfficherJardinier" }
+
+Paysagiste_show:
+    path:     /showPaysagiste
+    defaults: { _controller: "UsersBundle:ListeTravail:AfficherPaysagiste" }
+
+Travail_affiche:
+    path:     /showTravail/{id}
+    defaults: { _controller: "UsersBundle:ListeTravail:showTravail" }
 
 listetravail_new:
     path:     /new
@@ -14,11 +25,14 @@ listetravail_new:
     methods:  [GET, POST]
 
 listetravail_edit:
-    path:     /{id}/edit
+    path:     /edit/{id}
     defaults: { _controller: "UsersBundle:ListeTravail:edit" }
-    methods:  [GET, POST]
+listetravail_modifier:
+    path:     /modifier
+    defaults: { _controller: "UsersBundle:ListeTravail:edit" }
+
 
 listetravail_delete:
-    path:     /{id}/delete
+    path:     /delete/{id}
     defaults: { _controller: "UsersBundle:ListeTravail:delete" }
-    methods:  DELETE
+

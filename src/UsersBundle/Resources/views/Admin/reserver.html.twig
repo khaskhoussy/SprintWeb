@@ -1,0 +1,69 @@
+{% extends 'front.html.twig' %}
+
+{% block css %}
+    <link href='{{ asset('fullcalendar/packages/core/main.css') }}' rel='stylesheet' />
+    <link href='{{ asset('fullcalendar/packages/daygrid/main.css') }}' rel='stylesheet' />
+{% endblock %}
+
+{% block content %}
+
+    <div id='calendar'></div>
+
+{% endblock %}
+
+{% block js %}
+    <script src='{{ asset('fullcalendar/packages/core/main.js') }}'></script>
+    <script src='{{ asset('fullcalendar/packages/daygrid/main.js') }}'></script>
+    <script src='{{ asset('fullcalendar/packages/interaction/main.js') }}'></script>
+    <script>
+
+        let calendar;
+        let elList = [] ;
+        let events = [
+            {% for service in services %}
+            {
+                title: 'réservé',
+                start: new Date('{{ service.datedebut|date("Y-m-d") }}T00:00:00'),
+                description: 'Lorem ipsum dolor sit incid idunt ut',
+                end: new Date('{{ service.datefin|date("Y-m-d") }}T12:00:00'),
+                className: "fc-event-danger fc-event-solid-warning"
+            },
+            {% endfor %}
+        ];
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+
+            calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: [ 'dayGrid','interaction' ],
+                timeFormat: ' ',
+                events: events,
+                dayRender: function(day){
+                    let date = new Date(day.date) ;
+                    //console.log(day.el);
+                    elList.push(day.el);
+                    $.each(events,function (k,v) {
+                        if(date >= v.start && date <= v.end) {
+                            $(day.el).addClass('disabled');
+                            $(day.el).css('backgroundColor','gray');
+                        }
+                    });
+                },
+                dateClick: function(info) {
+                    if($(info.dayEl).hasClass('disabled')) alert("3asba");
+                    else {
+                        //console.log(info.view);
+                        //console.log(info.dayEl);
+                        let start = elList.indexOf(info.dayEl);
+                        let end = start ;
+                        while ($(elList[end+1]).hasClass('disabled') === false && end < start+7) end++ ;
+                        console.log(elList[start]);
+                        console.log(elList[end]);
+                    }
+                }
+            });
+
+            calendar.render();
+        });
+
+    </script>
+{% endblock %}

@@ -2,9 +2,12 @@
 
 namespace UsersBundle\Controller;
 
-use UsersBundle\Entity\ListeTravail;
+
+use BddBundle\Entity\ListeTravail;
+use BddBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Listetravail controller.
@@ -20,9 +23,9 @@ class ListeTravailController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $listeTravails = $em->getRepository('UsersBundle:ListeTravail')->findAll();
+        $listeTravails = $em->getRepository('BddBundle:ListeTravail')->findAll();
 
-        return $this->render('listetravail/index.html.twig', array(
+        return $this->render('@Users/Default/index.html.twig', array(
             'listeTravails' => $listeTravails,
         ));
     }
@@ -34,77 +37,125 @@ class ListeTravailController extends Controller
     public function newAction(Request $request)
     {
         $listeTravail = new Listetravail();
-        $form = $this->createForm('UsersBundle\Form\ListeTravailType', $listeTravail);
-        $form->handleRequest($request);
+        $im = $listeTravail->setImage('');
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $em = $this->getDoctrine()->getManager();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
+
+       if($request->isMethod("POST") && $request->request->has("ajouter")) {
+
+           $file = $request->files->get("kt_apps_user_add_user_avatar");
+           $newImageName=md5(uniqid()).'.'.$file->guessExtension();
+           $file->move($this->getParameter('travail_images'),$newImageName);
+            $listeTravail->setImage($newImageName);
+            $listeTravail->setDescriptionTravail($request->get("description"));
+            $listeTravail->setDateTravail($request->get("date"));
+            $listeTravail->setIduser($user);
             $em->persist($listeTravail);
             $em->flush();
 
-            return $this->redirectToRoute('listetravail_show', array('id' => $listeTravail->getId(),
-                'form'=>$form->createView()));
-        }
 
-        return $this->render('@Users/listetravail/new.html.twig', array(
-            'listeTravail' => $listeTravail,'form'=>$form->createView()
-
-        ));
+       }
+        return $this->render('@Users/listetravail/new.html.twig',array('im'=>$im));
     }
 
     /**
      * Finds and displays a listeTravail entity.
      *
      */
-    public function showAction(ListeTravail $listeTravail)
+    public function showAction()
     {
-        $deleteForm = $this->createDeleteForm($listeTravail);
+        $users = $this->container->get('security.token_storage')->getToken()->getUser();
+        $id =$users->getId();
+
+        $manager=$this->getDoctrine()->getRepository('BddBundle:ListeTravail');
+        $list=$manager->findBy(array('iduser' => $users));
+
+
 
         return $this->render('@Users/listetravail/show.html.twig', array(
-            'listeTravail' => $listeTravail,
-            'delete_form' => $deleteForm->createView(),
-        ));
+            'liste' => $list,'id'=>$id
+            ));
     }
 
     /**
      * Displays a form to edit an existing listeTravail entity.
      *
      */
-    public function editAction(Request $request, ListeTravail $listeTravail)
+    public function editAction(Request $request, $id)
     {
-        $deleteForm = $this->createDeleteForm($listeTravail);
-        $editForm = $this->createForm('UsersBundle\Form\ListeTravailType', $listeTravail);
-        $editForm->handleRequest($request);
+        $em=$this->getDoctrine()->getManager();
+        $repository=$this->getdoctrine()->getRepository('BddBundle:ListeTravail');
+        $list=$repository->findBy(array('id'=>$id));
+        $travail=$list[0];
+        if($request->isMethod("POST") && $request->request->has("ajouter")) {
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $file = $request->files->get("kt_apps_user_add_user_avatar");
+            $newImageName=md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('travail_images'),$newImageName);
+            $travail->setImage($newImageName);
+            $travail->setDescriptionTravail($request->get("description"));
+            $travail->setDateTravail($request->get("date"));
+            $em->flush();
 
-            return $this->redirectToRoute('listetravail_edit', array('id' => $listeTravail->getId()));
+            return $this->forward('UsersBundle:ListeTravail:show');
+
+
         }
 
-        return $this->render('listetravail/edit.html.twig', array(
-            'listeTravail' => $listeTravail,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+            return $this->render('@Users/Admin/ModifierTravail.html.twig',array('travail'=>$travail));
     }
 
     /**
      * Deletes a listeTravail entity.
      *
      */
-    public function deleteAction(Request $request, ListeTravail $listeTravail)
+    public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($listeTravail);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($listeTravail);
+        $session=$request->getSession();
+        $em=$this->getDoctrine()->getManager();
+        $travail=$em->getRepository('BddBundle:ListeTravail')->find($id);
+        if($travail)
+        {
+            $em->remove($travail);
             $em->flush();
+            $session->getFlashbag()->add('success','Personne a ete supprimer');
         }
 
-        return $this->redirectToRoute('listetravail_index');
+
+            return $this->forward('UsersBundle:ListeTravail:show');
+
+
+    }
+  public function AfficherJardinierAction()
+  {
+      $user=new User();
+      $repository=$this->getDoctrine()->getRepository('BddBundle:User');
+
+      $users=$repository->findAll();
+      return $this->render('@Users/listetravail/frontjardinier.html.twig',array('users'=>$users));
+  }
+    public function AfficherPaysagisteAction()
+    {
+        $user=new User();
+        $repository=$this->getDoctrine()->getRepository('BddBundle:User');
+
+        $users=$repository->findAll();
+        return $this->render('@Users/listetravail/frontpaysagiste.html.twig',array('users'=>$users));
+    }
+    public function showTravailAction(Request $request,$id)
+    {
+        $mangerU=$this->getDoctrine()->getRepository('BddBundle:User');
+        $user=$mangerU->findBy(array('id'=>$id));
+        $nom =$user[0]->getNom();
+        $im=$user[0]->getImage();
+
+        $manager=$this->getDoctrine()->getRepository('BddBundle:ListeTravail');
+        $list=$manager->findBy(array('iduser' => $user));
+        return $this->render('@Users/listetravail/frontTravail.html.twig', array(
+            'liste'=> $list,'id'=>$id,'nom'=>$nom,'imageU'=>$im
+        ));
     }
 
     /**

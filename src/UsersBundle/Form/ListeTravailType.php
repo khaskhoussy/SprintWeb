@@ -23,7 +23,7 @@ class ListeTravailType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'UsersBundle\Entity\ListeTravail'
+            'data_class' => 'BddBundle\Entity\ListeTravail'
         ));
     }
 
@@ -32,7 +32,7 @@ class ListeTravailType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'usersbundle_listetravail';
+        return 'Bddbundle_listetravail';
     }
 
 
