@@ -84,7 +84,7 @@ class UsercomController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $requestString = $request->get('q');
-        $events =  $em->getRepository('BddBundle:Evenement')->findEntitiesByString($requestString);
+        $events =  $em->getRepository(Evenement::class)->findEntitiesByString($requestString);
         if(!$events) {
             $result['events']['error'] = "Post Not found :( ";
         } else {
