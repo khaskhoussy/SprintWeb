@@ -1,6 +1,9 @@
 <?php
 
 namespace BddBundle\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Produit
  *
  * @ORM\Table(name="produit")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ProductBundle\Repository\ProduitRepository")
  */
 class Produit
 {
@@ -23,27 +26,31 @@ class Produit
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="nom_prod", type="string", length=255, nullable=false)
+     *
+     *
      */
     private $nomProd;
 
     /**
      * @var float
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="prix_prod", type="float", precision=10, scale=0, nullable=false)
+     *
      */
     private $prixProd;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="prod_description", type="string", length=255, nullable=false)
      */
     private $prodDescription;
 
     /**
      * @var integer
+     * @Assert\NotBlank()
      *
      * @ORM\Column(name="quantite", type="integer", nullable=false)
      */
@@ -58,7 +65,7 @@ class Produit
 
     /**
      * @var float
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="prix_offre", type="float", precision=10, scale=0, nullable=true)
      */
     private $prixOffre = '0';
@@ -66,27 +73,25 @@ class Produit
     /**
      * @var \Categorie
      *
-     * @ORM\ManyToOne(targetEntity="Categorie")
+     * @MaxDepth(1)
+     *
+     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="products")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="IdCategorie", referencedColumnName="id")
      * })
      */
-    private $idcategorie;
+
+    private $categorie;
 
     /**
      * @var \OffrePromotion
-     *
-     * @ORM\ManyToOne(targetEntity="OffrePromotion")
+     *@MaxDepth(1)
+     * @ORM\ManyToOne(targetEntity="OffrePromotion", inversedBy="products", cascade={"persist"})
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="IdOffre", referencedColumnName="id")
      * })
      */
     private $idoffre;
-
-    /**
-     * @ORM\OneToMany(targetEntity="LignePack", mappedBy="idproduit")
-     */
-    private $lignePacks;
 
     /**
      * @return int
@@ -205,7 +210,7 @@ class Produit
      */
     public function getIdcategorie()
     {
-        return $this->idcategorie;
+        return $this->getCategorie()->getId();
     }
 
     /**
@@ -235,20 +240,55 @@ class Produit
     /**
      * @return mixed
      */
-    public function getLignePacks()
+    public function getCategorie()
     {
-        return $this->lignePacks;
+        return $this->categorie;
     }
 
     /**
-     * @param mixed $lignePacks
+     * @param mixed $categorie
      */
-    public function setLignePacks($lignePacks)
+    public function setCategorie($categorie)
     {
-        $this->lignePacks = $lignePacks;
+        $this->categorie = $categorie;
+    }
+    /**
+     * @var string
+     *
+     * @Assert\File(maxSize="500K")
+     */
+    public $file;
+    public function getWebPath(){
+        return null===$this->image ? null: $this->getUploadDir().'/'.$this->image;
+    }
+    protected function getUploadRootDir(){
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+    protected function getUploadDir(){
+        return 'images';
+    }
+    public function uploadProfilePicture(){
+        $this->file->move($this->getUploadRootDir(),$this->file->getClientOriginalName());
+        $this->image=$this->file->getClientOriginalName();
+        $this->file=null;
+
     }
 
+    /**
+     * @return string
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
 
+    /**
+     * @param string $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
 
 
 }

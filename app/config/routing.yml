@@ -5,7 +5,9 @@ users:
 bdd:
     resource: "@BddBundle/Resources/config/routing.yml"
     prefix:   /
-
+product:
+    resource: "@ProductBundle/Resources/config/routing.yml"
+    prefix:   /
 geste_front:
     resource: "@GesteFrontBundle/Resources/config/routing.yml"
     prefix:   /front/geste
@@ -42,6 +44,13 @@ event:
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
+product_produit:
+    resource: "@ProductBundle/Resources/config/routing/produit.yml"
+    prefix:   /produit
+product_offre:
+    resource: "@ProductBundle/Resources/config/routing/offrepromotion.yml"
+    prefix:   /offre
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

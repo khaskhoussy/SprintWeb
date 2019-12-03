@@ -109,7 +109,7 @@
                                             </div>
                                         </li>
                                         <li class="st2-li-primary">
-                                            <a class="st2-item-link" href="List_ShopPageFullWidth.html">Shop</a>
+                                            <a class="st2-item-link"  href="{{ path('affiche') }}">Shop</a>
                                             <!-- submenu home -->
                                             <div class="st2-hamadryad-megamenu megamenu-home js-dropmenu megamenu-bg-active1">
                                                 <section class="st2-hamadryad-megamenu-modal home">
@@ -363,7 +363,7 @@
                     </div>
                 </li>
                 <li class="menu-item menu-item-has-children">
-                    <a href="List_ShopPageFullWidth.html">Shop</a>
+                    <a href="{{ path('affiche') }}">Shop</a>
                     <span class="toggle-submenu"></span>
                     <div class="submenu">
                         <div class="col-12 col-md-12 custom-col">
@@ -436,6 +436,8 @@
 <!-- Main content -->
 <div class="main-content-st2">
     {% block content %}
+    {% endblock %}
+    {% block detail %}
     {% endblock %}
 </div>
 

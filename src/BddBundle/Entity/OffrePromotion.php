@@ -2,13 +2,15 @@
 
 namespace BddBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * OffrePromotion
  *
  * @ORM\Table(name="offre__promotion")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ProductBundle\Repository\OffrePromotionRepository")
  */
 class OffrePromotion
 {
@@ -23,38 +25,55 @@ class OffrePromotion
 
     /**
      * @var float
-     *
+     *@Assert\NotBlank()
      * @ORM\Column(name="pourcentage", type="float", precision=10, scale=0, nullable=false)
      */
     private $pourcentage;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="date_debut", type="string", length=255, nullable=false)
+     * @var date
+     * @Assert\NotBlank()
+     * @ORM\Column(name="date_debut", type="date", length=255, nullable=false)
      */
     private $dateDebut;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="date_fin", type="string", length=255, nullable=false)
+     * @var date
+     * @Assert\NotBlank()
+     * @ORM\Column(name="date_fin", type="date", length=255, nullable=false)
      */
     private $dateFin;
 
     /**
      * @var string
-     *
+     *@Assert\NotBlank()
      * @ORM\Column(name="type", type="string", length=255, nullable=false)
      */
     private $type;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="titre", type="string", length=255, nullable=false)
      */
     private $titre;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Produit", mappedBy="idoffre", cascade={"persist"})
+     */
+    private $products;
+
+    public function __construct()
+    {
+
+        $this->products = new ArrayCollection();
+    }
+
+    public function addProduit(Produit $produit){
+        $produit->setIdoffre($this);
+        $this->products->add($produit);
+    }
 
     /**
      * @return int
@@ -152,6 +171,21 @@ class OffrePromotion
         $this->titre = $titre;
     }
 
+    /**
+     * @return ArrayCollection
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * @param ArrayCollection $products
+     */
+    public function setProducts($products)
+    {
+        $this->products = $products;
+    }
 
 
 }
