@@ -124,8 +124,8 @@
                     <tr>
                         <td><a href="{{ path('back_admin_show', { 'id': evenement.id }) }}">{{ evenement.id }}</a></td>
                         <td>{{ evenement.nom }}</td>
-                        <td>{{ evenement.datedebut }}</td>
-                        <td>{{ evenement.datefin }}</td>
+                        <td>{{ evenement.datedebut |date("d-m-Y H:i") }}</td>
+                        <td>{{ evenement.datefin |date("d-m-Y H:i") }}</td>
                         <td>{{ evenement.description }}</td>
                         <td>{{ evenement.lieu }}</td>
                         <td>{{ evenement.nbrParticipants }}</td>

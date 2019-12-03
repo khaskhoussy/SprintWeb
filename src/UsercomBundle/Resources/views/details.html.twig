@@ -13,7 +13,7 @@
 
     <div class="row">
     <!-- Title -->
-    <h1 class="mt-4">{{ event.nom|upper }}</h1>
+    <h1 class="mt-4">{{ event.nom|upper }} </h1>
 
     <!-- Post Content Column -->
     <div class="col-lg-8">
@@ -28,6 +28,13 @@
 
     <!-- Post Content -->
     <p class="lead">{{ event.description }}</p>
+    <p class="lead">{{ event.nbrParticipants }}</p>
+    <form method="post">
+        <input type="text" value="{{ event.nbrParticipants }}" name="id" hidden>
+    <button type="button" class="btn btn-primary">Participer</button>
+    </form>
+
+
 
 
 
@@ -48,6 +55,9 @@
                 <input type="submit" class="btn btn-outline-brand btn-pill" value="Delete">
                 <input type="text" value="{{ comment.id }}" name="id" hidden>
             </form>
+
+
+
         {% endif %}
     </div>
     </div>

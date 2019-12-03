@@ -74,6 +74,9 @@ class UsercomController extends Controller
             $em->remove($comment);
             $em->flush();
         }
+
+
+
         return $this->redirectToRoute('detailed_post',array('id'=>$comment->getIdevenement()->getId()));
     }
 
@@ -100,5 +103,32 @@ class UsercomController extends Controller
         }
         return $realEntities;
     }
+
+public function participate (Request $request){
+
+
+    $d=new \DateTime('now');
+
+
+
+
+
+    //Participer
+
+    $nbr = $evenements->getNbrParticipants();
+    if ($request->getMethod()=='POST') {
+        if ($request->get('part') && $evenements->getDateFin() > $d) {
+
+            $nbr = $nbr + 1;
+            $evenements->setNbrParticipants($nbr);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($evenements);
+            $em->flush();
+
+        }
+    }
+
+}
+
 
 }

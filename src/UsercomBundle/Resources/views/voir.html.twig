@@ -117,8 +117,8 @@
                                         <h2 class="author-name d-flex align-items-center"></h2>
                                     </div>
                                     <div class="blog-meta">
-                                        <span class="blog-datetime"><i class="blog-icon lnr lnr-calendar-full"></i>November 29.2018</span>
-                                        <span class="blog-comment"><i class="blog-icon lnr lnr-bubble"></i>12 Comment</span>
+                                        <span class="blog-datetime"><i class="blog-icon lnr lnr-calendar-full"></i>{{ eve.datedebut|date("d-m-Y H:i") }}</span>
+                                        <span class="blog-comment"><i class="blog-icon lnr lnr-bubble"></i> {{ eve.nbrParticipants }} Participants</span>
                                     </div>
                                     <h2 class="blog-title">
                                         <h1 class="blog-title-link">{{ eve.nom|upper }}</h1>
