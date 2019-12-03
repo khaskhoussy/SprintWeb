@@ -28,6 +28,8 @@ class AppKernel extends Kernel
             new GesteFrontBundle\GesteFrontBundle(),
             new EventBundle\EventBundle(),
             new UsercomBundle\UsercomBundle(),
+            new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+            new PanierBundle\PanierBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

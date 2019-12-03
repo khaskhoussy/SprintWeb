@@ -243,12 +243,29 @@ class UsersController extends Controller
         //$converted_res = $session->get('name') ? 'true' : 'false';
         //return new Response($converted_res);
     }
-    public function reserverAction($id)
+    public function reserverAction(Request $request,SessionInterface $session,$id)
     {
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository(User::class)->find($id);
-        $services = $user->getServices();
-        return $this->render ('@Users/Admin/reserver.html.twig',array('services'=>$services));
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $employe = $em->getRepository(User::class)->find($id);
+        if($request->isMethod('POST') && $request->request->has('dateDebut') ){
+            if(!$session->has('panier')) $session->set('panier',new \ArrayObject());
+            $panier = $session->get('panier');
+            $objetPanier = new stdClass();
+            $objetPanier->nom = $employe->getNom().' '.$employe->getPrenom();
+            $objetPanier->type = 'service';
+            $objetPanier->role = $employe->getRoles()[0] ;
+            $objetPanier->prix = 35 ;
+            $objetPanier->dateDebut = $request->get('dateDebut');
+            $objetPanier->dateFin = $request->get('dateFin');
+            $objetPanier->employe = $employe;
+            $objetPanier->client = $user;
+            $panier->append($objetPanier);
+            return new Response($session->get('panier')->serialize());
+        }
+        $session->set('panier',new \ArrayObject());
+        $services = $employe->getServices();
+        return $this->render ('@Users/Admin/reserver.html.twig',array('services'=>$services,'idE'=>$id));
     }
 
 }
