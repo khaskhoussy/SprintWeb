@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new UsercomBundle\UsercomBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
             new PanierBundle\PanierBundle(),
+            new ProductBundle\ProductBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
