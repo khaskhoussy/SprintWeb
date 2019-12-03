@@ -19,6 +19,7 @@ parameters:
     locale: fr
     users_images: '%kernel.root_dir%/../web/uploads/Users'
     travail_images: '%kernel.root_dir%/../web/uploads/travail'
+    evenment_images: '%kernel.root_dir%/../web/uploads/evenment'
 
 framework:
     #esi: ~

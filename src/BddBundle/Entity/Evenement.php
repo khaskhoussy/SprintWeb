@@ -2,6 +2,7 @@
 
 namespace BddBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -29,16 +30,16 @@ class Evenement
     private $nom;
 
     /**
-     * @var string
+     * @var DateTime
      *
-     * @ORM\Column(name="datedebut", type="string", length=255, nullable=false)
+     * @ORM\Column(name="datedebut", type="datetime", length=255, nullable=false)
      */
     private $datedebut;
 
     /**
-     * @var string
+     * @var DateTime
      *
-     * @ORM\Column(name="datefin", type="string", length=255, nullable=false)
+     * @ORM\Column(name="datefin", type="datetime", length=255, nullable=false)
      */
     private $datefin;
 

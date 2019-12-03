@@ -112,7 +112,7 @@ class LigneCommande
         $this->idproduit = $idproduit;
     }
 
-
+//
 
 }
 
