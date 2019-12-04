@@ -19,5 +19,9 @@ ajax_search:
     path:     /search
     defaults: { _controller: UsercomBundle:Usercom:search }
 
+part:
+        path:     /participate
+        defaults: { _controller: UsercomBundle:Usercom:participate }
+
 
 
