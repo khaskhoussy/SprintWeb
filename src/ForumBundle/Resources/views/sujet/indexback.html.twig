@@ -1,0 +1,46 @@
+{% extends 'back.html.twig' %}
+{% block body %}
+    <center>
+        <h1>Sujets list</h1>
+
+        <table id="customers">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nomsujet</th>
+                <th>Categorie</th>
+                <th>Datepub</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for sujet in sujets %}
+                <tr>
+                    <td><a href="{{ path('sujet_show', { 'id': sujet.id }) }}">{{ sujet.id }}</a></td>
+                    <td>{{ sujet.nomSujet }}</td>
+                    <td>{{ sujet.categorie }}</td>
+                    <td>{{ sujet.datepub }}</td>
+                    <td>{{ sujet.description }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('sujet_show', { 'id': sujet.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('sujet_edit', { 'id': sujet.id }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('sujet_new') }}">Create a new sujet</a>
+            </li>
+        </ul>
+    </center>>
+{% endblock %}

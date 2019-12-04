@@ -71,3 +71,8 @@ app:
 
 fos_user:
   resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+forum:
+  resource: "@ForumBundle/Controller/"
+  type:     annotation
+  prefix:   /forum
