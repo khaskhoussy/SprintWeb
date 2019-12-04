@@ -1,3 +1,0 @@
-geste_front_front:
-    resource: "@GesteFrontBundle/Resources/config/routing/gestedumois.yml"
-    prefix:   /

@@ -1,3 +1,0 @@
-geste_back_jardinier_geste:
-    resource: "@GesteBundle/Resources/config/routing/gestedumois.yml"
-    prefix:   /

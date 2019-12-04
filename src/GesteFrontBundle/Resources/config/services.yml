@@ -1,4 +1,0 @@
-services:
-#    geste_front.example:
-#        class: GesteFrontBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
