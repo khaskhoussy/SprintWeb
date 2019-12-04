@@ -247,7 +247,7 @@ class UsersController extends Controller
     public function reserverAction(Request $request,SessionInterface $session,$id)
     {
         $em = $this->getDoctrine()->getManager();
-        $employe = $em->getRepository(User::class)->find($id);
+        $employe = $em->getRepository('BddBundle:User')->find($id);
         if($request->isMethod('POST') && $request->request->has('dateDebut') ){
             if(!$session->has('ligneServices')) $session->set('ligneServices',new \ArrayObject());
             $ligneServices = $session->get('ligneServices');

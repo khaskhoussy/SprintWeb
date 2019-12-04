@@ -18,6 +18,7 @@ class PanierController extends Controller
         if(!$session->has('packs')) $session->set('packs',new \ArrayObject());
 
         $ligneServices = $session->get('ligneServices');
+        die(strval($ligneServices->offsetGet(0)->getIduser()->getId()));
         $ligneCommandes = $session->get('ligneCommandes');
         $packs = $session->get('packs');
 
