@@ -18,6 +18,9 @@ parameters:
     locale: fr
     users_images: '%kernel.root_dir%/../web/uploads/Users'
     travail_images: '%kernel.root_dir%/../web/uploads/travail'
+    packs_images: '%kernel.root_dir%/../web/uploads/packs'
+    gestes_images: '%kernel.root_dir%/../web/uploads/gestes'
+
 
 framework:
     #esi: ~

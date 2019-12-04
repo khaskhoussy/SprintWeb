@@ -77,6 +77,13 @@ class PackDecorationController extends Controller
      */
     public function showAction(PackDecoration $packDecoration)
     {
+        $em = $this->getDoctrine()->getManager() ;
+        $packs = $em->getRepository(\BddBundle\Entity\PackDecoration::class)->findPacksByMaximumQteProduit($packDecoration->getId());
+        $ids = "" ;
+        foreach ($packs as $pack) {
+            $ids = $ids."-".$pack->getId();
+        }
+        return new Response($ids);
         $deleteForm = $this->createDeleteForm($packDecoration);
 
         return $this->render('@PackDecoration/packdecoration/show.html.twig', array(
