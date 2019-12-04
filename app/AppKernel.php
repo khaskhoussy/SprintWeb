@@ -28,7 +28,8 @@ class AppKernel extends Kernel
             new UsercomBundle\UsercomBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
             new PanierBundle\PanierBundle(),
-            new ProductBundle\ProductBundle()
+            new ProductBundle\ProductBundle(),
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle()
         ];
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
