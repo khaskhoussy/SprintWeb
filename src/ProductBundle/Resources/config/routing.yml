@@ -1,26 +1,9 @@
-product_categorie:
-    resource: "@ProductBundle/Resources/config/routing/categorie.yml"
-    prefix:   /categorie
-
-product_homepage:
-    path:     /
-    defaults: { _controller: ProductBundle:Default:index }
-
-
-bdd_admin:
-    path:     /back/admin/
-    defaults: { _controller: ProductBundle:Default:admin }
-
-bdd_expert:
-    path:     /back/expert/
-    defaults: { _controller: ProductBundle:Default:expert }
-bdd_jardinier:
-    path:     /back/jardinier/
-    defaults: { _controller: ProductBundle:Default:jardinier }
 affiche:
-    path:     /affiche
+    path:     /front/affiche
     defaults: { _controller: ProductBundle:Produit:list }
-
+affiche1:
+    path:     /
+    defaults: { _controller: ProductBundle:Produit:list }
 detail:
     path:     /{id}/detail
     defaults: { _controller: ProductBundle:Produit:detail }

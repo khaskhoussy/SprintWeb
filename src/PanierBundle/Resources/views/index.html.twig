@@ -31,25 +31,23 @@
             </tr>
         </thead>
         <tbody>
-        {% for objetPanier in panier %}
-			{% if objetPanier.type == 'produit' %}
-                <tr>
-                    <td>{{ objetPanier.nom}}</td>
-                    <td>{{ objetPanier.prix }}</td>
-                    <td>{{ objetPanier.qte }}</td>
-                    <td>{{ objetPanier.prix * objetPanier.qte }}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('Travail_affiche', { 'id': objetPanier.employe.id }) }}">Voir produit</a>
-                            </li>
-                            <li>
-                                <a href="#">Supprimer</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            {% endif %}
+        {% for ligneCommande in ligneCommandes %}
+            <tr>
+                <td>{{ ligneCommande.nom}}</td>
+                <td>{{ ligneCommande.idproduit.prixProd }}</td>
+                <td>{{ ligneCommande.qte }}</td>
+                <td>{{ ligneCommande.idproduit.prixProd * objetPanier.qte }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('Travail_affiche', { 'id': ligneCommande.idproduit.id }) }}">Voir produit</a>
+                        </li>
+                        <li>
+                            <a href="#">Supprimer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
         {% endfor %}
 
 
@@ -69,27 +67,24 @@
         </tr>
         </thead>
         <tbody>
-        {% for objetPanier in panier %}
-            {% if objetPanier.type == 'service' %}
-                <tr>
-
-                    <td>{{ objetPanier.nom}}</td>
-                    <td>{{ objetPanier.prix }}</td>
-                    <td>{{ objetPanier.dateDebut }}</td>
-                    <td>{{ objetPanier.dateFin }}</td>
-                    <td>{{ objetPanier.role }}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('Travail_affiche', { 'id': objetPanier.employe.id }) }}">Voir profile</a>
-                            </li>
-                            <li>
-                                <a href="#">Supprimer</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-            {% endif %}
+        {% for ligneService in ligneServices %}
+            <tr>
+                <td>{{ ligneService.iduser.nom}}  {{ ligneService.iduser.prenom }}</td>
+                <td>{{ ligneService.prix }}</td>
+                <td>{{ ligneService.datedebut | date('Y:m:d') }}</td>
+                <td>{{ ligneService.datefin | date('Y:m:d') }}</td>
+                <td>{{ ligneService.iduser.roles[0] }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('Travail_affiche', { 'id': ligneService.iduser.id }) }}">Voir profile</a>
+                        </li>
+                        <li>
+                            <a href="#">Supprimer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
         {% endfor %}
 
 

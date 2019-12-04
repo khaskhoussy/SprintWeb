@@ -3,11 +3,6 @@ produit_index:
     defaults: { _controller: "ProductBundle:Produit:recherche" }
     methods:  [GET, POST]
 
-produit_show:
-    path:     /{id}/show
-    defaults: { _controller: "ProductBundle:Produit:show" }
-    methods:  GET
-
 produit_new:
     path:     /new
     defaults: { _controller: "ProductBundle:Produit:new" }

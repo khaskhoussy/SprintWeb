@@ -13,11 +13,18 @@ class PanierController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        if(!$session->has('panier')) $session->set('panier',new \ArrayObject());
-        $panier = $session->get('panier');
+        if(!$session->has('ligneServices')) $session->set('ligneServices',new \ArrayObject());
+        if(!$session->has('ligneCommandes')) $session->set('ligneCommandes',new \ArrayObject());
+        if(!$session->has('packs')) $session->set('packs',new \ArrayObject());
+
+        $ligneServices = $session->get('ligneServices');
+        $ligneCommandes = $session->get('ligneCommandes');
+        $packs = $session->get('packs');
 
         return $this->render('@Panier/index.html.twig', array(
-            'panier' => $panier->getArrayCopy()
+            'ligneServices' => $ligneServices,
+            'ligneCommandes' => $ligneCommandes,
+            'packs' => $packs->getArrayCopy()
         ));
     }
 }

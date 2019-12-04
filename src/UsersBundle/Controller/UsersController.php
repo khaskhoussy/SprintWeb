@@ -2,6 +2,7 @@
 
 namespace UsersBundle\Controller;
 
+use BddBundle\Entity\LigneService;
 use stdClass;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -246,24 +247,18 @@ class UsersController extends Controller
     public function reserverAction(Request $request,SessionInterface $session,$id)
     {
         $em = $this->getDoctrine()->getManager();
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
         $employe = $em->getRepository(User::class)->find($id);
         if($request->isMethod('POST') && $request->request->has('dateDebut') ){
-            if(!$session->has('panier')) $session->set('panier',new \ArrayObject());
-            $panier = $session->get('panier');
-            $objetPanier = new stdClass();
-            $objetPanier->nom = $employe->getNom().' '.$employe->getPrenom();
-            $objetPanier->type = 'service';
-            $objetPanier->role = $employe->getRoles()[0] ;
-            $objetPanier->prix = 35 ;
-            $objetPanier->dateDebut = $request->get('dateDebut');
-            $objetPanier->dateFin = $request->get('dateFin');
-            $objetPanier->employe = $employe;
-            $objetPanier->client = $user;
-            $panier->append($objetPanier);
-            return new Response($session->get('panier')->serialize());
+            if(!$session->has('ligneServices')) $session->set('ligneServices',new \ArrayObject());
+            $ligneServices = $session->get('ligneServices');
+            $ligneService = new LigneService();
+            $ligneService->setIduser($employe);
+            $ligneService->setDatedebut(new \DateTime($request->get('dateDebut')));
+            $ligneService->setDatefin(new \DateTime($request->get('dateFin')));
+            $ligneServices->append($ligneService);
+            return new Response($ligneServices->serialize());
         }
-        $session->set('panier',new \ArrayObject());
+        $session->set('ligneServices',new \ArrayObject());
         $services = $employe->getServices();
         return $this->render ('@Users/Admin/reserver.html.twig',array('services'=>$services,'idE'=>$id));
     }
