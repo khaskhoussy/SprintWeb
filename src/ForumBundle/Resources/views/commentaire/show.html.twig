@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <center>
+    <h1>Commentaire</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commentaire.id }}</td>
+            </tr>
+            <tr>
+                <th>Descriptioncommentaire</th>
+                <td>{{ commentaire.descriptionCommentaire }}</td>
+            </tr>
+            <tr>
+                <th>Datepub</th>
+                <td>{{ commentaire.datepub|date('Y-m-d\\TH:i:sP') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('commentaire_edit', { 'id': commentaire.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </center>>
+{% endblock %}
