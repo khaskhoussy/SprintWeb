@@ -20,12 +20,9 @@ class EncoderFactory implements EncoderFactoryInterface
 {
     private $encoders;
 
-    public  $enccc ;
-
     public function __construct(array $encoders)
     {
         $this->encoders = $encoders;
-        $this->enccc = $encoders;
     }
 
     /**

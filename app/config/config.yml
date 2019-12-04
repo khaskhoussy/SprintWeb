@@ -96,3 +96,6 @@ fos_user:
             type: BddBundle\Form\UserType
 
 gregwar_captcha: ~
+
+
+
