@@ -1,47 +1,72 @@
+panier:
+  resource: "@PanierBundle/Resources/config/routing.yml"
+  prefix:   /front/panier
+
 users:
-    resource: "@UsersBundle/Resources/config/routing.yml"
-    prefix:   /
+  resource: "@UsersBundle/Resources/config/routing.yml"
+  prefix:   /
 
 bdd:
-    resource: "@BddBundle/Resources/config/routing.yml"
-    prefix:   /
+  resource: "@BddBundle/Resources/config/routing.yml"
+  prefix:   /
 
 geste_front:
-    resource: "@GesteFrontBundle/Resources/config/routing.yml"
-    prefix:   /front/geste
+  resource: "@GesteFrontBundle/Resources/config/routing.yml"
+  prefix:   /front/geste
 
 geste:
-    resource: "@GesteBundle/Resources/config/routing.yml"
-    prefix:   /back/jardinier/geste
+  resource: "@GesteBundle/Resources/config/routing.yml"
+  prefix:   /back/jardinier/geste
 
 
 pack_front:
-    resource: "@PackFrontBundle/Resources/config/routing.yml"
-    prefix:   /front/pack
+  resource: "@PackFrontBundle/Resources/config/routing.yml"
+  prefix:   /front/pack
 
 pack_decoration:
-    resource: "@PackDecorationBundle/Resources/config/routing.yml"
-    prefix:   /back/paysagiste/packdecoration
+  resource: "@PackDecorationBundle/Resources/config/routing.yml"
+  prefix:   /back/paysagiste/packdecoration
 
 reclamation:
-    resource: "@ReclamationBundle/Resources/config/routing.yml"
-    prefix:   /front/reclamation
+  resource: "@ReclamationBundle/Resources/config/routing.yml"
+  prefix:   /front/reclamation
 
 recette:
-    resource: "@RecetteBundle/Resources/config/routing.yml"
-    prefix:   /back/expert/recette
+  resource: "@RecetteBundle/Resources/config/routing.yml"
+  prefix:   /back/expert/recette
 
 usercom:
-    resource: "@UsercomBundle/Resources/config/routing.yml"
-    prefix:   /front/event
+  resource: "@UsercomBundle/Resources/config/routing.yml"
+  prefix:   /front/event
 
 event:
-    resource: "@EventBundle/Resources/config/routing.yml"
-    prefix:   /back/admin/event
+  resource: "@EventBundle/Resources/config/routing.yml"
+  prefix:   /back/admin/event
+
+product:
+  resource: "@ProductBundle/Resources/config/routing.yml"
+  prefix:   /front/product
+
+product_produit:
+  resource: "@ProductBundle/Resources/config/routing/produit.yml"
+  prefix:   /back/expert/produit
+
+product_offre:
+  resource: "@ProductBundle/Resources/config/routing/offrepromotion.yml"
+  prefix:   /back/expert/offre
+
+product_categorie:
+  resource: "@ProductBundle/Resources/config/routing/categorie.yml"
+  prefix:   /back/expert/categorie
+
+produit_show:
+  path:     front/affiche/{id}/show
+  defaults: { _controller: "ProductBundle:Produit:show" }
+  methods:  GET
 
 app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+  resource: '@AppBundle/Controller/'
+  type: annotation
 
 fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+  resource: "@FOSUserBundle/Resources/config/routing/all.xml"

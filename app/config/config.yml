@@ -12,15 +12,15 @@ imports:
     - { resource: "@GesteFrontBundle/Resources/config/services.yml" }
     - { resource: "@EventBundle/Resources/config/services.yml" }
     - { resource: "@UsercomBundle/Resources/config/services.yml" }
+    - { resource: "@PanierBundle/Resources/config/services.yml" }
+    - { resource: "@ProductBundle/Resources/config/services.yml" }
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
     users_images: '%kernel.root_dir%/../web/uploads/Users'
     travail_images: '%kernel.root_dir%/../web/uploads/travail'
-    packs_images: '%kernel.root_dir%/../web/uploads/packs'
-    gestes_images: '%kernel.root_dir%/../web/uploads/gestes'
-
+    evenment_images: '%kernel.root_dir%/../web/uploads/evenment'
 
 framework:
     #esi: ~
@@ -95,3 +95,8 @@ fos_user:
     registration:
         form:
             type: BddBundle\Form\UserType
+
+gregwar_captcha: ~
+
+
+

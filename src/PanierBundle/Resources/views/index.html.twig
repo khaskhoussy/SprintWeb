@@ -1,0 +1,102 @@
+{% extends 'front.html.twig' %}
+
+{% block content %}
+    {#<h1>Mon Panier</h1>#}
+
+    <li class="st2-li-primary">
+    <li class="st2-li-primary"><a class="st2-item-link" href="">Mon Panier</a></li>
+    <style>
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+     th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        a1:hover {
+            cursor: pointer;
+        }
+    </style>
+    <table>
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix Unitaire</th>
+                <th>Quantite</th>
+                <th>Prix Totale</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ligneCommande in ligneCommandes %}
+            <tr>
+                <td>{{ ligneCommande.nom}}</td>
+                <td>{{ ligneCommande.idproduit.prixProd }}</td>
+                <td>{{ ligneCommande.qte }}</td>
+                <td>{{ ligneCommande.idproduit.prixProd * objetPanier.qte }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('Travail_affiche', { 'id': ligneCommande.idproduit.id }) }}">Voir produit</a>
+                        </li>
+                        <li>
+                            <a href="#">Supprimer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+
+
+    <table>
+        <thead>
+        <tr>
+            <th>Service</th>
+            <th>Prix</th>
+            <th>Date Debut</th>
+            <th>Date Fin</th>
+            <th>Role</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for ligneService in ligneServices %}
+            <tr>
+                <td>{{ ligneService.iduser.nom}}  {{ ligneService.iduser.prenom }}</td>
+                <td>{{ ligneService.prix }}</td>
+                <td>{{ ligneService.datedebut | date('Y:m:d') }}</td>
+                <td>{{ ligneService.datefin | date('Y:m:d') }}</td>
+                <td>{{ ligneService.iduser.roles[0] }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('Travail_affiche', { 'id': ligneService.iduser.id }) }}">Voir profile</a>
+                        </li>
+                        <li>
+                            <a href="#">Supprimer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+
+    <ul>
+        <div class="input-icon">
+
+
+            <input type="submit" value="ajouter un autre article" class="btn btn-success" />
+            <input type="submit" value="Vider Panier" class="btn btn-success" />
+        </div>
+    </ul>
+{% endblock %}

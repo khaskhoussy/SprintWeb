@@ -9,6 +9,38 @@
 
     <div id='calendar'></div>
 
+
+    <div id="submitModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="submitForm" action="{{ path('reserver_jardinier', {'id': idE}) }}" method="post">
+                        <div class="form-group">
+                            <label for="dateDebut">Date Debut</label>
+                            <select class="form-control" id="dateDebut" name="dateDebut">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateFin">Date Fin</label>
+                            <select class="form-control" id="dateFin" name="dateFin">
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="$('#submitForm').submit()">Réservé</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
 
 {% block js %}
@@ -49,15 +81,27 @@
                     });
                 },
                 dateClick: function(info) {
-                    if($(info.dayEl).hasClass('disabled')) alert("3asba");
+                    if($(info.dayEl).hasClass('disabled')) alert("date dejat reserver");
                     else {
+                        let dateRange = [$(info.dayEl).attr('data-date')] ;
                         //console.log(info.view);
                         //console.log(info.dayEl);
                         let start = elList.indexOf(info.dayEl);
                         let end = start ;
-                        while ($(elList[end+1]).hasClass('disabled') === false && end < start+7) end++ ;
-                        console.log(elList[start]);
-                        console.log(elList[end]);
+                        while ($(elList[end+1]).hasClass('disabled') === false && end < start+7){
+                            end++ ;
+                            dateRange.push($(elList[end]).attr('data-date'));
+                        }
+                        //console.log(elList[start]);
+                        //console.log(elList[end]);
+                        //console.log(dateRange);
+                        $('#dateDebut').empty();
+                        $('#dateFin').empty();
+                        $('#dateDebut').append('<option value="'+$(elList[start]).attr('data-date')+'">'+$(elList[start]).attr('data-date')+'</option>');
+                        for(i = start;i<=end;i++) {
+                            $('#dateFin').append('<option value="'+$(elList[i]).attr('data-date')+'">'+$(elList[i]).attr('data-date')+'</option>');
+                        }
+                        $('#submitModal').modal('show');
                     }
                 }
             });

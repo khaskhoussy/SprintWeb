@@ -272,7 +272,7 @@
             let data = new FormData();
             data.append('profile_avatar',$('#avatar')[0].files[0]);//
             $.ajax({
-                url: "{{ path('users_ProfileAdmin') }}",//pour envoyer les donner a controlle
+                url: "{{ path('users_ProfileClient') }}",//pour envoyer les donner a controlle
                 data: data,
                 cache: false,
                 contentType: false,

@@ -11,9 +11,11 @@ bdd_admin:
 bdd_expert:
     path:     /back/expert/
     defaults: { _controller: BddBundle:Default:expert }
+
 bdd_jardinier:
     path:     /back/jardinier/
     defaults: { _controller: BddBundle:Default:jardinier }
+
 bdd_paysagiste:
     path:     /back/paysagiste/
     defaults: { _controller: BddBundle:Default:paysagiste }

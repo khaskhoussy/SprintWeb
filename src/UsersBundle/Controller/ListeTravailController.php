@@ -53,10 +53,22 @@ class ListeTravailController extends Controller
             $listeTravail->setIduser($user);
             $em->persist($listeTravail);
             $em->flush();
+           if($user->getRole()[0]=="ROLE_PAYSAGISTE")
+
+                return $this->redirectToRoute('listetravail_paysagistshow');
+
+           if($user->getRole()[0]=="ROLE_JARDINIER")
+
+               return $this->redirectToRoute('listetravail_show');
 
 
        }
+
+
+        if($user->getRoles()[0]=="ROLE_JARDINIER")
         return $this->render('@Users/listetravail/new.html.twig',array('im'=>$im));
+
+        return $this->render('@Users/listetravail/newPaysagiste.html.twig',array('im'=>$im));
     }
 
     /**
@@ -72,10 +84,14 @@ class ListeTravailController extends Controller
         $list=$manager->findBy(array('iduser' => $users));
 
 
-
+        if($users->getRoles()[0] == "ROLE_JARDINIER")
         return $this->render('@Users/listetravail/show.html.twig', array(
             'liste' => $list,'id'=>$id
             ));
+        return $this->render('@Users/listetravail/paysagisteshow.html.twig', array(
+            'liste' => $list,'id'=>$id
+        ));
+
     }
 
     /**
@@ -88,6 +104,8 @@ class ListeTravailController extends Controller
         $repository=$this->getdoctrine()->getRepository('BddBundle:ListeTravail');
         $list=$repository->findBy(array('id'=>$id));
         $travail=$list[0];
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
         if($request->isMethod("POST") && $request->request->has("ajouter")) {
 
             $file = $request->files->get("kt_apps_user_add_user_avatar");
@@ -97,13 +115,19 @@ class ListeTravailController extends Controller
             $travail->setDescriptionTravail($request->get("description"));
             $travail->setDateTravail($request->get("date"));
             $em->flush();
+            if($user->getRoles()[0] == "ROLE_JARDINIER")
+            return $this->redirectToRoute('listetravail_show');
 
-            return $this->forward('UsersBundle:ListeTravail:show');
+            return $this->redirectToRoute('listetravail_paysagistshow');
+
+            //return $this->forward('UsersBundle:ListeTravail:show');
 
 
         }
-
+                if($user->getRoles()[0] == "ROLE_JARDINIER")
             return $this->render('@Users/Admin/ModifierTravail.html.twig',array('travail'=>$travail));
+
+                return $this->render('@Users/Admin/modifierTravailPaysagiste.html.twig',array('travail'=>$travail));
     }
 
     /**
@@ -153,6 +177,7 @@ class ListeTravailController extends Controller
 
         $manager=$this->getDoctrine()->getRepository('BddBundle:ListeTravail');
         $list=$manager->findBy(array('iduser' => $user));
+
         return $this->render('@Users/listetravail/frontTravail.html.twig', array(
             'liste'=> $list,'id'=>$id,'nom'=>$nom,'imageU'=>$im
         ));

@@ -1,32 +1,46 @@
 listetravail_index:
-    path:     /
+    path:     /aaa
     defaults: { _controller: "UsersBundle:ListeTravail:index" }
     methods:  GET
 
 listetravail_show:
-    path:     /show
+    path:     /back/jardinier/show
+    defaults: { _controller: "UsersBundle:ListeTravail:show" }
+
+listetravail_paysagistshow:
+    path:     /back/paysagiste/show
     defaults: { _controller: "UsersBundle:ListeTravail:show" }
 
 Jardinier_show:
-    path:     /showJardinier
+    path:     /front/showJardinier
     defaults: { _controller: "UsersBundle:ListeTravail:AfficherJardinier" }
 
 Paysagiste_show:
-    path:     /showPaysagiste
+    path:     /front/showPaysagiste
     defaults: { _controller: "UsersBundle:ListeTravail:AfficherPaysagiste" }
 
 Travail_affiche:
-    path:     /showTravail/{id}
+    path:     /front/showTravail/{id}
     defaults: { _controller: "UsersBundle:ListeTravail:showTravail" }
 
 listetravail_new:
-    path:     /new
+    path:     /back/jardinier/new
+    defaults: { _controller: "UsersBundle:ListeTravail:new" }
+    methods:  [GET, POST]
+
+listetravailpaysagiste_new:
+    path:     /back/paysagiste/new
     defaults: { _controller: "UsersBundle:ListeTravail:new" }
     methods:  [GET, POST]
 
 listetravail_edit:
-    path:     /edit/{id}
+    path:     /back/jardinier/edit/{id}
     defaults: { _controller: "UsersBundle:ListeTravail:edit" }
+
+listetravailpaysagiste_edit:
+    path:     /back/paysagiste/edit/{id}
+    defaults: { _controller: "UsersBundle:ListeTravail:edit" }
+
 listetravail_modifier:
     path:     /modifier
     defaults: { _controller: "UsersBundle:ListeTravail:edit" }

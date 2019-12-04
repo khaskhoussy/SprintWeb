@@ -1,0 +1,48 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+    <h1>Liste Categorie</h1>
+    <table table class="table table-striped">
+        <thead>
+        <tr>
+
+            <th scope="col">Nom Categorie</th>
+            <th scope="col">Description</th>
+            <th scope="col">Actions</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+        <tr>
+
+
+
+            <td >{{ categorie.nomCat }}</td>
+            <td>{{ categorie.descriptionCat }}</td>
+
+
+
+        <td>
+
+
+                    <div class="btn-group btn-group" role="group" aria-label="...">
+
+                    <a href="{{ path('categorie_show', { 'id': categorie.id })  }} " class="btn btn-success">show</a>
+
+                    <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}"  class="btn btn-success">edit</a>
+
+                    </div>
+        </td>
+        </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+<ul>
+    <li>
+        <a href="{{ path('categorie_new') }}" class="btn btn-success">Create a new categorie</a>
+
+    </li>
+</ul>
+{% endblock %}
+

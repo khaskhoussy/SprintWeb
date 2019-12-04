@@ -2,6 +2,7 @@
 
 namespace UsersBundle\Controller;
 
+use BddBundle\Entity\LigneService;
 use stdClass;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -219,6 +220,15 @@ class UsersController extends Controller
          if($user->getRoles()[0] == 'ROLE_CLIENT')
             return  $this->render('@Users/Admin/profileClient.html.twig',array('username'=>$user->getUsername(),'im'=>$im,'users'=>$user,'form'=>$form->createView()
             ,'notif'=>$notif));
+        if($user->getRoles()[0] == 'ROLE_JARDINIER')
+            return  $this->render('@Users/Admin/profileJardinier.html.twig',array('username'=>$user->getUsername(),'im'=>$im,'users'=>$user,'form'=>$form->createView()
+            ,'notif'=>$notif));
+        if($user->getRoles()[0] == 'ROLE_PAYSAGISTE')
+            return  $this->render('@Users/Admin/profilePaysagiste.html.twig',array('username'=>$user->getUsername(),'im'=>$im,'users'=>$user,'form'=>$form->createView()
+            ,'notif'=>$notif));
+        if($user->getRoles()[0] == 'ROLE_EXPERT')
+            return  $this->render('@Users/Admin/profileExpert.html.twig',array('username'=>$user->getUsername(),'im'=>$im,'users'=>$user,'form'=>$form->createView()
+            ,'notif'=>$notif));
 
             return $this->render('@Users/Admin/profile.html.twig',array('role'=>$user->getRole(),'username'=>$user->getUsername(),'im'=>$im,'users'=>$user,'form'=>$form->createView()
         ,'notif'=>$notif));
@@ -234,12 +244,23 @@ class UsersController extends Controller
         //$converted_res = $session->get('name') ? 'true' : 'false';
         //return new Response($converted_res);
     }
-    public function reserverAction($id)
+    public function reserverAction(Request $request,SessionInterface $session,$id)
     {
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository(User::class)->find($id);
-        $services = $user->getServices();
-        return $this->render ('@Users/Admin/reserver.html.twig',array('services'=>$services));
+        $employe = $em->getRepository(User::class)->find($id);
+        if($request->isMethod('POST') && $request->request->has('dateDebut') ){
+            if(!$session->has('ligneServices')) $session->set('ligneServices',new \ArrayObject());
+            $ligneServices = $session->get('ligneServices');
+            $ligneService = new LigneService();
+            $ligneService->setIduser($employe);
+            $ligneService->setDatedebut(new \DateTime($request->get('dateDebut')));
+            $ligneService->setDatefin(new \DateTime($request->get('dateFin')));
+            $ligneServices->append($ligneService);
+            return new Response($ligneServices->serialize());
+        }
+        $session->set('ligneServices',new \ArrayObject());
+        $services = $employe->getServices();
+        return $this->render ('@Users/Admin/reserver.html.twig',array('services'=>$services,'idE'=>$id));
     }
 
 }

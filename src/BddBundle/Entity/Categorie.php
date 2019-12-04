@@ -1,6 +1,10 @@
 <?php
 
 namespace BddBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  * Categorie
  *
  * @ORM\Table(name="categorie")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ProductBundle\Repository\CategorieRepository")
+ *
+ * @UniqueEntity(fields="nomCat", message="Une categorie existe déjà avec ce nom")
  */
 class Categorie
 {
@@ -23,17 +29,55 @@ class Categorie
 
     /**
      * @var string
+     *  @Assert\NotBlank()
+     *@Assert\Length(
+     *     min = 2,
+     *     minMessage="nom trop court"
+     * )
      *
      * @ORM\Column(name="nom_cat", type="string", length=255, nullable=false)
      */
+
     private $nomCat;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *     min = 2,
+     *     minMessage="nom trop court"
+     * )
      * @ORM\Column(name="description_cat", type="string", length=255, nullable=false)
      */
     private $descriptionCat;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Produit", mappedBy="categorie", cascade={"remove"})
+     */
+    private $products;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * @param ArrayCollection $products
+     */
+    public function setProducts($products)
+    {
+        $this->products = $products;
+    }
+
 
     /**
      * @return int
@@ -82,8 +126,6 @@ class Categorie
     {
         $this->descriptionCat = $descriptionCat;
     }
-
-
 
 
 }
