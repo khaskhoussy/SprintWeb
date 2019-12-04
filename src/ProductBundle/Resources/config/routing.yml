@@ -1,9 +1,11 @@
 affiche:
-    path:     /front/affiche
+    path:     /affiche
     defaults: { _controller: ProductBundle:Produit:list }
+
 affiche1:
     path:     /
     defaults: { _controller: ProductBundle:Produit:list }
+
 detail:
     path:     /{id}/detail
     defaults: { _controller: ProductBundle:Produit:detail }

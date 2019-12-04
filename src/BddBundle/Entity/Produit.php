@@ -36,6 +36,7 @@ class Produit
     /**
      * @var float
      * @Assert\NotBlank()
+     *
      * @ORM\Column(name="prix_prod", type="float", precision=10, scale=0, nullable=false)
      *
      */
@@ -44,6 +45,7 @@ class Produit
     /**
      * @var string
      * @Assert\NotBlank()
+     *
      * @ORM\Column(name="prod_description", type="string", length=255, nullable=false)
      */
     private $prodDescription;
@@ -51,7 +53,10 @@ class Produit
     /**
      * @var integer
      * @Assert\NotBlank()
-     *
+     *@Assert\GreaterThan(
+     *     value = 0,
+     *     message="le prix doit etre positive"
+     *     )
      * @ORM\Column(name="quantite", type="integer", nullable=false)
      */
     private $quantite;
@@ -66,6 +71,7 @@ class Produit
     /**
      * @var float
      * @Assert\NotBlank()
+     *
      * @ORM\Column(name="prix_offre", type="float", precision=10, scale=0, nullable=true)
      */
     private $prixOffre = '0';
