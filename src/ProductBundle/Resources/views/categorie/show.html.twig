@@ -1,0 +1,36 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+<div table class="table table-striped">
+    <h1>Categorie</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomcat</th>
+                <td>{{ categorie.nomCat }}</td>
+            </tr>
+            <tr>
+                <th>Descriptioncat</th>
+                <td>{{ categorie.descriptionCat }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('categorie_index') }}" class="btn btn-success">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}" class="btn btn-success">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <button class="btn btn-success" type="submit" value="Delete" class="btn btn-success">Delete</button>
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

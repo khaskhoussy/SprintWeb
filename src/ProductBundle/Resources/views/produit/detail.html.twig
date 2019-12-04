@@ -1,0 +1,114 @@
+{% extends 'front.html.twig' %}
+{% block detail %}
+
+    <div class="product-quick-view">
+        <div class="product-quick-view-overlay"></div>
+        <div class="product-quick-view-box">
+            <section class="product-detail-v1 product-quick-view-box-inner">
+                <div class="container">
+                    <div class="product-detail-v1-wrapper">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="product-detail-v3-image">
+                                    <div class="product-detail-v3-order row">
+                                        <div class="order2-prodetail-v3 col-md-9 col-pd-quickview">
+                                            <div class="slider slide-quickview-single">
+                                                <div class="product-detail-v3-image">
+                                                    <img src="/pipdev/web/images/product-detail/xuat.png" alt="Product" class="img-fluid">
+                                                </div>
+                                                <div class="product-detail-v3-image">
+                                                    <img src="/pipdev/web/images/product-detail/product-3.png" alt="Product" class="img-fluid">
+                                                </div>
+                                                <div class="product-detail-v3-image">
+                                                    <img src="/pipdev/web/images/product-detail/product-2.png" alt="Product" class="img-fluid">
+                                                </div>
+                                                <div class="product-detail-v3-image">
+                                                    <img src="/pipdev/web/images/product-detail/product-1.png" alt="Product" class="img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="order1-prodetail-v3 col-md-3 col-pd-quickview">
+                                            <div class="slider slide-quickview-nav">
+                                                <div class="product-detail-v3-image">
+                                                    <img src="/pipdev/web/images/product-detail/xuat.png" alt="Product" class="img-fluid">
+                                                </div>
+                                                <div class="product-detail-v3-image">
+                                                    <img src="/pipdev/web/images/product-detail/product-3.png" alt="Product" class="img-fluid">
+                                                </div>
+                                                <div class="product-detail-v3-image">
+                                                    <img src="/pipdev/web/images/product-detail/product-2.png" alt="Product" class="img-fluid">
+                                                </div>
+                                                <div class="product-detail-v3-image">
+                                                    <img src="/pipdev/web/images/product-detail/product-1.png" alt="Product" class="img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="">
+                                    <div class="col-md-12">
+                                        <div class="product-detail-v1-info">
+                                            <h1 class="product-detail-v1-title mb-0">Succulent Plant</h1>
+                                            <div class="product-detail-v1-meta">
+                                                <div class="product-detail-v1-price">
+                                                    <div class="cost">{{ produit.prixProd }}</div>
+                                                    <div class="sale">{{ produit.prixOffre }}</div>
+                                                </div>
+                                                <div class="product-detail-v1-rating">
+                                                    <div class="badge-starrating">
+                                                        <i class="star-icon star-icon-color1 lnr lnr-star"></i>
+                                                        <i class="star-icon star-icon-color1 lnr lnr-star"></i>
+                                                        <i class="star-icon star-icon-color1 lnr lnr-star"></i>
+                                                        <i class="star-icon star-icon-color1 lnr lnr-star"></i>
+                                                        <i class="star-icon star-icon-color2 lnr lnr-star"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p class="mb-0">
+                                                Aenean id ullamcorper libero. Vestibulum imperdiet nibh. Lorem ullamcorper volutpat. Vestibulum lacinia risus.
+                                            </p>
+                                            <div class="product-detail-v1-action">
+                                                <div class="quanlity">
+                                                    <button type="button" class="subtraction">-</button>
+                                                    <input type="text" class="quanlity-num" pattern="[0-9]*" value="1">
+                                                    <button type="button" class="addition">+</button>
+                                                </div>
+                                                <div class="add-product">
+                                                    <button type="submit" class="btn-addproduct">Add to cart</button>
+                                                </div>
+                                                <button class="btn-addwhlist">
+                                                    <span class="lnr lnr-heart"></span>
+                                                </button>
+                                            </div>
+                                            <div class="product-detail-v1-attr">
+                                                <p class="mb-0"><span >SKU:</span> PD 031</p>
+                                                <p class="mb-0"><span>Categories:</span> Out Door Plant, Plant On Table, Potted.</p>
+                                                <p class="mb-0"><span>Tags:</span> Cactus, Flower, Indoor.</p>
+                                            </div>
+                                            <div class="product-detail-v1-share">
+                                                <span class="social-text">Share:</span>
+                                                <div class="product-detail-v1-socials">
+                                                    <a href="" class="product-detail-v1-icon"><i class="ti-facebook"></i></a>
+                                                    <a href="" class="product-detail-v1-icon"><i class="ti-twitter-alt"></i></a>
+                                                    <a href="" class="product-detail-v1-icon"><i class="ti-pinterest"></i></a>
+                                                    <a href="" class="product-detail-v1-icon"><i class="ti-youtube"></i></a>
+                                                    <a href="" class="product-detail-v1-icon"><i class="ti-instagram"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <a href="javascript:void(0);" class="close-quick-view close-st" id="pull">
+                <i class="ti-close"></i>
+            </a>
+        </div>
+    </div>
+
+{% endblock %}
