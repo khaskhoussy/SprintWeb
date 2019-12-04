@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Listetravails list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descriptiontravail</th>
+                <th>Datetravail</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for listeTravail in listeTravails %}
+            <tr>
+                <td><a href="{{ path('listetravail_show', { 'id': listeTravail.id }) }}">{{ listeTravail.id }}</a></td>
+                <td>{{ listeTravail.descriptionTravail }}</td>
+                <td>{{ listeTravail.dateTravail }}</td>
+                <td>{{ listeTravail.image }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('listetravail_show', { 'id': listeTravail.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('listetravail_edit', { 'id': listeTravail.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('listetravail_new') }}">Create a new listeTravail</a>
+        </li>
+    </ul>
+{% endblock %}

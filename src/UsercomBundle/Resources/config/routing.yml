@@ -1,0 +1,23 @@
+front_uservoir:
+    path:     /
+    defaults: { _controller: UsercomBundle:Usercom:listuser }
+
+
+detailed_post:
+    path:     /details/{id}
+    defaults: { _controller: UsercomBundle:Usercom:showdetailed }
+
+add_comment:
+    path:     /addcomment
+    defaults: { _controller:  UsercomBundle:Usercom:addcomment }
+
+delete_comment:
+    path:     /deletecomment
+    defaults: { _controller:  UsercomBundle:Usercom:deleteComment }
+
+ajax_search:
+    path:     /search
+    defaults: { _controller: UsercomBundle:Usercom:search }
+
+
+

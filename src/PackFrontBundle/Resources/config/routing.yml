@@ -1,0 +1,4 @@
+pack_front:
+    resource: "@PackFrontBundle/Resources/config/routing/packdecoration.yml"
+    prefix:   /
+

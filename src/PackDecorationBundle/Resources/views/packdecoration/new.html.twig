@@ -1,0 +1,139 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-6">
+            <h1>Packdecoration creation</h1>
+
+            {{ form_start(form,{'attr':{'id':'formp'}}) }}
+            <div class="form-group">
+                <label for="exampleInputEmail1">Nom</label>
+                {{ form_widget(form.nomPack, {'attr': {'class': 'form-control','aria-describedby':'nom','placeholder':'Enter nom'}}) }}
+                <small id="emailHelp" class="form-text text-muted">We'\ll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Type</label>
+                {{ form_widget(form.typep, {'attr': {'class': 'form-control','aria-describedby':'type','placeholder':'choisir type'}}) }}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Description</label>
+                {{ form_widget(form.descriptionPack, {'attr': {'class': 'form-control','aria-describedby':'description','placeholder':'Entrer description'}}) }}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Prix</label>
+                {{ form_widget(form.prixp, {'attr': {'class': 'form-control','aria-describedby':'prix','placeholder':'Entrer prix','readonly':''}}) }}
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Image</label>
+                {{ form_widget(form.imagePack, {'attr': {'class': 'form-control','aria-describedby':'image','placeholder':'Choisir image'}}) }}
+            </div>
+            <input class="btn btn-sm btn-primary" id="submitBtn" type="submit" value="Create" class="btn btn-primary">Submit</input>
+            {{ form_end(form) }}
+
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <a class="btn btn-sm btn-success" href="{{ path('back_paysagiste_index') }}">Back to the list</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Liste des produits</label>
+                    </div>
+                    <select id="produitc" class="custom-select" id="inputGroupSelect01">
+                        <option  value="0" selected>Choose...</option>
+                        {% for produit in produits %}
+                            <option  value="{{ produit.id }}"  description="{{ produit.prodDescription }}" prix="{{ produit.prixProd }}">{{ produit.nomProd}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <table border="1" class="table table-light">
+                    <thead class="thead-dark">
+                        <th scope="col">Description</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Qte</th>
+                        <th scope="col">Action</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" id="description">Séléctionné un produit</th>
+                            <td id="prix"></td>
+                            <td><input id="qte" type="number" min="1" ></td>
+                            <td><button id="idP" value="" class="btn btn-sm btn-primary" disabled="true">Ajouter produit</button> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="row">
+                <table border="1" class="table table-light">
+                    <thead class="thead-dark">
+                        <th scope="col">Id</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Qte</th>
+                        <th scope="col">Prix</th>
+                    </thead>
+                    <tbody id="listeProduits">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block js %}
+    <script>
+        let liste = [];
+        $("#produitc").change(function (){
+            let option = $(this).children("option:selected");
+            if(option.attr('value') == 0) $("#idP").attr("disabled","true");
+            else $("#idP").removeAttr("disabled");
+            $("#description").text(option.attr('description'));
+            $("#prix").text(option.attr('prix'));
+            $("#idP").val(option.attr('value'));
+        });
+        $("#idP").click(function (event) {
+
+            let prixt = 0.0 ;
+            let id = $(this).val();
+            let nom = $("#produitc").children("option:selected").text();
+            let description = $("#description").text() ;
+            let prix = $("#prix").text();
+            let qte = $("#qte").val();
+            if(qte == "") return ;
+            let ob = liste.find(function (data) {
+                return data.id === id ;
+            });
+            if(ob === undefined){
+                let markup = "<tr><th scope='row' id='id'>"+id+"</th><td >"+nom+"</td><td>"+description+"</td><td id='qtep"+id+"'>"+qte+"</td><td>"+prix+"</td></tr>";
+                $("#listeProduits").append(markup);
+                liste.push({'id': id,'qte':parseInt(qte),'description':description,'prix':parseFloat(prix)});
+            }
+            else{
+                ob.qte+=parseInt(qte) ;
+                $("#qtep"+ob.id).text(ob.qte);
+            }
+            $.each(liste,function (k,v) {
+                prixt+= v.prix * v.qte;
+            });
+            $("#packdecorationbundle_packdecoration_prixp").val(prixt - prixt*0.2);
+        });
+        $( "#submitBtn" ).click(function( event ) {
+            event.preventDefault();
+            let content = "";
+            $.each(liste,function (k,v) {
+                content+="<input type='text' hidden name='produits[]' value='"+JSON.stringify(v)+"'>";
+            });
+            console.log(content);
+            $("#formp").append(content);
+            $("#formp").trigger("submit");
+        });
+    </script>
+{% endblock %}
