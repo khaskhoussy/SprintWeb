@@ -1,0 +1,45 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <h1>Offrepromotions list</h1>
+
+    <table table class="table table-striped">
+        <thead>
+            <tr>
+
+                <th  scope="col" >Pourcentage</th>
+                <th  scope="col" >Datedebut</th>
+                <th  scope="col" >Datefin</th>
+                <th  scope="col" >Type</th>
+                <th  scope="col" >Titre</th>
+                <th  scope="col" >Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for offrePromotion in offrePromotions %}
+            <tr>
+
+                <td  scope="col" >{{ offrePromotion.pourcentage }}</td>
+                <td  scope="col" >{{ offrePromotion.dateDebut|date }}</td>
+                <td  scope="col" >{{ offrePromotion.dateFin|date }}</td>
+                <td  scope="col" >{{ offrePromotion.type }}</td>
+                <td  scope="col" >{{ offrePromotion.titre }}</td>
+                <td  scope="col" >
+
+                            <a href="{{ path('offre_show', { 'id': offrePromotion.id }) }}" class="btn btn-success">show</a>
+
+                            <a href="{{ path('offre_edit', { 'id': offrePromotion.id }) }}"class="btn btn-success">edit</a>
+
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('offre_new') }}" class="btn btn-success">Create a new offrePromotion</a>
+
+        </li>
+    </ul>
+{% endblock %}

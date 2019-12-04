@@ -93,6 +93,7 @@ class ListeTravail
     }
 
     /**
+     * @Assert\Date
      * @param string $dateTravail
      */
     public function setDateTravail($dateTravail)

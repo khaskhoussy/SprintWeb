@@ -135,6 +135,14 @@ class LigneService
         $this->iduser = $iduser;
     }
 
-
+    /**
+     * @return float
+     */
+    public function getPrix()
+    {
+        if($this->iduser->hasRole("ROLE_JARDINIER")) return 35 ;
+        if($this->iduser->hasRole("ROLE_PAYSAGISTE")) return 40 ;
+        return 0 ;
+    }
 }
 

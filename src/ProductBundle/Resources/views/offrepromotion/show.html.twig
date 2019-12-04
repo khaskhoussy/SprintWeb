@@ -1,0 +1,45 @@
+{% extends 'back.html.twig' %}
+{% block content %}
+<div table class="table table-striped">
+    <h1>Offrepromotion</h1>
+
+    <table>
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ offrePromotion.id }}</td>
+        </tr>
+        <tr>
+            <th>Pourcentage</th>
+            <td>{{ offrePromotion.pourcentage }}</td>
+        </tr>
+        <tr>
+            <th>Datedebut</th>
+            <td>{{ offrePromotion.dateDebut |date}}</td>
+        </tr>
+        <tr>
+            <th>Datefin</th>
+            <td>{{ offrePromotion.dateFin |date }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>{{ offrePromotion.type }}</td>
+        </tr>
+        <tr>
+            <th>Titre</th>
+            <td>{{ offrePromotion.titre }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+            <a href="{{ path('offre_index') }}" class="btn btn-success">Back to the list</a>
+
+            <a href="{{ path('offre_edit', { 'id': offrePromotion.id }) }}" class="btn btn-success">Edit</a>
+
+            {{ form_start(delete_form) }}
+            <button class="btn btn-success" type="submit" value="Delete" class="btn btn-success">Button</button>
+            {{ form_end(delete_form) }}
+
+</div>
+{% endblock %}

@@ -2,6 +2,9 @@
 
 namespace BddBundle\Repository;
 
+use BddBundle\Entity\PackDecoration;
+use Doctrine\ORM\Query\ResultSetMapping;
+
 /**
  * PackDescorationRepository
  *
@@ -19,5 +22,33 @@ class PackDecorationRepository extends \Doctrine\ORM\EntityRepository
             )
             ->setParameter('str', $cat)
             ->getResult();
+    }
+
+    public  function findPacksByMaximumQteProduit($idPack) {
+        $rsm = new ResultSetMapping();
+        $rsm->addEntityResult(PackDecoration::class,'p');
+        $rsm->addFieldResult('p','id','id');
+        $query = $this->getEntityManager()
+            ->createNativeQuery('
+                SELECT p.id as id
+                  FROM ( SELECT idPack 
+                              , MAX(quantite_pack) AS max_qte
+                           FROM ligne_pack
+                         GROUP BY idPack ) AS ll
+                
+                INNER JOIN ligne_pack AS l
+                    ON l.idPack = ll.idPack
+                   AND l.quantite_pack = ll.max_qte
+                   
+                INNER JOIN pack_decoration p on p.id = l.idPack
+                
+                WHERE l.idProduit = (SELECT idProduit FROM ligne_pack WHERE idPack = ? ORDER BY quantite_pack DESC LIMIT 1) and l.idPack != ?
+   
+
+
+            ',$rsm);
+        $query->setParameter(1, 11);
+        $query->setParameter(2, 11);
+        return $query->getResult();
     }
 }

@@ -1,0 +1,62 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <h1 data-on-color=#00ced1"">Produits list</h1>
+<div class="row">
+    <div class="col-sm-3">
+        {% for categorie in categories %}
+        <select class="form-control">
+
+            <option value="+47">{{ categorie.nomCat }}</option>
+
+        </select>
+{% endfor %}
+    </div>
+
+    <table table class="table table-striped">
+        <thead>
+            <tr>
+                <th th scope="col"  >Id</th>
+                <th th scope="col">Nomprod</th>
+                <th th scope="col">Prixprod</th>
+                <th th scope="col">Proddescription</th>
+                <th th scope="col">Quantite</th>
+                <th th scope="col">Image</th>
+                <th th scope="col">Prixoffre</th>
+                <th th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td><a href="{{ path('produit_show', { 'id': produit.id }) }}" >{{ produit.id }}</a></td>
+                <td>{{ produit.nomProd }}</td>
+                <td>{{ produit.prixProd }}</td>
+                <td>{{ produit.prodDescription }}</td>
+                <td>{{ produit.quantite }}</td>
+                <td>{{ produit.image }}</td>
+                <td>{{ produit.prixOffre }}</td>
+                <td>
+
+
+                    <div class="btn-group btn-group" role="group" aria-label="...">
+
+                        <a href="{{ path('produit_show', { 'id': produit.id })  }} " class="btn btn-success">show</a>
+
+                        <a href="{{ path('produit_edit', { 'id': produit.id }) }}"  class="btn btn-success">edit</a>
+
+                    </div>
+
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('produit_new') }}" class="btn btn-success">Create a new produit</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+
+
+    <div class="st2-search-box st2-control-block hide-reponsive">
+        <div class="st2-search-block">
+            <form method="POST" class="st2-search-form" action="">
+                <div class="at2-search-fields">
+                    <div class="st2-search-input">
+                        <input type="search" class="st2-search-field" placeholder="Search ..." value="" name="input_recherche" >
+
+                        <button type="submit" class="st2-search-submit">
+                            search
+                            <span class="lnr lnr-magnifier"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <h1 data-on-color=#00ced1"">Produits list</h1>
+
+
+    <table table class="table table-striped">
+        <thead>
+            <tr>
+
+                <th th scope="col">Nomprod</th>
+                <th th scope="col">Prixprod</th>
+                <th th scope="col">Proddescription</th>
+                <th th scope="col">Quantite</th>
+                <th th scope="col">Image</th>
+                <th th scope="col">Prixoffre</th>
+                <th th scope="col">Categorie</th>
+                <th th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for produit in produits %}
+
+
+
+            <tr>
+
+                <td>{{ produit.nomProd }}</td>
+                <td>{{ produit.prixProd }}</td>
+                <td>{{ produit.prodDescription }}</td>
+                <td>{{ produit.quantite }}</td>
+                <td> <img src="{{ asset('images/') }}{{ produit.image }}" style="width: 50px;height: 50px"></td>
+                <td>{{ produit.prixOffre }}</td>
+                <td>{{ produit.categorie.nomCat }}</td>
+                <td>
+
+
+                    <div class="btn-group btn-group" role="group" aria-label="...">
+
+                        <a href="{{ path('produit_edit', { 'id': produit.id }) }}"  class="btn btn-success">edit</a>
+                        <a href="{{ path('produit_delete', { 'id': produit.id }) }}"  class="btn btn-success">Delete</a>
+
+                    </div>
+
+                </td>
+            </tr>
+
+            {% if produit.quantite <10 %}
+            <div class="alert alert-danger" role="alert" >
+                <div class="alert-text" width="50px">
+                    <h4 class="alert-heading">Notification !</h4>
+                    Il reste que {{ produit.quantite }} du produit {{ produit.nomProd }}
+
+
+
+                </div>
+            </div>
+
+              {% endif %}
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('produit_new') }}" class="btn btn-success">Create a new produit</a>
+        </li>
+    </ul>
+
+{% endblock %}

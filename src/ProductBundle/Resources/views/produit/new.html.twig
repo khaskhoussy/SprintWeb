@@ -1,0 +1,67 @@
+{% extends 'back.html.twig' %}
+
+{% block content %}
+    <center>
+
+        <div class="col-md-6" >
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+                    <h3 class="card-title" >Ajouter un Produit</h3>
+                </div>
+                <!-- /.card-header -->
+                <!-- form start -->
+                <form role="form">
+                    <div class="card-body">
+
+                        <div class="form-group">
+
+                            {{ form_row(form.nomProd, { 'attr': {'class': 'form-control' ,'placeholder':'','id':'exampleInputTitre'} }) }}
+
+                        </div>
+                        <div class="form-group">
+
+                            {{ form_row(form.prodDescription, { 'attr': {'class': 'form-control' ,'placeholder':'','id':'exampleInputTitre'} }) }}
+
+                        </div>
+                        <div class="form-group">
+
+                            {{ form_row(form.prixProd, { 'attr': {'class': 'form-control' ,'placeholder':'Entrer catégorie','id':'exampleInputTitre'} }) }}
+
+                        </div>
+                        <div class="form-group">
+
+                            {{ form_row(form.quantite, { 'attr': {'class': 'form-control' ,'placeholder':'','id':'exampleInputTitre'} }) }}
+
+                        </div>
+                        <div class="form-group">
+
+                            {{ form_row(form.categorie, { 'attr': {'class': 'form-control' ,'placeholder':'','id':'exampleInputTitre'} }) }}
+
+                        </div>
+
+                        <div class="form-group">
+
+                            {{ form_row(form.file, { 'attr': {'class': 'form-control' ,'placeholder':'','id':'exampleInputTitre'} }) }}
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <input type="submit" value="Create" class="btn btn-success" />
+                        <a href="{{ path('produit_index') }}" class="btn btn-success">Back to the list</a>
+                    </div>
+                    {{ form_end(form) }}
+                </form>
+            </div>
+
+
+        </div>
+    </center>
+{% endblock %}

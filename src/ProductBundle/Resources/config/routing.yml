@@ -1,0 +1,21 @@
+affiche:
+    path:     /affiche
+    defaults: { _controller: ProductBundle:Produit:list }
+
+affiche1:
+    path:     /
+    defaults: { _controller: ProductBundle:Produit:list }
+
+detail:
+    path:     /{id}/detail
+    defaults: { _controller: ProductBundle:Produit:detail }
+
+recherche:
+    path:     /produit
+    defaults: { _controller: ProductBundle:Produit:recherche }
+    methods: [GET, POST]
+rechercher:
+    path:     /rechercher
+    defaults: { _controller: ProductBundle:Produit:rechercher }
+    methods: [GET, POST]
+
