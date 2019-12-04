@@ -81,7 +81,7 @@ class Produit
      *
      * @MaxDepth(1)
      *
-     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="products")
+     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="products" )
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="IdCategorie", referencedColumnName="id")
      * })

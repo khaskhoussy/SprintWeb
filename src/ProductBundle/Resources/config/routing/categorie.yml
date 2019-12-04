@@ -22,3 +22,6 @@ categorie_delete:
     path:     /{id}/delete
     defaults: { _controller: "ProductBundle:Categorie:delete" }
     methods:  DELETE
+graphePie:
+    path:     /pie
+    defaults: { _controller: ProductBundle:Default:Stat}
