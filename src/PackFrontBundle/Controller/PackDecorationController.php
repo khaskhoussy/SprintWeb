@@ -5,6 +5,7 @@ namespace PackFrontBundle\Controller;
 use PackFrontBundle\Entity\PackDecoration;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Packdecoration controller.
