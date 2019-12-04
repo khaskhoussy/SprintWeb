@@ -28,7 +28,6 @@ class AppKernel extends Kernel
             new UsercomBundle\UsercomBundle(),
             new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
             new PanierBundle\PanierBundle(),
-            new ForumBundle\ForumBundle(),
             new ProductBundle\ProductBundle(),
             new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
             new ForumBundle\ForumBundle(),
