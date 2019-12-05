@@ -3,6 +3,7 @@
 namespace PackFrontBundle\Controller;
 
 use PackFrontBundle\Entity\PackDecoration;
+use PackFrontBundle\PackFrontBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -60,11 +61,19 @@ class PackDecorationController extends Controller
      */
     public function showAction(PackDecoration $packDecoration)
     {
+        $em = $this->getDoctrine()->getManager() ;
+        $packData = $em->getRepository(\BddBundle\Entity\PackDecoration::class)->findPacksByMaximumQteProduit($packDecoration->getId());
+        $packs = array() ;
+        foreach ($packData as $packDatum){
+            $pack = $em->getRepository(PackDecoration::class)->find($packDatum->getId());
+            array_push($packs,$pack) ;
+        }
         $deleteForm = $this->createDeleteForm($packDecoration);
 
         return $this->render('@PackFront/packdecoration/show.html.twig', array(
             'packDecoration' => $packDecoration,
             'delete_form' => $deleteForm->createView(),
+            'packs' => $packs
         ));
     }
 

@@ -1,10 +1,12 @@
 {% extends 'front.html.twig' %}
 
 {% block content %}
-    <h1>Geste du mois {{ gesteDuMois.moisGeste }}</h1>
-    <a href="{{ path('front_show', { 'id': gesteDuMois.id }) }}" ><img src="{{ asset('uploads/gestes/') }}{{ gesteDuMois.imageGeste }}"></a>
-     <p>{{ gesteDuMois.descGeste }}</p>
-    <li>
-        <a href="{{ path('front_index') }}">Back to the list</a>
-    </li>
+    <div style="margin: 50px">
+        <h1>Geste du mois {{ gesteDuMois.moisGeste }}</h1>
+        <a href="{{ path('front_show', { 'id': gesteDuMois.id }) }}" ><img src="{{ asset('uploads/gestes/') }}{{ gesteDuMois.imageGeste }}"></a>
+        <p>{{ gesteDuMois.descGeste | raw }}</p>
+        <li>
+            <a href="{{ path('front_index') }}">Back to the list</a>
+        </li>
+    </div>
 {% endblock %}

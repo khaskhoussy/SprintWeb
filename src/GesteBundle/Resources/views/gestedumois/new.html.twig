@@ -18,9 +18,12 @@
             <label for="exampleInputPassword1">Mois Du Geste</label>
             {{ form_widget(form.moisGeste, {'attr': {'class': 'form-control','aria-describedby':'type','placeholder':'choisir mois du geste'}}) }}
         </div>
-        <div class="form-group">
+        <div class="form-group" hidden>
             <label for="exampleInputPassword1">Description Geste</label>
             {{ form_widget(form.descGeste, {'attr': {'class': 'form-control','aria-describedby':'description','placeholder':'Entrer description'}}) }}
+        </div>
+        <div>
+            <textarea id="mytextarea" name="mytextarea">Hello, World!</textarea>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Image</label>
@@ -36,4 +39,22 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block js %}
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector:'#mytextarea',
+            plugins : 'advlist autolink link image lists charmap print preview'
+        });
+        $(document).ready(function () {
+            $('#submitBtn').click(function (event) {
+                event.preventDefault();
+                console.log(tinymce.activeEditor.getContent());
+                $('#gestebundle_gestedumois_descGeste').val(tinymce.activeEditor.getContent());
+                $("#formp").trigger("submit");
+            });
+        });
+    </script>
 {% endblock %}

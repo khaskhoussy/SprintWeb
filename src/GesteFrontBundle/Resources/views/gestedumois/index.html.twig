@@ -137,7 +137,7 @@
                         <a href="{{ path('front_show', { 'id': gesteDuMois.id }) }}" ><img src="{{ asset('uploads/gestes/') }}{{ gesteDuMois.imageGeste }}"></a>
                         <div class="card-body">
                             <h5 class="card-title" align="center">Mois De {{ gesteDuMois.moisGeste }}</h5>
-                            <p class="card-text">{{ gesteDuMois.descGeste }}</p>
+                            <p class="card-text">{{ gesteDuMois.descGeste | striptags | slice(0, 200)  }} ...</p>
                             <a href="{{ path('front_show', { 'id': gesteDuMois.id }) }}" class="btn btn-primary" align="center">Lire Plus</a>
                         </div>
                     </div>
