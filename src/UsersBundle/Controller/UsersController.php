@@ -256,9 +256,8 @@ class UsersController extends Controller
             $ligneService->setDatedebut(new \DateTime($request->get('dateDebut')));
             $ligneService->setDatefin(new \DateTime($request->get('dateFin')));
             $ligneServices->append($ligneService);
-            return new Response($ligneServices->serialize());
+            return $this->redirectToRoute('Jardinier_show');
         }
-        $session->set('ligneServices',new \ArrayObject());
         $services = $employe->getServices();
         return $this->render ('@Users/Admin/reserver.html.twig',array('services'=>$services,'idE'=>$id));
     }

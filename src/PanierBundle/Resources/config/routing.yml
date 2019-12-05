@@ -1,3 +1,19 @@
 panier_homepage:
     path:     /
     defaults: { _controller: PanierBundle:Panier:index }
+
+panier_addproduct:
+    path:     /addproduct
+    defaults: { _controller: PanierBundle:Panier:ajouterPanierProduit }
+
+panier_addpack:
+    path:     /addpack
+    defaults: { _controller: PanierBundle:Panier:ajouterPanierPack }
+
+panier_vider:
+    path:     /viderpanier
+    defaults: { _controller: PanierBundle:Panier:viderPanier }
+
+panier_valider:
+    path:     /validerpanier
+    defaults: { _controller: PanierBundle:Panier:validerPanier }

@@ -127,17 +127,23 @@
                                         {{ packDecoration.descriptionPack }}
                                     </p>
                                     <div class="product-detail-v1-action">
-                                        <div class="quanlity">
-                                            <button type="button" class="subtraction">-</button>
-                                            <input type="text" class="quanlity-num" pattern="[0-9]*" value="1">
-                                            <button type="button" class="addition">+</button>
-                                        </div>
-                                        <div class="add-product">
-                                            <button type="submit" class="btn-addproduct">Add to cart</button>
-                                        </div>
-                                        <button class="btn-addwhlist">
-                                            <span class="lnr lnr-heart"></span>
-                                        </button>
+                                        <form method="post" action="{{ path('panier_addpack') }}">
+                                            <div class="quanlity">
+                                                <button type="button" class="subtraction" onclick="$('#qtep').val(function(i,v) {
+                                                            if(v == 1) return 1 ;
+                                                            return  v-1;
+                                                        })">-</button>
+                                                <input name="qte" id="qtep" type="text" class="quanlity-num" pattern="[0-9]*" value="1" min="1">
+                                                <button type="button" class="addition" onclick="$('#qtep').val(parseInt($('#qtep').val()) +1 )">+</button>
+                                            </div>
+                                            <div class="add-product">
+                                                <button name="addpack" type="submit" class="btn-addproduct">Add to cart</button>
+                                            </div>
+                                            <input type="number" name="idpack" hidden value="{{ packDecoration.id }}">
+                                            <button class="btn-addwhlist">
+                                                <span class="lnr lnr-heart"></span>
+                                            </button>
+                                        </form>
                                     </div>
                                     <div class="product-detail-v1-attr">
                                         <p class="mb-0"><span >SKU:</span> PD 031</p>
