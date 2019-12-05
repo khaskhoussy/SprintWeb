@@ -29,9 +29,12 @@
     <!-- Post Content -->
     <p class="lead">{{ event.description }}</p>
     <p class="lead">{{ event.nbrParticipants }}</p>
-    <form method="post">
-        <input type="text" value="{{ event.nbrParticipants }}" name="id" hidden>
-    <button type="button" class="btn btn-primary">Participer</button>
+
+    <form  action="{{ path('part') }}" method="post">
+{#        <input type="submit" value="{{ event.nbrParticipants }}" name="id" hidden>#}
+{#    <button type="button" class="btn btn-primary">Participer</button>#}
+        <input type="submit" class="btn btn-outline-brand btn-pill" value="particper" {% if count>0 %} disabled="true" {% endif %}>
+        <input type="text" value="{{ event.id}}" name="idevenement" hidden>
     </form>
 
 
@@ -52,6 +55,7 @@
 
         {% if app.user.id == comment.idUser.id %}
             <form action="{{ path('delete_comment') }}" method="post">
+
                 <input type="submit" class="btn btn-outline-brand btn-pill" value="Delete">
                 <input type="text" value="{{ comment.id }}" name="id" hidden>
             </form>
@@ -60,8 +64,8 @@
 
         {% endif %}
     </div>
-    </div>
 
+    </div>
 
 
 
@@ -87,6 +91,8 @@
                     <textarea class="form-control" rows="3" name="comment" placeholder="Comment here"></textarea>
 
                 </div>
+
+
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
