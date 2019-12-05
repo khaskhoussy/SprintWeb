@@ -137,10 +137,9 @@
                         </div>
                         <div class="box-item-info">
                             <a href="{{ path('_show', { 'id': packDecoration.id }) }}"><h3 class="item-name m-bottom-0">{{ packDecoration.nomPack }}</h3></a>
-                            <p>{{ packDecoration.descriptionPack }}</p>
                             <div class="item-price-rate">
                                 <div class="item-price">
-                                    <span class="cost">$80.00</span>
+                                    <span class="cost">{{ packDecoration.prixp/0.8 }}</span>
                                     <span class="sale">{{ packDecoration.prixp }}</span>
                                 </div>
                                 <div class="item-rating">
@@ -156,19 +155,15 @@
                                 </div>
                             </div>
                             <p class="m-bottom-0 list-shoppage-des d-none-list-shoppage">
-                                It is a long established fact that a reader will be distracted by the readable content of a page when looking at...
+                               <h4 style="animation: both"> PACK DESCRIPTION:</h4> {{ packDecoration.descriptionPack }}
                             </p>
                             <div class="list-shoppage-btn-loop-action d-none-list-shoppage">
                                 <ul class="loop-action m-bottom-0">
-                                    <li class="item-action review">
-                                        <a class="action-link" href="javascript:void(0);"><i class="icon ti-eye"></i></a>
-                                    </li>
+
                                     <li class="item-action add-to-cart">
                                         <a class="action-link action-link-addcart" href="javascript:void(0);">Add to cart</a>
                                     </li>
-                                    <li class="item-action wishlist">
-                                        <a class="action-link" href="javascript:void(0);"><i class="icon lnr lnr-heart"></i></a>
-                                    </li>
+
                                 </ul>
                             </div>
                             <div class="list-shoppage-share d-none-list-shoppage">

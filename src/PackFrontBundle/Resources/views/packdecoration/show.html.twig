@@ -107,10 +107,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="product-detail-v1-info pro-detail-v2-pt">
-                                    <h1 class="product-detail-v1-title mb-0">{{ packDecoration.nomPack }}</h1>
+                                    <h1 class="product-detail-v1-title mb-0">{{ packDecoration.typep }}</h1>
                                     <div class="product-detail-v1-meta">
                                         <div class="product-detail-v1-price">
-                                            <div class="cost">$80.00</div>
+                                            <div class="cost">{{ packDecoration.prixp/0.8 }}</div>
                                             <div class="sale">{{ packDecoration.prixp }}</div>
                                         </div>
                                         <div class="product-detail-v1-rating">
@@ -199,10 +199,26 @@
 
                                 </div>
                                 <div class="tab-pane fade" id="pro-detail-Additionalinfo" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                    Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+                                    Il s’agit de cultures qui ne constituent pas les cultures vivrières ou de rente, ordinaires,
+                                    du paysan moyen mais qui peuvent lui rapporter un bon rendement car elles sont
+                                    hautement spécialisées et il existe pour celles ci un marché spécifique. Elles peuvent
+                                    aussi offrir une solution de rechange aux exportations de produits de base dont les
+                                    cours sont en baisse. Ces cultures peuvent être cultivées pour l’exportation avec l’aide
+                                    d’une organisation qui a une antenne à l’étranger ou simplement il s’agira d’un
+                                    paysan ou d’un entrepreneur qui a trouvé un « créneau » que personne d’autre n’avait
+                                    trouvé avant ou dont peu de personnes s’occupent.
                                 </div>
                                 <div class="tab-pane fade" id="pro-detail-Reviews" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                    Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+                                    Ces cultures sont très nombreuses et couvrent des domaines très variés. On peut citer
+                                    les fleurs, soit pour la vente de fleurs coupées soit pour l’industrie des parfums, les
+                                    plantes utilisées dans l’industrie cosmétique comme le karité par exemple, les épices
+                                    et aromates en tout genre, les légumes et fruits qui peuvent être exportés vers l’Europe
+                                    hors saison comme le haricot vert ou les fraises, certains produits forestiers non
+                                    ligneux comme les plantes comestibles (feuilles, écorces, sève, fruits, champignons),
+                                    le miel et même certaines parties d'animaux, utilisées pour l'ornementation et la
+                                    médecine traditionnelle ou encore les huiles essentielles pour l’industrie alimentaire
+                                    ou pour l’industrie de la parfumerie.
+
                                 </div>
                             </div>
                         </div>
@@ -223,182 +239,38 @@
             <div class="row deal-of-the-week-inner">
                 <div class="active-pro-relerate col-md-12">
 
-                    <div class="">
-                        <div class="dotw-item box-item">
-                            <div class="dotw-item-image box-item-image">
-                                <a href=""><img src="images/products/dotw/dotw1.jpg" alt="Deal of the week"></a>
-                            </div>
-                            <div class="dotw-item-info box-item-info">
-                                <h3 class=""><a href="" class="dotw-item-name item-name">Polyscias Fabian</a></h3>
-                                <div class="dotw-price-rate item-price-rate">
-                                    <div class="dotw-price item-price">
-                                        <span class="cost">$80.00</span>
-                                        <span class="sale">$60.00</span>
-                                    </div>
-                                    <div class="item-rating">
-                        <span class="rating-badge">
-                          <span class="badge-starrating">
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color2 lnr lnr-star"></i>
-                          </span>
-                        </span>
+                    {% for pack in packs %}
+                        <div class="">
+                            <div class="dotw-item box-item">
+                                <div class="dotw-item-image box-item-image">
+                                    <a href="{{ path('_show',{'id':pack.id}) }}"><img src="{{ asset('uploads/packs/')}}{{ pack.imagePack }}" alt="Deal of the week"></a>
+                                </div>
+                                <div class="dotw-item-info box-item-info">
+                                    <h3 class=""><a href="" class="dotw-item-name item-name">Polyscias Fabian</a></h3>
+                                    <div class="dotw-price-rate item-price-rate">
+                                        <div class="dotw-price item-price">
+                                            <span class="cost">{{ packDecoration.prixp / 0.8}}</span>
+                                            <span class="sale">{{ packDecoration.prixp}}</span>
+                                        </div>
+                                        <div class="item-rating">
+                            <span class="rating-badge">
+                              <span class="badge-starrating">
+                                <i class="star-icon star-icon-color1 lnr lnr-star"></i>
+                                <i class="star-icon star-icon-color1 lnr lnr-star"></i>
+                                <i class="star-icon star-icon-color1 lnr lnr-star"></i>
+                                <i class="star-icon star-icon-color1 lnr lnr-star"></i>
+                                <i class="star-icon star-icon-color2 lnr lnr-star"></i>
+                              </span>
+                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="offer">
-                                <div class="label">Hot</div>
-                            </div>
-                            <div class="button-loop-action">
-                                <ul class="loop-action">
-                                    <li class="item-action review">
-                                        <a class="action-link" href="javascript:void(0);"><i class="icon ti-eye"></i></a>
-                                    </li>
-                                    <li class="item-action wishlist">
-                                        <a class="action-link" href="javascript:void(0);"><i class="icon lnr lnr-heart"></i></a>
-                                    </li>
-                                    <li class="item-action add-to-card">
-                                        <a class="action-link" href="javascript:void(0);"><i class="icon icon-ecommerce-basket"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="">
-                        <div class="dotw-item box-item">
-                            <div class="dotw-item-image box-item-image">
-                                <a href=""><img src="images/products/dotw/dotw2.jpg" alt="Deal of the week"></a>
-                            </div>
-                            <div class="dotw-item-info box-item-info">
-                                <h3 class=""><a href="" class="dotw-item-name item-name">Polyscias Fabian</a></h3>
-                                <div class="dotw-price-rate item-price-rate">
-                                    <div class="dotw-price item-price">
-                                        <span class="cost">$80.00</span>
-                                        <span class="sale">$60.00</span>
-                                    </div>
-                                    <div class="item-rating">
-                        <span class="rating-badge">
-                          <span class="badge-starrating">
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color2 lnr lnr-star"></i>
-                          </span>
-                        </span>
-                                    </div>
+                                <div class="offer">
+                                    <div class="label">TOP VENTE</div>
                                 </div>
                             </div>
-                            <div class="offer">
-                                <div class="label">Hot</div>
-                            </div>
-                            <div class="button-loop-action">
-                                <ul class="loop-action">
-                                    <li class="item-action review">
-                                        <a class="action-link" href="javascript:void(0);"><i class="icon ti-eye"></i></a>
-                                    </li>
-                                    <li class="item-action wishlist">
-                                        <a class="action-link" href="javascript:void(0);"><i class="icon lnr lnr-heart"></i></a>
-                                    </li>
-                                    <li class="item-action add-to-card">
-                                        <a class="action-link" href="javascript:void(0);"><i class="icon icon-ecommerce-basket"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
-                    </div>
-
-                    <div class="">
-                        <div class="dotw-item box-item">
-                            <div class="dotw-item-image box-item-image">
-                                <a href=""><img src="images/products/dotw/dotw3.jpg" alt="Deal of the week"></a>
-                            </div>
-                            <div class="dotw-item-info box-item-info">
-                                <h3 class=""><a href="" class="dotw-item-name item-name">Polyscias Fabian</a></h3>
-                                <div class="dotw-price-rate item-price-rate">
-                                    <div class="dotw-price item-price">
-                                        <span class="cost">$80.00</span>
-                                        <span class="sale">$60.00</span>
-                                    </div>
-                                    <div class="item-rating">
-                        <span class="rating-badge">
-                          <span class="badge-starrating">
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color2 lnr lnr-star"></i>
-                          </span>
-                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="offer">
-                                <div class="label">Hot</div>
-                            </div>
-                            <div class="button-loop-action">
-                                <ul class="loop-action">
-                                    <li class="item-action review">
-                                        <a class="action-link" href="javascript:void(0);"><i class="icon ti-eye"></i></a>
-                                    </li>
-                                    <li class="item-action wishlist">
-                                        <a class="action-link" href="javascript:void(0);"><i class="icon lnr lnr-heart"></i></a>
-                                    </li>
-                                    <li class="item-action add-to-card">
-                                        <a class="action-link" href="javascript:void(0);"><i class="icon icon-ecommerce-basket"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="">
-                        <div class="dotw-item box-item">
-                            <div class="dotw-item-image box-item-image">
-                                <a href=""><img src="images/products/dotw/dotw4.jpg" alt="Deal of the week"></a>
-                            </div>
-                            <div class="dotw-item-info box-item-info">
-                                <h3 class=""><a href="" class="dotw-item-name item-name">Polyscias Fabian</a></h3>
-                                <div class="dotw-price-rate item-price-rate">
-                                    <div class="dotw-price item-price">
-                                        <span class="cost">$80.00</span>
-                                        <span class="sale">$60.00</span>
-                                    </div>
-                                    <div class="item-rating">
-                        <span class="rating-badge">
-                          <span class="badge-starrating">
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color1 lnr lnr-star"></i>
-                            <i class="star-icon star-icon-color2 lnr lnr-star"></i>
-                          </span>
-                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="offer">
-                                <div class="label">Hot</div>
-                            </div>
-                            <div class="button-loop-action">
-                                <ul class="loop-action">
-                                    <li class="item-action review">
-                                        <a class="action-link" href="javascript:void(0);"><i class="icon ti-eye"></i></a>
-                                    </li>
-                                    <li class="item-action wishlist">
-                                        <a class="action-link" href="javascript:void(0);"><i class="icon lnr lnr-heart"></i></a>
-                                    </li>
-                                    <li class="item-action add-to-card">
-                                        <a class="action-link" href="javascript:void(0);"><i class="icon icon-ecommerce-basket"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
+                    {% endfor %}
                 </div>
             </div>
         </div>
