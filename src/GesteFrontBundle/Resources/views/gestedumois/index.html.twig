@@ -6,7 +6,7 @@
 
     <!-- Slide -->
     <section class="slide-wrapper banner-title-header">
-        <div class="slide-bg">
+        <div class="slide-bg" >
             <div class="overlay">
                 <div class="st2-banner-content-child-page">
                     <h2 class="banner-child-page-title">Geste Du Mois</h2>
@@ -62,33 +62,42 @@
                                                         <a role="menuitem" tabindex="-1" href="{{ path('_index') }}">ALL</a>
                                                     </li>
                                                     <li role="presentation" class="filter-dropdow-item">
-                                                        <a role="menuitem" tabindex="-1" href="{{ path('_index',{'cat':'PACKS POUR PETIT BASSIN'}) }}">PACKS POUR PETIT BASSIN</a>
+                                                        <a role="menuitem" tabindex="-1" href="{{ path('front_index',{'cat':'Janvier'}) }}">Janvier</a>
                                                     </li>
                                                     <li role="presentation" class="filter-dropdow-item">
-                                                        <a role="menuitem" tabindex="-1" href="{{ path('_index',{'cat':'PACKS POUR PLUS GRAND BASSIN'}) }}">PACKS POUR PLUS GRAND BASSIN</a>
+                                                        <a role="menuitem" tabindex="-1" href="{{ path('front_index',{'cat':'Fevrier'}) }}">Fevrier</a>
                                                     </li>
                                                     <li role="presentation" class="filter-dropdow-item">
-                                                        <a role="menuitem" tabindex="-1" href="{{ path('_index',{'cat':'PACKS POUR OMBRE OU MI-OMBRE'}) }}">PACKS POUR OMBRE OU MI-OMBRE</a>
+                                                        <a role="menuitem" tabindex="-1" href="{{ path('front_index',{'cat':'Mars'}) }}">Mars</a>
                                                     </li>
                                                     <li role="presentation" class="filter-dropdow-item">
-                                                        <a role="menuitem" tabindex="-1" href="{{ path('_index',{'cat':'PACKS DE BORDURE'}) }}">PACKS DE BORDURE</a>
+                                                        <a role="menuitem" tabindex="-1" href="{{ path('front_index',{'cat':'Avril'}) }}">Avril</a>
                                                     </li>
                                                     <li role="presentation" class="filter-dropdow-item">
-                                                        <a role="menuitem" tabindex="-1" href="{{ path('_index',{'cat':'PACKS DE PHYTO-ÉPURATION'}) }}">PACKS DE PHYTO-ÉPURATION</a>
+                                                        <a role="menuitem" tabindex="-1" href="{{ path('front_index',{'cat':'Mai'}) }}">Mai</a>
+                                                    </li>
+                                                    <li role="presentation" class="filter-dropdow-item">
+                                                        <a role="menuitem" tabindex="-1" href="{{ path('front_index',{'cat':'Juin'}) }}">Juin</a>
+                                                    </li>
+                                                    <li role="presentation" class="filter-dropdow-item">
+                                                        <a role="menuitem" tabindex="-1" href="{{ path('front_index',{'cat':'Juillet'}) }}">Juillet</a>
+                                                    </li>
+                                                    <li role="presentation" class="filter-dropdow-item">
+                                                        <a role="menuitem" tabindex="-1" href="{{ path('front_index',{'cat':'Aout'}) }}">Aout</a>
+                                                    </li>
+                                                    <li role="presentation" class="filter-dropdow-item">
+                                                        <a role="menuitem" tabindex="-1" href="{{ path('front_index',{'cat':'Octobre'}) }}">Octobre</a>
+                                                    </li>
+                                                    <li role="presentation" class="filter-dropdow-item">
+                                                        <a role="menuitem" tabindex="-1" href="{{ path('front_index',{'cat':'Novembre'}) }}">Novembre</a>
+                                                    </li>
+                                                    <li role="presentation" class="filter-dropdow-item">
+                                                        <a role="menuitem" tabindex="-1" href="{{ path('front_index',{'cat':'Decembre'}) }}">Decembre</a>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </li>
-                                        <li class="filter-right-item d-none-19">
-                                            <div class="filter-right-show">
-                                                <span class="filter-right-show-text">Show:</span>
-                                                <ul class="filter-right-show-list">
-                                                    <li class="filter-right-show-item"><a class="filter-right-show-link" href="">2</a></li>
-                                                    <li class="filter-right-show-item"><a class="filter-right-show-link" href="">4</a></li>
-                                                    <li class="filter-right-show-item"><a class="filter-right-show-link" href="">6</a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
+
                                         <li class="filter-right-item">
                                             <div class="filter-right-dropdow">
                                                 <button class="btn btn-link filter-dropdow-btn" type="button" id="filter-sortby" data-toggle="dropdown">Sort By
@@ -131,10 +140,10 @@
     <!-- Product Shop Page Full Width -->
     <section class="popular-product product-shoppage-fullwidth padding-section">
         <div class="container">
-            <div class="row">
+            <div  class="card-deck">
                 {% for gesteDuMois in gesteDuMoiss %}
-                    <div class="card col-xl-3 col-md-6 col-lg-4 col-sm-6 col-12 layout" style="margin: 15px">
-                        <a href="{{ path('front_show', { 'id': gesteDuMois.id }) }}" ><img src="{{ asset('uploads/gestes/') }}{{ gesteDuMois.imageGeste }}"></a>
+                    <div class="card" >
+                        <a href="{{ path('front_show', { 'id': gesteDuMois.id }) }}" ><img class="card-img-top" src="{{ asset('uploads/gestes/') }}{{ gesteDuMois.imageGeste }}" ></a>
                         <div class="card-body">
                             <h5 class="card-title" align="center">Mois De {{ gesteDuMois.moisGeste }}</h5>
                             <p class="card-text">{{ gesteDuMois.descGeste | striptags | slice(0, 200)  }} ...</p>

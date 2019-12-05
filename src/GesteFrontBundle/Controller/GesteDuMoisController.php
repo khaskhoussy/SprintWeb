@@ -16,14 +16,19 @@ class GesteDuMoisController extends Controller
      * Lists all gesteDuMois entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-
         $gesteDuMois = $em->getRepository('GesteFrontBundle:GesteDuMois')->findAll();
-
+        $cat = $request->get("cat");
+        if($cat != null) {
+            foreach ($gesteDuMois as $geste) {
+                if($geste->getMoisGeste() == $cat) $list[] = $geste ;
+            }
+        }
+        else $list = $gesteDuMois ;
         return $this->render('@GesteFront/gestedumois/index.html.twig', array(
-            'gesteDuMoiss' => $gesteDuMois,
+            'gesteDuMoiss' => $list,
         ));
     }
 
