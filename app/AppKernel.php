@@ -31,6 +31,7 @@ class AppKernel extends Kernel
             new ProductBundle\ProductBundle(),
             new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
             new ForumBundle\ForumBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle()
         ];
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();

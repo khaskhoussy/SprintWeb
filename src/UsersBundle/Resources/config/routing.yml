@@ -50,6 +50,10 @@ users_ProfilePaysagiste:
 calendrier_back:
     path:     /back/paysagiste/calendrier
     defaults: { _controller: UsersBundle:Users:calendrier }
+calendrierJardinier_back:
+    path:     /back/jardinier/calendrier
+    defaults: { _controller: UsersBundle:Users:calendrier }
 reserver_jardinier:
     path:     /front/reserverJardinier/{id}
     defaults: { _controller: UsersBundle:Users:reserver }
+
