@@ -247,7 +247,7 @@ class UsersController extends Controller
     public function reserverAction(Request $request,SessionInterface $session,$id)
     {
         $em = $this->getDoctrine()->getManager();
-        $employe = $em->getRepository(User::class)->find($id);
+        $employe = $em->getRepository('BddBundle:User')->find($id);
         if($request->isMethod('POST') && $request->request->has('dateDebut') ){
             if(!$session->has('ligneServices')) $session->set('ligneServices',new \ArrayObject());
             $ligneServices = $session->get('ligneServices');
@@ -256,9 +256,8 @@ class UsersController extends Controller
             $ligneService->setDatedebut(new \DateTime($request->get('dateDebut')));
             $ligneService->setDatefin(new \DateTime($request->get('dateFin')));
             $ligneServices->append($ligneService);
-            return new Response($ligneServices->serialize());
+            return $this->redirectToRoute('Jardinier_show');
         }
-        $session->set('ligneServices',new \ArrayObject());
         $services = $employe->getServices();
         return $this->render ('@Users/Admin/reserver.html.twig',array('services'=>$services,'idE'=>$id));
     }

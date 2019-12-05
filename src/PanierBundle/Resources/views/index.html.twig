@@ -1,10 +1,8 @@
 {% extends 'front.html.twig' %}
 
 {% block content %}
-    {#<h1>Mon Panier</h1>#}
 
-    <li class="st2-li-primary">
-    <li class="st2-li-primary"><a class="st2-item-link" href="">Mon Panier</a></li>
+
     <style>
 
         table {
@@ -33,14 +31,24 @@
         <tbody>
         {% for ligneCommande in ligneCommandes %}
             <tr>
-                <td>{{ ligneCommande.nom}}</td>
-                <td>{{ ligneCommande.idproduit.prixProd }}</td>
+                <td>{{ ligneCommande.idproduit.nomProd}}</td>
+                {% if(ligneCommande.idproduit.idoffre == null ) %}
+                    <td>{{ ligneCommande.idproduit.prixProd }}</td>
+                {% endif %}
+                {% if(ligneCommande.idproduit.idoffre != null ) %}
+                    <td>{{ ligneCommande.idproduit.prixOffre }}</td>
+                {% endif %}
                 <td>{{ ligneCommande.qte }}</td>
-                <td>{{ ligneCommande.idproduit.prixProd * objetPanier.qte }}</td>
+                {% if(ligneCommande.idproduit.idoffre == null ) %}
+                    <td>{{ ligneCommande.idproduit.prixProd * ligneCommande.qte }}</td>
+                {% endif %}
+                {% if(ligneCommande.idproduit.idoffre != null ) %}
+                    <td>{{ ligneCommande.idproduit.prixOffre * ligneCommande.qte }}</td>
+                {% endif %}
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('Travail_affiche', { 'id': ligneCommande.idproduit.id }) }}">Voir produit</a>
+                            <a href="{{ path('produit_show', { 'id': ligneCommande.idproduit.id }) }}">Voir produit</a>
                         </li>
                         <li>
                             <a href="#">Supprimer</a>
@@ -73,11 +81,47 @@
                 <td>{{ ligneService.prix }}</td>
                 <td>{{ ligneService.datedebut | date('Y:m:d') }}</td>
                 <td>{{ ligneService.datefin | date('Y:m:d') }}</td>
-                <td>{{ ligneService.iduser.roles[0] }}</td>
+                <td>{{ ligneService.iduser.role | slice(5) }}</td>
                 <td>
                     <ul>
                         <li>
                             <a href="{{ path('Travail_affiche', { 'id': ligneService.iduser.id }) }}">Voir profile</a>
+                        </li>
+                        <li>
+                            <a href="#">Supprimer</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Pack</th>
+            <th>Type</th>
+            <th>Prix Unitaire</th>
+            <th>Quantite</th>
+            <th>Prix Totale</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for pack in packs %}
+            <tr>
+                <td>{{ pack.pack.nomPack }}</td>
+                <td>{{ pack.pack.typep }}</td>
+                <td>{{ pack.pack.prixp }}</td>
+                <td>{{ pack.qte }}</td>
+                <td>{{ pack.qte * pack.pack.prixp }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('_show', { 'id': pack.pack.id }) }}">Voir pack</a>
                         </li>
                         <li>
                             <a href="#">Supprimer</a>
@@ -96,7 +140,12 @@
 
 
             <input type="submit" value="ajouter un autre article" class="btn btn-success" />
-            <input type="submit" value="Vider Panier" class="btn btn-success" />
+            <form action="{{ path('panier_vider') }}" method="post">
+                <input type="submit" name="vider" value="Vider Panier" class="btn btn-success" />
+            </form>
+            <form method="post" action="{{ path('panier_valider') }}">
+                <input type="submit" name="valider" value="Valider Panier" class="btn btn-success" />
+            </form>
         </div>
     </ul>
 {% endblock %}

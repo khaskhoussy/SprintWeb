@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * User
  *
  * @ORM\Table(name="user")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BddBundle\Repository\UserRepository")
  */
 class User extends BaseUser
 {
@@ -321,9 +321,6 @@ class User extends BaseUser
     {
         $this->services = $services;
     }
-
-
-
 
 
 

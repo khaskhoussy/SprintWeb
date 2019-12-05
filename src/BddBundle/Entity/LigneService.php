@@ -36,7 +36,7 @@ class LigneService
     private $datefin;
 
     /**
-     * @var \Commande
+     * @var Commande
      *
      * @ORM\ManyToOne(targetEntity="Commande")
      * @ORM\JoinColumns({
@@ -46,7 +46,7 @@ class LigneService
     private $idcommande;
 
     /**
-     * @var \User
+     * @var User
      *
      * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
@@ -120,7 +120,7 @@ class LigneService
     }
 
     /**
-     * @return \User
+     * @return User
      */
     public function getIduser()
     {
@@ -128,7 +128,7 @@ class LigneService
     }
 
     /**
-     * @param \User $iduser
+     * @param User $iduser
      */
     public function setIduser($iduser)
     {
