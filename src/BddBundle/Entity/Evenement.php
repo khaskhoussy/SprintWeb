@@ -4,6 +4,8 @@ namespace BddBundle\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Evenement
@@ -24,7 +26,7 @@ class Evenement
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="ce champ est obligatoire")
      * @ORM\Column(name="nom", type="string", length=255, nullable=false)
      */
     private $nom;
@@ -66,7 +68,10 @@ class Evenement
 
     /**
      * @var integer
-     *
+     *@Assert\GreaterThan(
+     *     value = 0,
+     *     message="le prix doit etre positive"
+     *     )
      * @ORM\Column(name="eveprix", type="integer", nullable=false)
      */
     private $eveprix;
