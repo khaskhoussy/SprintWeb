@@ -122,7 +122,7 @@ class SujetController extends Controller
     /**
      * Deletes a sujet entity.
      *
-     * @Route("/{id}", name="sujet_delete")
+     * @Route("/{id}/delete", name="sujet_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -152,5 +152,6 @@ class SujetController extends Controller
             ->getForm()
         ;
     }
+
 
 }

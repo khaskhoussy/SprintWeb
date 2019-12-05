@@ -17,3 +17,5 @@ panier_vider:
 panier_valider:
     path:     /validerpanier
     defaults: { _controller: PanierBundle:Panier:validerPanier }
+
+

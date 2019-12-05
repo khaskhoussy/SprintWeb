@@ -1,0 +1,102 @@
+{% extends 'front.html.twig' %}
+
+{% block content %}
+    <style>
+
+        table.blueTable {
+            border: 5px solid #4D8950;
+            background-color: #4D8950;
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+        }
+        table.blueTable td, table.blueTable th {
+            border: 1px solid #AAAAAA;
+            padding: 3px 2px;
+        }
+        table.blueTable tbody td {
+            font-size: 17px;
+            color: #09331E;
+        }
+        table.blueTable tr:nth-child(even) {
+            background: #D0E4F5;
+        }
+        table.blueTable thead {
+            background: #3C7A6C;
+            background: -moz-linear-gradient(top, #6d9b91 0%, #4f877a 66%, #3C7A6C 100%);
+            background: -webkit-linear-gradient(top, #6d9b91 0%, #4f877a 66%, #3C7A6C 100%);
+            background: linear-gradient(to bottom, #6d9b91 0%, #4f877a 66%, #3C7A6C 100%);
+            border-bottom: 0px solid #184436;
+        }
+        table.blueTable thead th {
+            font-size: 15px;
+            font-weight: bold;
+            color: #FFFFFF;
+            border-left: 2px solid #D0E4F5;
+        }
+        table.blueTable thead th:first-child {
+            border-left: none;
+        }
+
+        table.blueTable tfoot {
+            font-size: 14px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background: #B5F5B2;
+            background: -moz-linear-gradient(top, #c7f7c5 0%, #bcf6b9 66%, #B5F5B2 100%);
+            background: -webkit-linear-gradient(top, #c7f7c5 0%, #bcf6b9 66%, #B5F5B2 100%);
+            background: linear-gradient(to bottom, #c7f7c5 0%, #bcf6b9 66%, #B5F5B2 100%);
+            border-top: 2px solid #444444;
+        }
+        table.blueTable tfoot td {
+            font-size: 14px;
+        }
+        table.blueTable tfoot .links {
+            text-align: right;
+        }
+        table.blueTable tfoot .links a{
+            display: inline-block;
+            background: #36A452;
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+    </style>
+    <h1>Mes Commandes </h1>
+
+<table class="blueTable">
+        <thead>
+            <tr>
+                {#<th>Id</th>#}
+                <th>Datevalidation</th>
+                <th>Prixtotal</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande in commandes %}
+            <tr>
+                {#<td><a href="{{ path('vente_show', { 'id': commande.id }) }}">{{ commande.id }}</a></td>#}
+                <td>{{ commande.dateValidation }}</td>
+                <td>{{ commande.prixTotal }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('vente_show', { 'id': commande.id }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+{#
+    <ul>
+        <li>
+            <a href="{{ path('vente_new') }}">Create a new commande</a>
+        </li>
+    </ul>
+    #}
+
+{% endblock %}

@@ -1,0 +1,7 @@
+vente_vente:
+    resource: "@VenteBundle/Resources/config/routing/commande.yml"
+    prefix:   /front/vente
+
+vente_homepage:
+    path:     /
+    defaults: { _controller: VenteBundle:Default:index }

@@ -1,0 +1,30 @@
+vente_index:
+    path:     /
+    defaults: { _controller: "VenteBundle:Commande:index" }
+    methods:  GET
+
+vente_show:
+    path:     /{id}/show
+    defaults: { _controller: "VenteBundle:Commande:show" }
+    methods:  GET
+
+vente_new:
+    path:     /new
+    defaults: { _controller: "VenteBundle:Commande:new" }
+    methods:  [GET, POST]
+
+vente_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VenteBundle:Commande:edit" }
+    methods:  [GET, POST]
+
+vente_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VenteBundle:Commande:delete" }
+    methods:  DELETE
+
+vente_pdf:
+    path:     /{id}/show/pdf
+    defaults: { _controller: "VenteBundle:Commande:pdf" }
+    methods:  GET
+

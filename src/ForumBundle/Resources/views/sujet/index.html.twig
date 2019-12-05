@@ -1,5 +1,4 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
     <div>
         <form  method="get">
@@ -13,6 +12,7 @@
     <table class="table table-hover table-responsive">
         <thead>
             <tr>
+                <th class="col-sm-9">nbr commentaire</th>
                 <th class="col-sm-9">Nomsujet</th>
                 <th class="col-sm-3">Description</th>
                 <th>Categorie</th>
@@ -22,7 +22,6 @@
         </thead>
         <tbody>
         {% for sujet in sujets %}
-
                  <td>{{ sujet.nomSujet }}</td>
                 <td>{{ sujet.description }}</td>
                 <td>{{ sujet.categorie }}</td>
@@ -32,7 +31,7 @@
                     {% if app.user.id == sujet.iduser.id %}
                         <a href="{{ path('commentaire_index', { 'sujet': sujet.id }) }}" class="btn btn-info">Voir les commentaire</a>
                         <a href="{{ path('sujet_edit', { 'id': sujet.id }) }}"><button type="button" class="btn btn-sm btn-font-danger">Edit</button></a>
-                        <a href="{{ path('sujet_delete', { 'id': sujet.id }) }}"><button type="button" class="btn btn-sm btn-dark">Supprimer</button></a>
+                        <a href="{{ path('sujet_delete', { 'id': sujet.id }) }}"><button type="button" class="btn btn-sm btn-danger">Supprimer</button></a>
                     {% else %}
                         <a href="{{ path('commentaire_index', { 'sujet': sujet.id }) }}" class="btn btn-info">Voir les commentaire</a>
                     {% endif %}

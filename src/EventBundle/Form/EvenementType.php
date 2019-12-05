@@ -15,7 +15,7 @@ class EvenementType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('datedebut',DateTimeType::class)->add('datefin')->add('description')->add('lieu')->add('nbrParticipants')->add('eveprix')->add('prixOffre')->add('image', FileType::class, array('data_class'=>null, 'required'=>false))->add('idoffre');
+        $builder->add('nom')->add('datedebut',DateTimeType::class)->add('datefin')->add('description')->add('lieu')->add('nbrParticipants')->add('eveprix')->add('prixOffre')->add('image', FileType::class, array('data_class'=>null, 'required'=>false));
     }/**
      * {@inheritdoc}
      */

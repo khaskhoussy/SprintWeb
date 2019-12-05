@@ -75,3 +75,6 @@ app:
 fos_user:
   resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
+vente_vente:
+  resource: "@VenteBundle/Resources/config/routing/commande.yml"
+  prefix:   /front/vente

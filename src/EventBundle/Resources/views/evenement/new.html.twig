@@ -25,7 +25,7 @@
 
     <div class="form-group">
         <label for="exampleInputPassword1">Lieu</label>
-        {{ form_widget(form.lieu, {'attr': {'class': 'form-control','aria-describedby':'description','placeholder':'Entrer description'}}) }}
+        {{ form_widget(form.lieu, {'attr': {'class': 'form-control','aria-describedby':'description','placeholder':'Entrer Lieu'}}) }}
     </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Description</label>
@@ -39,14 +39,10 @@
             <label for="exampleInputPassword1">Prix</label>
             {{ form_widget(form.eveprix, {'attr': {'class': 'form-control','aria-describedby':'prix','placeholder':'Entrer prix'}}) }}
         </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Prix Offre</label>
-        {{ form_widget(form.prixOffre, {'attr': {'class': 'form-control','aria-describedby':'prix','placeholder':'Entrer prix'}}) }}
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1"> Offre</label>
-        {{ form_widget(form.idoffre, {'attr': {'class': 'form-control','aria-describedby':'prix','placeholder':'Entrer prix'}}) }}
-    </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Prix Offre</label>
+            {{ form_widget(form.prixOffre, {'attr': {'class': 'form-control','aria-describedby':'prix','placeholder':'Entrer prix'}}) }}
+        </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Image</label>
             {{ form_widget(form.image, {'attr': {'class': 'form-control','aria-describedby':'image','placeholder':'Choisir image'}}) }}

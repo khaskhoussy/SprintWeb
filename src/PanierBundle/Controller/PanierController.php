@@ -34,10 +34,13 @@ class PanierController extends Controller
         $ligneCommandes = $session->get('ligneCommandes');
         $packs = $session->get('packs');
 
+        $erreur = $session->get('erreur_panier');
+        $session->set('erreur_panier',null) ;
         return $this->render('@Panier/index.html.twig', array(
             'ligneServices' => $ligneServices,
             'ligneCommandes' => $ligneCommandes,
-            'packs' => $packs->getArrayCopy()
+            'packs' => $packs->getArrayCopy(),
+            'erreur' => $erreur
         ));
     }
 
@@ -51,6 +54,8 @@ class PanierController extends Controller
     }
 
     public function validerPanierAction(Request $request,SessionInterface $session) {
+
+        $erreur = null ;
         if($request->isMethod('POST') && $request->request->has('valider')) {
             $em = $this->getDoctrine()->getManager();
             $ligneServices = $session->get('ligneServices');
@@ -59,13 +64,25 @@ class PanierController extends Controller
 
             foreach ($ligneCommandes as $ligneCommande) {
                 $produit = $em->getRepository(Produit::class)->find($ligneCommande->getIdproduit()->getId());
-                if($ligneCommande->getQte() > $produit->getQuantite()) return new Response("erreur");
+                if($ligneCommande->getQte() > $produit->getQuantite()) {
+                    $erreur = "Quantité insuffisant de produit: ".$produit->getNomProd()." quantité requise :".$ligneCommande->getQte()
+                        ."quantité disponible :".$produit->getQuantite();
+                    $session->set('erreur_panier',$erreur);
+                    return $this->redirectToRoute('panier_homepage');
+                }
             }
             foreach ($packs as $objetPack) {
                 $pack = $em->getRepository(PackDecoration::class)->find($objetPack->pack->getId());
                 foreach ($pack->getLignePacks() as $lignePack) {
                     $produit = $em->getRepository(Produit::class)->find($lignePack->getIdproduit()->getId());
-                    if($lignePack->getQuantitePack() * $objetPack->qte > $produit->getQuantite()) return new Response("erreur");
+                    if($lignePack->getQuantitePack() * $objetPack->qte > $produit->getQuantite()){
+                        $erreur = "Quantité insuffisant de produit: ".$produit->getNomProd()." pour pack: "
+                            .$pack->getDescriptionPack()." quantité requise :"
+                            .$lignePack->getQuantitePack() * $objetPack->qte
+                            ." quantité disponible :".$produit->getQuantite();
+                        $session->set('erreur_panier',$erreur);
+                        return $this->redirectToRoute('panier_homepage');
+                    }
                 }
             }
 
@@ -144,4 +161,5 @@ class PanierController extends Controller
         }
         return $this->redirectToRoute('_index');
     }
+
 }

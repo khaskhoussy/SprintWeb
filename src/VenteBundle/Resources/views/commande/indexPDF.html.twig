@@ -1,0 +1,158 @@
+
+{% block content %}
+
+<center><h1>Natural</h1></center>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <p>Bonjour chers client, votre commande a été traitée, voici son contenu, vous trouverez sur notre site nos coordonnées si vous avez besoin de nos services</p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <h2>Les Produits</h2>
+    <table class="blueTable">
+        <thead>
+        <tr>
+            <th>Nom Produit</th>
+            <th>Quantite</th>
+            <th>Prix Unitaire</th>
+            <th>Prix Total</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% set total=0  %}
+        {% set total1=0  %}
+
+
+        {% for ligneCommande in commande.ligneCommandes %}
+            {#{% for ligneService in ligneServices %}#}
+
+            <tr>
+                <td>{{ ligneCommande.idproduit.nomProd}}</td>
+
+                <td>{{ ligneCommande.qte}}</td>
+
+                {% if ligneCommande.idproduit.prixprod < ligneCommande.idproduit.prixOffre %}
+                    <td>{{ ligneCommande.idproduit.prixprod }}</td>
+                {% else %}
+                    <td>{{ ligneCommande.idproduit.prixOffre }}</td>
+                {% endif %}
+
+
+                {% if ligneCommande.idproduit.prixprod < ligneCommande.idproduit.prixOffre %}
+
+                    {% set total=ligneCommande.idproduit.prixprod*ligneCommande.qte %}
+                {% else %}
+                    {% set total=ligneCommande.idproduit.prixOffre*ligneCommande.qte %}
+                {% endif %}
+                <td>{{ total }}</td>
+            </tr>
+            {% if ligneCommande.idproduit.prixprod < ligneCommande.idproduit.prixOffre %}
+
+                {% set total1=total1+ligneCommande.idproduit.prixprod*ligneCommande.qte %}
+            {% else %}
+                {% set total1=total1+ligneCommande.idproduit.prixOffre*ligneCommande.qte %}
+            {% endif %}
+        {% endfor %}
+        <th>Le produits couteront :</th>
+        <th></th>
+        <th></th>
+        <th>{{ total1 }}</th>
+
+        </tbody>
+    </table>
+
+
+    <h2>Les services</h2>
+    <table class="blueTable">
+        <thead>
+        <tr>
+            <th>Date Debut</th>
+            <th>Date Fin</th>
+            <th>role</th>
+            <th>Numéro de téléphone</th>
+            <th>Honoraires</th>
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% set total2=0  %}
+        {% set total3=0  %}
+        {% set total4=0  %}
+
+        {% for ligneService in commande.ligneServices %}
+
+            <tr>
+                <td>{{ ligneService.datedebut|date('Y-m-d')}}</td>
+                <td>{{ ligneService.datefin|date('Y-m-d')}}</td>
+                <td>{{ ligneService.iduser.role }}</td>
+                <td>{{ ligneService.iduser.telephone }}</td>
+                {% if ligneService.iduser.role=="ROLE_JARDINIER" %}
+                    {% set total3=35 %}
+                {% else %}
+                    {% set total3=40 %}
+                {% endif %}
+                {{ total3 }}
+                <td>{{ total3 }}</td>
+            </tr>
+            {% set total2=total2+total3 %}
+        {% endfor %}
+
+        <th>Les services couteront :</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>{{ total2 }}</th>
+
+
+        <th></th>
+        <th></th>
+        <th></th>
+
+        </tbody>
+    </table>
+    <h2>Le Montant a payé est :</h2>
+    {% set total4=total2+total1 %}
+    <h2>{{ total4 }}</h2>
+    <table>
+
+
+
+    </table>
+
+
+
+    <p>On espère vous voir bientot, merci pour votre fidélité</p>
+
+
+    <style>
+
+        input[type=text] {
+            padding:5px;
+            border:2px solid #ccc;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+
+        input[type=text]:focus {
+            border-color:#333;
+        }
+
+        input[type=submit] {
+            padding:5px 15px;
+            background:#ccc;
+            border:0 none;
+            cursor:pointer;
+            -webkit-border-radius: 5px;
+            border-radius: 5px;
+        }
+    </style>
+{% endblock %}

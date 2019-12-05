@@ -1,0 +1,216 @@
+{% extends 'front.html.twig' %}
+
+{% block content %}
+
+
+    <style>
+
+        table.blueTable {
+            border: 5px solid #4D8950;
+            background-color: #4D8950;
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+        }
+        table.blueTable td, table.blueTable th {
+            border: 1px solid #AAAAAA;
+            padding: 3px 2px;
+        }
+        table.blueTable tbody td {
+            font-size: 17px;
+            color: #09331E;
+        }
+        table.blueTable tr:nth-child(even) {
+            background: #D0E4F5;
+        }
+        table.blueTable thead {
+            background: #3C7A6C;
+            background: -moz-linear-gradient(top, #6d9b91 0%, #4f877a 66%, #3C7A6C 100%);
+            background: -webkit-linear-gradient(top, #6d9b91 0%, #4f877a 66%, #3C7A6C 100%);
+            background: linear-gradient(to bottom, #6d9b91 0%, #4f877a 66%, #3C7A6C 100%);
+            border-bottom: 0px solid #184436;
+        }
+        table.blueTable thead th {
+            font-size: 15px;
+            font-weight: bold;
+            color: #FFFFFF;
+            border-left: 2px solid #D0E4F5;
+        }
+        table.blueTable thead th:first-child {
+            border-left: none;
+        }
+
+        table.blueTable tfoot {
+            font-size: 14px;
+            font-weight: bold;
+            color: #FFFFFF;
+            background: #B5F5B2;
+            background: -moz-linear-gradient(top, #c7f7c5 0%, #bcf6b9 66%, #B5F5B2 100%);
+            background: -webkit-linear-gradient(top, #c7f7c5 0%, #bcf6b9 66%, #B5F5B2 100%);
+            background: linear-gradient(to bottom, #c7f7c5 0%, #bcf6b9 66%, #B5F5B2 100%);
+            border-top: 2px solid #444444;
+        }
+        table.blueTable tfoot td {
+            font-size: 14px;
+        }
+        table.blueTable tfoot .links {
+            text-align: right;
+        }
+        table.blueTable tfoot .links a{
+            display: inline-block;
+            background: #36A452;
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+    </style>
+
+    <table class="blueTable">
+        <thead>
+        <tr>
+            <th>Nom Produit</th>
+            <th>Quantite</th>
+            <th>Prix Unitaire</th>
+            <th>Prix Total</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% set total=0  %}
+        {% set total1=0  %}
+        <h2>Les Produits</h2>
+
+        {% for ligneCommande in commande.ligneCommandes %}
+            {#{% for ligneService in ligneServices %}#}
+
+            <tr>
+                <td>{{ ligneCommande.idproduit.nomProd}}</td>
+
+                <td>{{ ligneCommande.qte}}</td>
+
+                {% if ligneCommande.idproduit.prixprod < ligneCommande.idproduit.prixOffre %}
+                    <td>{{ ligneCommande.idproduit.prixprod }}</td>
+                {% else %}
+                    <td>{{ ligneCommande.idproduit.prixOffre }}</td>
+                {% endif %}
+
+
+                {% if ligneCommande.idproduit.prixprod < ligneCommande.idproduit.prixOffre %}
+
+                     {% set total=ligneCommande.idproduit.prixprod*ligneCommande.qte %}
+                {% else %}
+                    {% set total=ligneCommande.idproduit.prixOffre*ligneCommande.qte %}
+                {% endif %}
+                <td>{{ total }}</td>
+            </tr>
+            {% if ligneCommande.idproduit.prixprod < ligneCommande.idproduit.prixOffre %}
+
+                {% set total1=total1+ligneCommande.idproduit.prixprod*ligneCommande.qte %}
+            {% else %}
+                {% set total1=total1+ligneCommande.idproduit.prixOffre*ligneCommande.qte %}
+            {% endif %}
+        {% endfor %}
+        <th>Le Montant a payé est :</th>
+        <th></th>
+        <th></th>
+        <th>{{ total1 }}</th>
+
+        </tbody>
+    </table>
+
+
+
+    <table class="blueTable">
+        <thead>
+        <tr>
+            <th>Date Debut</th>
+            <th>Date Fin</th>
+            <th>role</th>
+            <th>Numéro de téléphone</th>
+            <th>Honoraires</th>
+
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% set total2=0  %}
+        {% set total3=0  %}
+        <h2>Les services</h2>
+        {% for ligneService in commande.ligneServices %}
+
+            <tr>
+                <td>{{ ligneService.datedebut|date('Y-m-d')}}</td>
+                <td>{{ ligneService.datefin|date('Y-m-d')}}</td>
+                <td>{{ ligneService.iduser.role }}</td>
+                <td>{{ ligneService.iduser.telephone }}</td>
+                {% if ligneService.iduser.role=="ROLE_JARDINIER" %}
+                    {% set total3=35 %}
+        {% else %}
+            {% set total3=40 %}
+            {% endif %}
+                {{ total3 }}
+                <td>{{ total3 }}</td>
+            </tr>
+            {% set total2=total2+total3 %}
+        {% endfor %}
+
+        <th>Le Montant a payé est :</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        {% block commande %} <th>{{ total2 }}</th>{% end block %}
+        </tbody>
+    </table>
+
+
+
+    <br>
+    <br>
+    <br>
+
+    <center>
+        <a class="btn btn-success" href="{{ path('vente_index') }}">Back to the list</a>
+        <a class="btn btn-success" href="{{ path('vente_pdf',{'id':commande.id}) }}">Imprimer</a>
+        <br>
+        <br>
+        {{ form_start(delete_form) }}
+
+        <button class="btn btn-success" type="submit" value="Delete">delete</button>
+        {{ form_end(delete_form) }}
+    </center>
+
+
+
+
+
+
+<style>
+
+    input[type=text] {
+    padding:5px;
+    border:2px solid #ccc;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    }
+
+    input[type=text]:focus {
+    border-color:#333;
+    }
+
+    input[type=submit] {
+    padding:5px 15px;
+    background:#ccc;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    }
+    </style>
+    <li>
+        {{ form_start(delete_form) }}
+        <input type="submit" value="Delete">
+        {{ form_end(delete_form) }}
+    </li>
+{% endblock %}

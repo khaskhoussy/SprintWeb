@@ -18,6 +18,13 @@
             cursor: pointer;
         }
     </style>
+    {% if erreur !=null  %}
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Error!!!!</h4>
+            <p>{{ erreur }}</p>
+            <hr>
+        </div>
+    {% endif %}
     <table>
         <thead>
             <tr>
@@ -50,9 +57,6 @@
                         <li>
                             <a href="{{ path('produit_show', { 'id': ligneCommande.idproduit.id }) }}">Voir produit</a>
                         </li>
-                        <li>
-                            <a href="#">Supprimer</a>
-                        </li>
                     </ul>
                 </td>
             </tr>
@@ -62,6 +66,9 @@
         </tbody>
     </table>
 
+    <br>
+    <br>
+    <br>
 
     <table>
         <thead>
@@ -87,9 +94,6 @@
                         <li>
                             <a href="{{ path('Travail_affiche', { 'id': ligneService.iduser.id }) }}">Voir profile</a>
                         </li>
-                        <li>
-                            <a href="#">Supprimer</a>
-                        </li>
                     </ul>
                 </td>
             </tr>
@@ -98,7 +102,12 @@
 
         </tbody>
     </table>
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <table>
         <thead>
         <tr>
@@ -123,9 +132,6 @@
                         <li>
                             <a href="{{ path('_show', { 'id': pack.pack.id }) }}">Voir pack</a>
                         </li>
-                        <li>
-                            <a href="#">Supprimer</a>
-                        </li>
                     </ul>
                 </td>
             </tr>
@@ -137,15 +143,16 @@
 
     <ul>
         <div class="input-icon">
+<center>
 
-
-            <input type="submit" value="ajouter un autre article" class="btn btn-success" />
+            {#<input type="submit" value="ajouter un autre article" class="btn btn-success" />#}
             <form action="{{ path('panier_vider') }}" method="post">
                 <input type="submit" name="vider" value="Vider Panier" class="btn btn-success" />
             </form>
             <form method="post" action="{{ path('panier_valider') }}">
                 <input type="submit" name="valider" value="Valider Panier" class="btn btn-success" />
             </form>
+</center>
         </div>
     </ul>
 {% endblock %}

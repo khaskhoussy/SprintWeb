@@ -6,6 +6,8 @@ use BddBundle\Entity\Commentaire;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Expalmer\PhpBadWords\PhpBadWords as BadWords;
+
 
 /**
  * Commentaire controller.
@@ -19,16 +21,19 @@ class CommentaireController extends Controller
      *
      * @Route("/", name="commentaire_index")
      * @Method("GET")
+     * @throws \Exception
      */
     public function indexAction(Request $request)
     {
+        $erreur = null ;
         $id = $request->get('sujet');
         $em = $this->getDoctrine()->getManager();
         $commentaire = new Commentaire();
         $form = $this->createForm('ForumBundle\Form\CommentaireType', $commentaire);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $commentaire->setDatepub(new \DateTime('now'));
+            $date = new \DateTime('now') ;
+            $commentaire->setDatepub($date->format('Y-m-d H:i:s'));
             $user = $this->container->get('security.token_storage')->getToken()->getUser();
             $commentaire->setIdclient($user);
             $sujet = $em->getRepository(Sujet::class)->find($id);
@@ -37,13 +42,26 @@ class CommentaireController extends Controller
             //$idsujet =  $request->getIdsujet('id');
             //$commentaire->setIdsujet($this->getIdsujet());
             //$commentaire->setIdsujet($idsujet);
+            $myText = $commentaire->getDescriptionCommentaire();
+            $badwords = new BadWords();
+            try {
+                $badwords->setDictionaryFromFile(__DIR__ . "/dictionary.php");
+            } catch (\Exception $e) {
+            }
+            $badwords->setText($myText);
+
+            if ( $badwords->check()  == true  ){
+
+                $erreur="Unable to submit this comment! you can not use bad words";
+
+            } else {
 
 
+                $em->persist($commentaire);
+                $em->flush();
+                return $this->redirectToRoute('commentaire_show', array('id' => $commentaire->getId()));
+            }
 
-            $em->persist($commentaire);
-            $em->flush();
-
-            return $this->redirectToRoute('commentaire_show', array('id' => $commentaire->getId()));
         }
         $em->getRepository('ForumBundle:Commentaire')->findAll();
 
@@ -57,7 +75,8 @@ class CommentaireController extends Controller
 
         return $this->render('@Forum/commentaire/index.html.twig', array(
             'commentaires' => $commentaires,
-            'form' =>$form->createView()
+            'form' =>$form->createView(),
+            'erreur'=>$erreur
         ));
     }
 
@@ -110,6 +129,7 @@ class CommentaireController extends Controller
         return $this->render('@Forum/commentaire/show.html.twig', array(
             'commentaire' => $commentaire,
             'delete_form' => $deleteForm->createView(),
+
         ));
     }
 
@@ -141,21 +161,17 @@ class CommentaireController extends Controller
     /**
      * Deletes a commentaire entity.
      *
-     * @Route("/{id}", name="commentaire_delete")
+     * @Route("/{id}/delete", name="commentaire_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Commentaire $commentaire)
+    public function deleteAction(Request $request, $id)
     {
-        $form = $this->createDeleteForm($commentaire);
-        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $commentaire = $em->getRepository(Commentaire::class)->find($id);
+        $em->remove($commentaire);
+        $em->flush();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($commentaire);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('commentaire_index');
+        return $this->redirectToRoute("commentaire_index");
     }
 
     /**
@@ -200,29 +216,23 @@ class CommentaireController extends Controller
             ));
 
     }
+
     /**
      * Lists all commentaire entities.
      *
-     * @Route("/forum")
+     * @Route("/ ",  name="commentaire_count")
      * @Method("GET")
      */
-    public function indexbackAction(Request $request)
+    public function CommentsCount ( $id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $id = $request->get('sujet');
-        $em->getRepository('ForumBundle:Commentaire')->findAll();
 
-        $query = $em->createQuery(
-            "SELECT c FROM BddBundle:Commentaire c  WHERE c.idsujet = :id"
-        )->setParameter('id',$id);
+        return $this->getEntityManager()
+            ->createQuery(
 
-        $commentaires = $query->getResult();
-        //$request->setIdsujet('id');
-        //$this->forward('module', 'action');
+                "SELECT COUNT(c.id) AS p FROM ForumBundle:Commentaire c INNER JOIN ForumBundle:Sujet s on c.idsujet=s.id and c.id='$id') "
+            )
+            ->getResult();
 
-        return $this->render('@Forum/commentaire/indexback.html.twig', array(
-            'commentaires' => $commentaires,
-
-        ));
     }
+
 }
