@@ -6,6 +6,7 @@ namespace UsercomBundle\Controller;
 
 use BddBundle\Entity\Evenement;
 use BddBundle\Entity\EventComments;
+use BddBundle\Entity\Participation;
 use BddBundle\Repository\EvenementRepository;
 use DateTime;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,7 +23,7 @@ class UsercomController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $evenements = $em->getRepository('BddBundle:Evenement')->findAll();
+        $evenements = $em->getRepository('BddBundle:Evenement')->top5();
 
         return $this->render('@Usercom/voir.html.twig', array(
             'evenements' => $evenements,
@@ -34,9 +35,12 @@ class UsercomController extends Controller
     public function showdetailedAction($id)
     {
         $em= $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $count = $em->getRepository(Evenement::class)->checkParticipation($user->getId(),$id);
         $p=$em->getRepository('BddBundle:Evenement')->find($id);
         return $this->render('@Usercom/details.html.twig', array(
             'event'=>$p,
+            'count'=>$count
         ));
     }
 
@@ -50,8 +54,10 @@ class UsercomController extends Controller
 
         $comment = new EventComments();
 
+
         $comment->setIduser($user);
         $comment->setIdevenement($event);
+
         $comment->setContenu($request->request->get('comment'));
         $comment->setDate(new DateTime());
         $em = $this->getDoctrine()->getManager();
@@ -59,6 +65,7 @@ class UsercomController extends Controller
         $em->flush();
 
      ;
+
 
         return $this->redirectToRoute("detailed_post",array('id'=>$event->getId()));
 
@@ -89,7 +96,7 @@ class UsercomController extends Controller
         $requestString = $request->get('q');
         $events =  $em->getRepository(Evenement::class)->findEntitiesByString($requestString);
         if(!$events) {
-            $result['events']['error'] = "Post Not found :( ";
+            $result['events']['error'] = "Event Not found :( ";
         } else {
             $result['events'] = $this->getRealEntities($events);
         }
@@ -104,31 +111,32 @@ class UsercomController extends Controller
         return $realEntities;
     }
 
-public function participate (Request $request){
+    public function participateAction (Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $event = $em
+            ->getRepository(Evenement::class)
+            ->find($request->request->get('idevenement'));
 
 
-    $d=new \DateTime('now');
-
-
-
-
-
-    //Participer
-
-    $nbr = $evenements->getNbrParticipants();
-    if ($request->getMethod()=='POST') {
-        if ($request->get('part') && $evenements->getDateFin() > $d) {
-
-            $nbr = $nbr + 1;
-            $evenements->setNbrParticipants($nbr);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($evenements);
-            $em->flush();
-
+        $count = $em->getRepository(Evenement::class)->checkParticipation($user->getId(),$event->getId());
+        if($count > 0) {
+            return $this->redirectToRoute('detailed_post',array('id'=>$event->getId()));
         }
+
+        $part = new Participation();
+
+
+        $part->setIduser($user);
+        $part->setIdevenement($event);
+        $em = $this->getDoctrine()->getManager();
+
+        $em->persist($part);
+        $event->setNbrParticipants($event->getNbrParticipants() + 1);
+        $em->flush();
+
+        return $this->redirectToRoute('detailed_post',array('id'=>$event->getId()));
+
     }
-
-}
-
-
 }

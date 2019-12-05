@@ -39,7 +39,7 @@
     </div>
     <ul class="nav" id="side-menu">
         <li>
-            <a href="#"> Entities <span class="fa arrow"></span></a>
+            <a href="#"> Events <span class="fa arrow"></span></a>
             <ul class="nav nav-second-level" id="entitiesNav">
             </ul>
         </li>
@@ -116,9 +116,11 @@
 
                                         <h2 class="author-name d-flex align-items-center"></h2>
                                     </div>
+
                                     <div class="blog-meta">
                                         <span class="blog-datetime"><i class="blog-icon lnr lnr-calendar-full"></i>{{ eve.datedebut|date("d-m-Y H:i") }}</span>
-                                        <span class="blog-comment"><i class="blog-icon lnr lnr-bubble"></i> {{ eve.nbrParticipants }} Participants</span>
+                                        <br>
+                                        <span class="blog-comment"> <i class="blog-icon "></i> {{ eve.nbrParticipants }}  Participants</span>
                                     </div>
                                     <h2 class="blog-title">
                                         <h1 class="blog-title-link">{{ eve.nom|upper }}</h1>
